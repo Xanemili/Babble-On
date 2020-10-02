@@ -36,8 +36,6 @@ Signup Page('/signuppage')
     -social media links (optional)
 
 
-
-
 Homepage('/user[homepageId]') *page you're directed to if logged in*
 -Header (Top)
 
@@ -61,7 +59,7 @@ Homepage('/user[homepageId]') *page you're directed to if logged in*
 
 Userpage('/user[userpageId]') *displays profile*
 
-Edit('/edit/[userId)
+Edit('/edit/[userId])
 -
 
 Post('/post[postId]') *displays individual post*
