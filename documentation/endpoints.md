@@ -2,15 +2,6 @@
 
 ## Endpoints
 
-* get /
-* get&post /sign-up
-* get&post /log-in
-* get /profiles/userId
-* get /profiles/userId/stories
-* get&put /profiles/userId/edit
-* get&patch /stories/storyId
-* post /new-story
-
 |type          |route                       | description      | Functionality |
 |--------------|----------------------------|------------------|---------------|
 |get           |  /                         | Homepage         |
