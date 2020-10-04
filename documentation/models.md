@@ -23,7 +23,7 @@ Following
 Post
     -id
     -title:string(25)
-    -sub-heading:string(25)
+    -sub-heading:string(200)
     -date:timestamp
     -content:text
     -readTime:numeric
