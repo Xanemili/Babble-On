@@ -24,22 +24,14 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
-  const acceptHeader = req.get("Accept");
-
-  const errorData = {
-    title: err.title || 'Server Error',
+  res.json({
+    title: err.title,
     message: err.message,
-    // stack: isProduction ? null : err.stack
-  }
+    errors: err.errors,
+  })
 
-  if (acceptHeader === 'text/html') {
-    res.render('error-page', errorData);
-  } else if (acceptHeader === 'application/json') {
-    res.json(errorData);
-  } else {
-    res.send('Server Error');
-  }
-})
+
+});
 
 
 module.exports = app;
