@@ -20,17 +20,17 @@ app.use((req, res, next) => {
   next(err);
 })
 
-app.use((error, req, res, next) => {
-  res.status(error.status || 500);
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
   const acceptHeader = req.get("Accept");
 
   const errorData = {
     title: err.title || 'Server Error',
     message: err.message,
-    stack: isProduction ? null : err.stack
+    // stack: isProduction ? null : err.stack
   }
 
-  if(acceptHeader === 'text/html') {
+  if (acceptHeader === 'text/html') {
     res.render('error-page', errorData);
   } else if (acceptHeader === 'application/json') {
     res.json(errorData);
