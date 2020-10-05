@@ -29,7 +29,7 @@ module.exports = {
       },
       readTime: {
         allowNull: false,
-        type: Sequelize.NUMERIC
+        type: Sequelize.INTEGER
       },
       url: {
         type: Sequelize.STRING
