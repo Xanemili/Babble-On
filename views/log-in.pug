@@ -2,13 +2,16 @@ doctype html
 include mix-in.pug
 html(lang="en")
     head
-        link(rel="stylesheet", href="./styles/form-styles.css")
+        link(rel="stylesheet", href="/styles/log-form-styles.css")
         title Babble-On
     body
-    form(action='' method="post")
-        +field("Email", "email", null, "email")
-        +field("Password", "password", null, "password")
-        div.btn-container
-            button(class = "sign-up-btn" type = "submit") Log In
-        div
-            a(href='/sign-up') Don't have an account? Sign up here.
+    div.log-in-form-container
+        img(class = 'log-in-logo' src="/resources/sign-up-mega.png", alt="babble-on sign up logo")
+        p Please fill out the following fields to login.
+        form( class = "log-in-form" action='' method="post")
+            +field("Email", "email", null, "email")
+            +field("Password", "password", null, "password")
+            div.btn-container
+                button(class = "sign-up-btn" type = "submit") Log In
+            div.redirect
+                a(href='/sign-up') Don't have an account? Sign up here.
