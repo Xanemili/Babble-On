@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', async (e) => {
+    try {
     const userId = localStorage.getItem('babble_user_id');
 
     const res = await fetch(`/api/users/${userId}`, {
@@ -7,15 +8,16 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         },
     });
 
-    const { users } = await res.json();
+    const { user } = await res.json();
     const userInfoDiv = document.querySelector('.user-info-div')
 
-    const userHtml = users.map(
-        ({ userName, firstName }) => `
-        <div>
-            <p> ${userName} ${firstName}
-        </div`
-    );
+    const userHtml =
+    `<div>
+        <p> ${user.userName} ${user.firstName} ${user.lastName} ${user.email} ${user.biography}</p>
+    </div`
 
-    userInfoDiv.innerHTML = userHtml.join('');
+    userInfoDiv.innerHTML = userHtml
+} catch(err) {
+    console.error(err)
+}
 });

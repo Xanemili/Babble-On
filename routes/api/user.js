@@ -116,7 +116,7 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   // const id = parseInt(req.params.id, 10)
   const user = await User.findByPk(req.params.id, { attributes: [ "userName", "firstName", "email", "lastName"] });
 
-  res.json(user)
+  res.json( {user} )
 
 
 }))
