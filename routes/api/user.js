@@ -55,7 +55,7 @@ const validateEmailAndPassword = [
     .withMessage('Please enter password')
 ]
 
-router.post('/', validateUserInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
+router.post('/', validateUserInputs, validateEmailAndPassword, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const {
     username,
     password,

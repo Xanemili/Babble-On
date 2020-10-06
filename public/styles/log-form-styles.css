@@ -24,7 +24,17 @@ body{
     height: 194px;
     justify-content: center;
     position: relative;
+    bottom: 85px;
+}
+
+.logo-left{
+    width: 194px;
+    height: 194px;
+    justify-content: center;
+    position: relative;
     bottom: 100px;
+    right: 325px;
+    transform: rotate(-20deg);
 }
 
 .log-in-form{
@@ -50,11 +60,12 @@ button{
     border-radius: 50px;
     height: 80px;
     width: 300px;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: bolder;
-    margin: auto;
+    margin: 10px;
     margin-bottom: 20px;
 }
+
 
 
 .redirect{
@@ -80,4 +91,18 @@ label{
     justify-content: space-between;
     display: flex;
     align-items: center;
+}
+
+.errors-container{
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(255, 40, 40, 0.25);
+    border: 2px solid rgb(255, 40, 40);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10%;
+    align-items: center;
+    padding: 10px;
+    position: relative;
+    top: 50px;
 }

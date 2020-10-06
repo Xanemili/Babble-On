@@ -1,4 +1,8 @@
 const logInForm = document.querySelector(".log-in-form");
+const logo = document.querySelector(".log-in-logo");
+const instructions= document.querySelector('.instructions');
+const demo = document.querySelector('.demo-btn')
+
 
 logInForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -31,7 +35,8 @@ logInForm.addEventListener('submit', async (e) => {
         if (err.status >= 400 && err.status < 600) {
             const errorJSON = await err.json();
             const errorsContainer = document.querySelector('.errors-container');
-
+            logo.setAttribute("class", "logo-left")
+            instructions.innerHTML = 'There seems to be some issues, please refer to the instructions above'
             let errorsHtml = [
                 `
                 <div class="error-alert">
