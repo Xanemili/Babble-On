@@ -8,7 +8,7 @@ logInForm.addEventListener('submit', async (e) => {
     const body = { email, password};
 
     try {
-        const res  = await fetch('/api/users', {
+        const res = await fetch('/api/users/token', {
             method: 'POST',
             body: JSON.stringify(body),
             headers: {
