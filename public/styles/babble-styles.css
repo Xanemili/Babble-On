@@ -39,18 +39,34 @@ input{
 }
 
 
-.create-babble-form{
+.babble-container{
   margin: auto;
-  justify-content: center;
+  justify-content: left;
   display: flex;
   align-items: center;
   flex-direction: column;
   align-content: flex-start;
   /* border: 1px solid black; */
   background-color: white;
-  border-radius: 5%;
-  height: 843px;
-  width: 960px;
+  height: auto;
+  width: auto;
+  /* position: posit; */
+}
+
+.babble-header h1 {
+  font-size: 45px;
+}
+.babble-header h2 {
+  font-size: 25px;
+}
+
+.babble-image img {
+  width: 850px;
+}
+
+.babble-content {
+  width: 850px;
+  font-size: 20px;
 }
 
 button{
