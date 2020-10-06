@@ -16,7 +16,8 @@ const {
 
 const {
   asyncHandler,
-  handleV
+  handleV,
+  handleValidationErrors
 } = require('../utils');
 
 const router = express.Router();
@@ -29,6 +30,9 @@ const babbleNotFoundErr = (id) => {
   return error;
 }
 
+const validateBabble = [
+  check
+]
 router.get('/', asyncHandler(async (req, res, next) => {
   const {
 
@@ -50,5 +54,29 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   }
 
 }));
+
+router.post('/', validateBabble, handleValidationErrors, asyncHandler(async (req, res, next) => {
+  const {
+    title,
+    subHeader,
+    content,
+    readTime,
+    topicID
+  } = req.body.tweet;
+
+  const babble = await Babble.create({
+    title,
+    subHeader,
+    content,
+    readTime,
+    topicID,
+    userID: req.user.id
+  });
+  res.json({
+    message: 'Babble was created!'
+  })
+}));
+
+router.put(':/id(\\d+)', validateBabble, )
 
 module.exports = router;
