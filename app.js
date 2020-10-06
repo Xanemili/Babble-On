@@ -6,7 +6,7 @@ const app = express();
 
 const indexRoutes = require('./routes');
 const babbleRoutes = require('./routes/babble')
-const userRoutes = require('./routes/user');
+// const userRoutes = require('./routes/user');
 const userAPIRoutes = require('./routes/api/user');
 const babbleAPIRouter = require('./routes/api/babbles')
 
@@ -18,7 +18,7 @@ app.use('/', indexRoutes);
 app.use('/api/users', userAPIRoutes);
 app.use('/api/babbles', babbleAPIRouter);
 app.use(express.static(path.join(__dirname, "public")));
-app.use('/users', userRoutes)
+// app.use('/users', userRoutes)
 app.use('/api/users', userAPIRoutes)
 app.use('/babbles', babbleRoutes)
 

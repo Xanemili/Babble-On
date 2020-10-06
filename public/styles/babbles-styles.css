@@ -1,5 +1,5 @@
 body {
-  background-color: aqua;
+  background-color: rgba(65, 172, 131, .25) ;
 }
 
 input{
@@ -11,6 +11,7 @@ input{
   position: relative;
   bottom: 75px;
   align-items: flex-end;
+  border: none;
 }
 
 .create-babble-form__title input{
@@ -20,7 +21,7 @@ input{
 }
 .create-babble-form__subheader input{
   height: 50px;
-  font-size: 1.5em;
+  font-size: 2em;
   text-align: left;
 }
 .create-babble-form__reading-time input {
@@ -30,19 +31,13 @@ input{
 }
 .create-babble-form__content input {
   height: 300px;
-  font-size: 1em;
-  text-align: left;
+  font-size: 1.5em;
 }
 .create-babble-form__url input {
   height: 40px;
-  width: 500px;
-  font-size: .5em;
-  text-align: left;
+  font-size: 1em;
 }
 
-/* .create-babble-form__block2 {
-  display: flex;
-} */
 
 .create-babble-form{
   margin: auto;
@@ -50,12 +45,28 @@ input{
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* align-content: center; */
-  border: 1px solid black;
+  align-content: flex-start;
+  /* border: 1px solid black; */
   background-color: white;
   border-radius: 5%;
   height: 843px;
   width: 960px;
+}
+
+button{
+  justify-self: right;
+  position: relative;
+  background-color: rgba(65, 172, 131, .75);
+  color: white;
+  border-radius: 5px;
+  height: 30px;
+  width: 80px;
+  font-family: Cabin;
+
+  /* font-size: 10px; */
+  /* font-weight: bold; */
+  margin: auto;
+  margin-bottom: 20px;
 }
 
 
@@ -87,18 +98,7 @@ input{
   align-items: flex-end;
 }
 
-button{
-  justify-self: center;
-  position: relative;
-  background-color: rgba(65, 172, 131, .75);
-  border-radius: 50px;
-  height: 80px;
-  width: 300px;
-  font-size: 36px;
-  font-weight: bolder;
-  margin: auto;
-  margin-bottom: 20px;
-}
+
 
 
 .redirect{
