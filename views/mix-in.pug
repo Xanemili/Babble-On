@@ -1,4 +1,4 @@
-mixin field(labelText, fieldName, fieldType = 'text', fieldValue)
+mixin field(labelText, fieldName, fieldType = 'text', fieldValue, placeHolder)
   div(class='form-group')
     label(for=fieldName)= labelText
     input(type=fieldType id=fieldName name=fieldName value=fieldValue class='form-control' placeholder=placeHolder)
