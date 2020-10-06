@@ -15,6 +15,11 @@ const {
   Babble
 } = require('../../db/models');
 
+const {
+  getUserToken,
+  requireAuth
+} = require('../../auth');
+
 const router = express.Router();
 
 const validateUserInputs = [
@@ -23,9 +28,6 @@ const validateUserInputs = [
     .withMessage('Please enter a username')
     .isLength( { max: 30 })
     .withMessage('Username must not exceed 30 characters'),
-  check('password')
-    .exists( { checkFalsy : true })
-    .withMessage('Please enter password'),
   check('firstName')
     .exists( { checkFalsy : true })
     .withMessage('Please enter your first name')
@@ -36,11 +38,21 @@ const validateUserInputs = [
     .withMessage('Please enter your last name')
     .isLength( { max: 25 })
     .withMessage('Last Name must not exceed 25 characters'),
+]
+
+const validateEmailAndPassword = [
   check('email')
-    .exists( { checkFalsy : true })
+    .exists({
+      checkFalsy: true
+    })
     .withMessage('Please enter email address')
     .isEmail()
     .withMessage('Please enter a valid e-mail address'),
+  check('password')
+    .exists({
+      checkFalsy: true
+    })
+    .withMessage('Please enter password')
 ]
 
 router.post('/', validateUserInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
@@ -61,9 +73,40 @@ router.post('/', validateUserInputs, handleValidationErrors, asyncHandler(async 
     lastName
   });
 
-  return;
-  // implement token
+  const token = getUserToken(user);
+  res.status(201).json({
+    user: user.id,
+    token
+  })
+
 }))
+
+router.post('/token', validateEmailAndPassword, asyncHandler(async (req, res, next) => {
+  const {
+    email,
+    password
+  } = req.body;
+
+  const user = await User.findOne({
+    where: {
+      email
+    }
+  })
+
+  if (!user || !user.validatePassword(password)) {
+    const err = new Error('Login Failed');
+    err.status = 401;
+    err.title = "Login Failed";
+    err.errors = ["The provided credentials were not valid"];
+    return next(err);
+  }
+
+  const token = getUserToken(user);
+  res.json({
+    user: user.id,
+    token
+  })
+}));
 
 router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   // const id = parseInt(req.params.id, 10)
