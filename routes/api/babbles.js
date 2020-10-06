@@ -31,15 +31,14 @@ const babbleNotFoundErr = (id) => {
 }
 
 const validateBabble = [
-  check,
-  check
 ]
 router.get('/', asyncHandler(async (req, res, next) => {
   const {
 
   } = req.body;
-
-
+  res.json({
+    title: 'test'
+  })
 }));
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
@@ -63,9 +62,9 @@ router.post('/', validateBabble, handleValidationErrors, asyncHandler(async (req
     content,
     readTime,
     topicID
-  } = req.body.tweet;
+  } = req.body.babble;
 
-  const babble = await Babble.create({
+  await Babble.create({
     title,
     subHeader,
     content,
@@ -95,7 +94,7 @@ router.put(':/id(\\d+)', validateBabble, asyncHandler(async (req, res, next) => 
 
   if (babble) {
     await babble.update({
-      //insert logic to update
+      //insert update logic
     })
   } else {
     next(babbleNotFoundErr(req.params.id))
@@ -117,7 +116,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     await babble.destroy() //will need to derstroy comments associated as well
 
     res.json({
-      message: `Deleted the Babble with ${id}`
+      message: `Deleted the Babble with ${req.params.id}`
     });
   } else {
     next(babbleNotFoundErr(req.params.id))

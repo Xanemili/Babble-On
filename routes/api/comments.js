@@ -1,7 +1,9 @@
 const express = require('express');
 
 const { check } = require('express-validator');
-const { Comment } = require('../../db/models/comment');
+const {
+  Comment
+} = require('../../db/models/');
 
 const { asyncHandler, handleValidationErrors } = require('../utils');
 
@@ -10,15 +12,19 @@ const router = express.Router();
 
 
 const validateCommentInputs = [
-    check(comment)
-        .exists( { checkFalsy: true })
-        .withMessage('Please enter comment')
+  check('commentText')
+  .exists( { checkFalsy: true })
+  .withMessage('Please enter comment')
+  .isLength({
+      max: 300
+    })
+    .withMessage('Comments cannot be greater than 280 characters long')
 ]
 
 
 
-router.get('/:id(\\d+', asyncHandler( async (req, res, next)=>{
-    const commentId = req.params.id;
+router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+          const commentId = req.params.commentId;
     const comment = await Comment.findByPk(commentId);
 
     if(comment){
@@ -33,19 +39,20 @@ router.get('/:id(\\d+', asyncHandler( async (req, res, next)=>{
 
 
 
-router.post('/babbles/:id(\\d+)/comment', validateCommentInputs, handleValidationErrors, asyncHandler( async (req, res, next) => {
+router.post('/', validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
     const { commentText } = req.body;
-
+  console.log(req)
     const comment = await Comment.create({
         comment: commentText,
-        userId: req.user.id
+        userID: req.user.id,
+          postID: req.params.babbleId
     })
     res.status(201).json({ comment })
 }))
 
 
-router.patch('/babbles/:id(\\d+)/comment', validateCommentInputs, handleValidationErrors, asyncHandler( async (req, res, next) => {
-    const commentId = req.params.id;
+router.patch('/:id(\\d+)', validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
+          const commentId = req.params.commentId;
     const { commentText } = req.body;
     const comment = await Comment.findByPk(commentId);
     if(comment) {
@@ -59,7 +66,7 @@ router.patch('/babbles/:id(\\d+)/comment', validateCommentInputs, handleValidati
     }
 }))
 
-router.delete('/babbles/:id(\\d+)/comment', asyncHandler( async (req, res, next) => {
+router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const commentId = req.params.id;
     const comment = await Comment.findByPk(commentId);
     if(comment){
