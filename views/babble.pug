@@ -1,0 +1,22 @@
+doctype html
+include mix-in.pug
+html(lang="en")
+  head
+      link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Cabin")
+      link(rel="stylesheet", href="/styles/babbles-styles.css")
+      title Babble
+  body
+  //- +validationErrorSummery(errors
+  div.create-babble-form
+    form(class = "create-babble-form" action='/api/babbles' method="post")
+      .create-babble-form__title
+        +field( null, "title", null, null, "Title")
+      .create-babble-form__subheader
+        +field(null, "subHeader", null, null, "subheader")
+      .create-babble-form__reading-time
+        +field(null, "readTime",null, null, "reading time")
+      .create-babble-form__content
+        +field(null, "content", null, null, "Babble-on here to your heart's content...")
+      +field(null, "url", null, "url", "insert url of your image here")
+      div.btn-container
+          button(class = "publish-btn" type = "submit") Publish
