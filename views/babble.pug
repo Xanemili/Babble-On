@@ -3,20 +3,25 @@ include mix-in.pug
 html(lang="en")
   head
       link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Cabin")
-      link(rel="stylesheet", href="/styles/babbles-styles.css")
+      link(rel="stylesheet", href="/styles/babble-styles.css")
       title Babble
   body
   //- +validationErrorSummery(errors
+  h1
+
+  div.babble-header
+    div.babble-header__title
+
   div.create-babble-form
     form(class = "create-babble-form" action='/api/babbles' method="post")
       .create-babble-form__title
-        +field( null, "title", null, null, "Title")
+        +field( null, "title", null, "Ace yout coding project in 5 min", "Title")
       .create-babble-form__subheader
-        +field(null, "subHeader", null, null, "Subheader")
+        +field(null, "subHeader", null, "Today's life is busy, do it all in 5 minutes", "Subheader")
       .create-babble-form__reading-time
-        +field(null, "readTime",null, null, "reading time")
+        +field(null, "readTime",null, "8 minutes", "reading time")
       .create-babble-form__content
-        +field(null, "content", null, null, `Babble-on \n here to your \n heart's content...`)
+        +field(null, "content", "text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies vitae sem nec placerat. Vivamus fringilla blandit vehicula. Cras viverra mauris sagittis nunc venenatis, id luctus tellus dapibus. Etiam cursus sed quam ultrices facilisis. Nunc nulla felis, molestie ac tincidunt nec, placerat vitae ex. Pellentesque tempor tristique dui nec iaculis. Aenean volutpat eros non dolor tincidunt, non suscipit velit ullamcorper. Aliquam ut volutpat nisi. In sem enim, iaculis sit amet efficitur sit amet, malesuada eget massa. Fusce sed nunc quis nisl fermentum aliquet id vel justo. Suspendisse potenti. Praesent diam arcu, vulputate at libero iaculis, blandit tincidunt tellus.", `Babble-on \n here to your \n heart's content...`)
       .create-babble-form__url
         +field(null, "url", "url", null, "insert url of your image here")
       div.btn-container

@@ -14,7 +14,7 @@ input{
   border: none;
 }
 
-.create-babble-form__title input{
+.babble-header__title {
   height: 70px;
   font-size: 3em;
   text-align: left;
