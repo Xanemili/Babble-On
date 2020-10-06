@@ -9,9 +9,9 @@ html(lang="en")
         div.errors-container
         img(class = 'log-in-logo' src="/resources/log-in-logo.png", alt="babble-on log in logo")
         p Please fill out the following fields to login.
-        form( class = "log-in-form" action='' method="post")
-            +field("Email", "email", null, "email")
-            +field("Password", "password", null, "password")
+        form( class = "log-in-form")
+            +field("Email", "email", "email")
+            +field("Password", "password","password")
             div.btn-container
                 button(class = "sign-up-btn" type = "submit") Log In
             div.redirect

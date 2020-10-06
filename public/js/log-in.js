@@ -28,7 +28,7 @@ logInForm.addEventListener('submit', async (e) => {
 
         window.location.href = '/';
     } catch (err) {
-        if (err.staus >= 400 && err.status < 600) {
+        if (err.status >= 400 && err.status < 600) {
             const errorJSON = await err.json();
             const errorsContainer = document.querySelector('.errors-container');
 

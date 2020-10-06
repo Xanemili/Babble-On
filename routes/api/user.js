@@ -75,7 +75,9 @@ router.post('/', validateUserInputs, handleValidationErrors, asyncHandler(async 
 
   const token = getUserToken(user);
   res.status(201).json({
-    user: user.id,
+    user: {
+      id: user.id
+    },
     token
   })
 
@@ -103,7 +105,9 @@ router.post('/token', validateEmailAndPassword, asyncHandler(async (req, res, ne
 
   const token = getUserToken(user);
   res.json({
-    user: user.id,
+    user: {
+      id: user.id
+    },
     token
   })
 }));
