@@ -1,0 +1,5 @@
+PORT=8000
+DB_USERNAME=babble_on_app
+DB_PASSWORD=password
+DB_DATABASE=babble_on
+DB_HOST=localhost
