@@ -1,5 +1,6 @@
 const signUpForm = document.querySelector(".sign-up-form");
-
+const logo = document.querySelector(".log-in-logo");
+const instructions= document.querySelector('.instructions');
 signUpForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(signUpForm);
@@ -37,7 +38,8 @@ signUpForm.addEventListener("submit", async (e) => {
     if (err.status >= 400 && err.status < 600) {
       const errorJSON = await err.json();
       const errorsContainer = document.querySelector(".errors-container");
-
+      logo.setAttribute("class", "logo-left")
+      instructions.innerHTML = 'There seems to be some issues, please refer to the instructions above'
       let errorsHtml = [
         `
         <div class="error-alert">
@@ -51,7 +53,7 @@ signUpForm.addEventListener("submit", async (e) => {
         errorsHtml = errors.map(
           (message) => `
           <div class="error-alert">
-              ${message}
+              *${message}
           </div>
         `
         );

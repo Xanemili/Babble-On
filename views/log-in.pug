@@ -8,12 +8,13 @@ html(lang="en")
     div.log-in-form-container
         div.errors-container
         img(class = 'log-in-logo' src="/resources/log-in-logo.png", alt="babble-on log in logo")
-        p Please fill out the following fields to login.
+        p(class = 'instructions') Please fill out the following fields to login.
         form( class = "log-in-form")
             +field("Email", "email", "email")
             +field("Password", "password","password")
             div.btn-container
                 button(class = "sign-up-btn" type = "submit") Log In
+                button(class = "demo-btn" type = "submit") Demo User
             div.redirect
-                a(href='/users/sign-up') Don't have an account? Sign up here.
+                a(href='/sign-up') Don't have an account? Sign up here.
     script(src="js/log-in.js")
