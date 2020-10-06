@@ -31,6 +31,7 @@ const babbleNotFoundErr = (id) => {
 }
 
 const validateBabble = [
+  check,
   check
 ]
 router.get('/', asyncHandler(async (req, res, next) => {
@@ -45,7 +46,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const babble = await Babble.findByPk(req.params.id);
 
   if (!babble) {
-    const error = babbleNotFoundError(req.params.id)
+    const error = babbleNotFoundErr(req.params.id)
     return next(error);
   } else {
     res.json({
@@ -77,6 +78,50 @@ router.post('/', validateBabble, handleValidationErrors, asyncHandler(async (req
   })
 }));
 
-router.put(':/id(\\d+)', validateBabble, )
+router.put(':/id(\\d+)', validateBabble, asyncHandler(async (req, res, next) => {
+  const babble = await Babble.findOne({
+    where: {
+      id: req.params.id
+    },
+  });
+
+  if (req.user.id !== babble.userID) {
+    const err = new Error("Unauthorized");
+    error.status = 401;
+    err.message = "You are not authorized to edit this Babble.";
+    err.title = "Unauthroized"
+    throw err;
+  }
+
+  if (babble) {
+    await babble.update({
+      //insert logic to update
+    })
+  } else {
+    next(babbleNotFoundErr(req.params.id))
+  }
+}));
+
+router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  const babble = await Babble.findByPk(req.params.id)
+
+  if (req.user.id !== babble.userID) {
+    const err = new Error("Unauthorized");
+    error.status = 401;
+    err.message = "You are not authorized to edit this Babble.";
+    err.title = "Unauthroized"
+    throw err;
+  }
+
+  if (babble) {
+    await babble.destroy() //will need to derstroy comments associated as well
+
+    res.json({
+      message: `Deleted the Babble with ${id}`
+    });
+  } else {
+    next(babbleNotFoundErr(req.params.id))
+  }
+}))
 
 module.exports = router;
