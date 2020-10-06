@@ -30,7 +30,7 @@ logInForm.addEventListener('submit', async (e) => {
     } catch (err) {
         if (err.staus >= 400 && err.status < 600) {
             const errorJSON = await err.json();
-            const errorsContainer = document.querySelector('.errors.container');
+            const errorsContainer = document.querySelector('.errors-container');
 
             let errorsHtml = [
                 `
