@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Babble, {
       foreignKey: 'userID'
     })
+    User.hasMany(models.Comment, {
+      foreignKey: 'userID'
+    })
   };
   return User;
 };

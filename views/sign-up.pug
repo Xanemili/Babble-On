@@ -8,6 +8,7 @@ html(lang="en")
     //- +validationErrorSummery(errors)
     div.sign-up-form-container
         img(class = 'log-in-logo' src="/resources/sign-up-mega.png", alt="babble-on sign up logo")
+        p Please fill out the following fields to create your account.
         form(class = "sign-up-form" action='/api/user' method="post")
             //- input(type="hidden" name='_csrf' value=csrfToken)
             //- +field("First Name", "firstName", user.firstName)
@@ -22,4 +23,4 @@ html(lang="en")
             div.btn-container
                 button(class = "sign-up-btn" type = "submit") Sign Up
             div.redirect
-                a(href='/log-in') Already have an account? Log in here.
+                a(href='/users/log-in') Already have an account? Log in here.

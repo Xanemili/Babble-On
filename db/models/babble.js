@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     Babble.belongsTo(models.Topic, {
       foreignKey: 'topicID'
     })
+    Babble.hasMany(models.Comment, {
+      foreignKey: 'postID'
+    })
   };
   return Babble;
 };

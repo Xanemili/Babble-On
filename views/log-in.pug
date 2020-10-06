@@ -6,7 +6,7 @@ html(lang="en")
         title Babble-On
     body
     div.log-in-form-container
-        img(class = 'log-in-logo' src="/resources/sign-up-mega.png", alt="babble-on sign up logo")
+        img(class = 'log-in-logo' src="/resources/log-in-logo.png", alt="babble-on log in logo")
         p Please fill out the following fields to login.
         form( class = "log-in-form" action='' method="post")
             +field("Email", "email", null, "email")
@@ -14,4 +14,4 @@ html(lang="en")
             div.btn-container
                 button(class = "sign-up-btn" type = "submit") Log In
             div.redirect
-                a(href='/sign-up') Don't have an account? Sign up here.
+                a(href='/users/sign-up') Don't have an account? Sign up here.
