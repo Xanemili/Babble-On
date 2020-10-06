@@ -1,0 +1,83 @@
+body{
+    background-color: rgba(65, 172, 131, .25) ;
+    font-size: 22px;
+}
+
+
+
+.log-in-form-container{
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 10%;
+    height: 843px;
+    width: 960px;
+}
+
+.log-in-logo{
+    width: 194px;
+    height: 194px;
+    justify-content: center;
+    position: relative;
+    bottom: 100px;
+}
+
+.log-in-form{
+    align-content: center;
+    width: 400px;
+}
+
+input{
+    margin: 30px;
+    border-radius: 50px;
+    height: 40px;
+    width: 250px;
+    font-size: 22px;
+    position: relative;
+    bottom: 75px;
+    align-items: flex-end;
+}
+
+button{
+    justify-self: center;
+    position: relative;
+    background-color: rgba(65, 172, 131, .75);
+    border-radius: 50px;
+    height: 80px;
+    width: 300px;
+    font-size: 36px;
+    font-weight: bolder;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+
+.redirect{
+    text-align: center;
+}
+
+p{
+    position: relative;
+    bottom: 75px;
+}
+
+label{
+    position: relative;
+    bottom: 75px;
+    width: 40px;
+}
+
+.btn-container{
+    display: flex;
+
+}
+.form-group{
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
