@@ -7,7 +7,8 @@ const {
 
 const {
   Babble,
-  User
+  User,
+  Comment
 } = require('../../db/models');
 
 const {
@@ -31,7 +32,20 @@ const babbleNotFoundErr = (id) => {
 }
 
 const validateBabble = [
+  check('')
 ]
+const validateCommentInputs = [
+  check('commentText')
+  .exists({
+    checkFalsy: true
+  })
+  .withMessage('Please enter comment')
+  .isLength({
+    max: 300
+  })
+  .withMessage('Comments cannot be greater than 280 characters long')
+]
+
 router.get('/', asyncHandler(async (req, res, next) => {
   const {
 
@@ -120,6 +134,71 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     });
   } else {
     next(babbleNotFoundErr(req.params.id))
+  }
+}))
+
+router.post('/:id(\\d+)/comments', validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
+  const {
+    commentText
+  } = req.body;
+  const comment = await Comment.create({
+    comment: commentText,
+    userID: req.user.id,
+    postID: req.params.id
+  })
+  res.status(201).json({
+    comment
+  })
+}));
+
+router.get('/:id(\\d+)/comments/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  const commentId = req.params.commentId;
+  const comment = await Comment.findByPk(commentId);
+
+  if (comment) {
+    res.json({
+      comment
+    });
+  } else {
+    const err = new Error();
+    err.title = 'Comment not found.';
+    err.status = 404;
+    next(err);
+  }
+}));
+
+router.patch('/:id(\\d+)/comments/:id(\\d+)', validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
+  const commentId = req.params.commentId;
+  const {
+    commentText
+  } = req.body;
+  const comment = await Comment.findByPk(commentId);
+  if (comment) {
+    await comment.update({
+      commentText
+    });
+    res.json({
+      comment
+    });
+  } else {
+    const err = new Error();
+    err.title = 'Comment not found';
+    err.status = 404;
+    next(err);
+  }
+}));
+
+router.delete('/:id(\\d+)/comments/:id(\\d+)', asyncHandler(async (req, res, next) => {
+  const commentId = req.params.id;
+  const comment = await Comment.findByPk(commentId);
+  if (comment) {
+    await comment.destroy();
+    res.status(204).end();
+  } else {
+    const err = new Error();
+    err.title = 'Comment not found';
+    err.status = 404;
+    next(err);
   }
 }))
 
