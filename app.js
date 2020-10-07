@@ -15,7 +15,7 @@ app.use(express.json());
 app.use('/', indexRoutes);
 app.use('/api/users', userAPIRoutes);
 app.use('/api/babbles', babbleAPIRouter);
-app.use('/api/babbles/:id(\\d+)/comments', commentAPIRouter)
+app.use(commentAPIRouter)
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
