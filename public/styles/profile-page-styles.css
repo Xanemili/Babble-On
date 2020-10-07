@@ -50,17 +50,46 @@
     height: 450px;
     width: 1000px;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .bottom-left-div-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     background-color: lightgray;
     width: 400px;
 
 }
 
+.timestamp-div {
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+}
+
 .bottom-right-div-container {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
     background-color: lightgray;
-    width: 200px;
+
+
+}
+
+.babble-title-div {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.babble-img-div {
+
+
+}
+
+.babble-img {
+    height: 375px;
+    width: 425px;
 
 }

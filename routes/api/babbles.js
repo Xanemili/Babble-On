@@ -75,7 +75,8 @@ router.post('/', validateBabble, handleValidationErrors, asyncHandler(async (req
     subHeader,
     content,
     readTime,
-    topicID
+    topicID,
+    url,
   } = req.body.babble;
 
   await Babble.create({
@@ -84,6 +85,7 @@ router.post('/', validateBabble, handleValidationErrors, asyncHandler(async (req
     content,
     readTime,
     topicID,
+    url,
     userID: req.user.id
   });
   res.json({
