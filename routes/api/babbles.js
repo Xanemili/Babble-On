@@ -17,7 +17,6 @@ const {
 
 const {
   asyncHandler,
-  handleV,
   handleValidationErrors
 } = require('../utils');
 
@@ -56,7 +55,13 @@ router.get('/', asyncHandler(async (req, res, next) => {
 }));
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
-  const babble = await Babble.findByPk(req.params.id);
+  const babble = await Babble.findByPk(req.params.id, {
+    include: {
+      model: User,
+      required: true,
+      attributes: ['userName', 'firstName', 'lastName', 'email']
+    }
+  });
 
   if (!babble) {
     const error = babbleNotFoundErr(req.params.id)
@@ -94,10 +99,10 @@ router.post('/', validateBabble, handleValidationErrors, asyncHandler(async (req
 }));
 
 router.put(':/id(\\d+)', validateBabble, asyncHandler(async (req, res, next) => {
-  const babble = await Babble.findOne({
+  const babble = await Babble.findAll({
     where: {
       id: req.params.id
-    },
+    }
   });
 
   if (req.user.id !== babble.userID) {
