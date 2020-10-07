@@ -14,16 +14,21 @@ html(lang="en")
     form(class = "create-babble-form" action='/api/babbles' method="post")
       .errors-container
       .create-babble-form__title
-        +field( null, "title", null, null, "Title")
+        +field( null, "title", 'text', null, "Title")
       .create-babble-form__subheader
-        +field(null, "subHeader", null, null, "Subheader")
+        +field(null, "subHeader", 'text', null, "Subheader")
       .create-babble-form__reading-time
         +field(null, "readTime", "number", null, "reading time")
       .create-babble-form__topic
-        +field(null, "topicID", null, null, "topicID")
         select()
+          each topin in topic
+            option
+
+      //- .create-babble-form__topic
+      //-   +field(null, "topicID", 'dropdown', null, "topicID")
+      //-   select()
       .create-babble-form__content
-        +field(null, "content", null, null, `Babble-on \n here to your \n heart's content...`)
+        +field(null, "content", 'text', null, `Babble-on \n here to your \n heart's content...`)
       .create-babble-form__url
         +field(null, "url", "url", null, "insert url of your image here")
       div.btn-container
