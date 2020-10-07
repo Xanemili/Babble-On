@@ -8,20 +8,40 @@
 }
 
 .top-left-div-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     background-color: lightgray;
     width: 400px;
 }
 
-
+.username-div {
+    font-size: 40px;
+}
+.profile-pic-div > img{
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+}
 .top-center-div-container {
     background-color: lightgray;
     width: 400px;
+}
+
+.bio-div {
+
 }
 
 .top-right-div-container {
     background-color: lightgray;
     width: 400px;
 }
+
+.follow-list-div {
+
+}
+
 .bottom-div-container {
     display: flex;
     margin: auto;
@@ -35,5 +55,12 @@
 
 .bottom-left-div-container {
     background-color: lightgray;
+    width: 400px;
+
+}
+
+.bottom-right-div-container {
+    background-color: lightgray;
     width: 200px;
+
 }

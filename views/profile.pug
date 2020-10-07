@@ -6,13 +6,24 @@ html(lang="en")
     link(rel="stylesheet", href="/styles/profile-page-styles.css")
     title Document
   body
-    div(class="top-div-container")
-      div(class="top-left-div-container") 1
-      div(class="top-center-div-container") 2
-      div(class="top-right-div-container") 3
-    div(class="bottom-div-container")
-      div(class="bottom-left-div-container") 1
-      div(class="bottom-right-div-container") 2
+    div(class="main-container")
+      div(class="top-div-container")
+        div(class="top-left-div-container")
+          div(class="username-div")
+          div(class="profile-pic-div")
+            img(src="https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
+          div(class="user-info-div")
+            div(class="user-name-div")
+            div(class="user-email-div")
+        div(class="top-center-div-container")
+          div(class="bio-div")
+        div(class="top-right-div-container")
+          div(class="follow-list-div")
+      div(class="bottom-div-container")
+        div(class="bottom-left-div-container") 1
+          div(class="babble-text-div")
+          div(class="timestamp-div")
+        div(class="bottom-right-div-container") 2
 
 
 script(src="js/profile.js")

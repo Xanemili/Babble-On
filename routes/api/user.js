@@ -116,9 +116,17 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   // const id = parseInt(req.params.id, 10)
   const user = await User.findByPk(req.params.id, { attributes: [ "userName", "firstName", "email", "lastName"] });
 
-  res.json( {user} )
+  res.json( {user} );
+}));
 
-
-}))
+router.get('/:id(\\d+)/babbles', asyncHandler( async(req, res, next) => {
+  const babbles = await Babble.findAll({
+    where: {
+      userID: req.params.id
+    },
+    order: [['updatedAt', 'DESC']]
+  })
+  res.json({babbles});
+}));
 
 module.exports = router;
