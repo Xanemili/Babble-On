@@ -17,8 +17,7 @@ app.use('/', indexRoutes);
 app.use('/api/users', userAPIRoutes);
 app.use('/api/babbles', babbleAPIRouter);
 app.use(express.static(path.join(__dirname, "public")));
-app.use('/api/users', userAPIRoutes)
-app.use('/babbles', babbleRoutes)
+// app.use('/babbles', babbleRoutes)
 
 
 app.use((req, res, next) => {

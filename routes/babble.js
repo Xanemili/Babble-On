@@ -9,4 +9,8 @@ router.get('/1', (req, res) => {
   res.render('babble')
 })
 
+router.get('/:id(\\d+)', (req, res) => {
+  res.render('babble')
+})
+
 module.exports = router;
