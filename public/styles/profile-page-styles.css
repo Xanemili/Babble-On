@@ -1,0 +1,97 @@
+
+.top-div-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: grey;
+    height: 450px;
+}
+
+.top-left-div-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: lightgray;
+    width: 400px;
+}
+
+.username-div {
+    font-size: 40px;
+}
+.profile-pic-div > img{
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+}
+.top-center-div-container {
+    background-color: lightgray;
+    width: 400px;
+}
+
+.bio-div {
+
+}
+
+.top-right-div-container {
+    background-color: lightgray;
+    width: 400px;
+}
+
+.follow-list-div {
+
+}
+
+.bottom-div-container {
+    display: flex;
+    margin: auto;
+    margin-top: 20px;
+    background-color: grey;
+    height: 450px;
+    width: 1000px;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.bottom-left-div-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: lightgray;
+    width: 400px;
+
+}
+
+.timestamp-div {
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.bottom-right-div-container {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    background-color: lightgray;
+
+
+}
+
+.babble-title-div {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.babble-img-div {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+}
+
+.babble-img {
+    height: 375px;
+    width: 425px;
+
+}
