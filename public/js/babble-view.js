@@ -1,12 +1,7 @@
 window.addEventListener("DOMContentLoaded", async () => {
 
   try {
-    const res = await fetch(`/../api/babbles/3`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo1LCJlbWFpbCI6InhhbkBnbWFpbC5jb20ifSwiaWF0IjoxNjAyMDE4MzM2LCJleHAiOjE2MDI2MjMxMzZ9.2Ao4CiNzFMCYktacNFnsiQUVar_2NWOoKgmSWqa6Qt4`
-      }
-    });
+    const res = await fetch(`/../api/babbles/3`);
 
     const babble = await res.json()
 

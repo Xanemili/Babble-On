@@ -21,7 +21,6 @@ const {
 } = require('../utils');
 
 const router = express.Router();
-router.use(requireAuth)
 
 const babbleNotFoundErr = (id) => {
   const error = new Error();
@@ -46,12 +45,8 @@ const validateCommentInputs = [
 ]
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const {
-
-  } = req.body;
-  res.json({
-    title: 'test'
-  })
+  const babbles = await Babble.findAll()
+  res.json(babbles)
 }));
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
@@ -74,7 +69,7 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
 
 }));
 
-router.post('/', validateBabble, handleValidationErrors, asyncHandler(async (req, res, next) => {
+router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const {
     title,
     subHeader,
@@ -98,7 +93,7 @@ router.post('/', validateBabble, handleValidationErrors, asyncHandler(async (req
   })
 }));
 
-router.put(':/id(\\d+)', validateBabble, asyncHandler(async (req, res, next) => {
+router.put(':/id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, res, next) => {
   const babble = await Babble.findAll({
     where: {
       id: req.params.id
@@ -122,7 +117,7 @@ router.put(':/id(\\d+)', validateBabble, asyncHandler(async (req, res, next) => 
   }
 }));
 
-router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
   const babble = await Babble.findByPk(req.params.id)
 
   if (req.user.id !== babble.userID) {
@@ -144,7 +139,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   }
 }))
 
-router.post('/:id(\\d+)/comments', validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
+router.post('/:id(\\d+)/comments', requireAuth, validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const {
     commentText
   } = req.body;
@@ -158,7 +153,7 @@ router.post('/:id(\\d+)/comments', validateCommentInputs, handleValidationErrors
   })
 }));
 
-router.get('/:id(\\d+)/comments/:id(\\d+)', asyncHandler(async (req, res, next) => {
+router.get('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
   const commentId = req.params.commentId;
   const comment = await Comment.findByPk(commentId);
 
@@ -174,7 +169,7 @@ router.get('/:id(\\d+)/comments/:id(\\d+)', asyncHandler(async (req, res, next) 
   }
 }));
 
-router.patch('/:id(\\d+)/comments/:id(\\d+)', validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
+router.patch('/:id(\\d+)/comments/:id(\\d+)', requireAuth, validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const commentId = req.params.commentId;
   const {
     commentText
@@ -195,7 +190,7 @@ router.patch('/:id(\\d+)/comments/:id(\\d+)', validateCommentInputs, handleValid
   }
 }));
 
-router.delete('/:id(\\d+)/comments/:id(\\d+)', asyncHandler(async (req, res, next) => {
+router.delete('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
   const commentId = req.params.id;
   const comment = await Comment.findByPk(commentId);
   if (comment) {
