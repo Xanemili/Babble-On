@@ -84,7 +84,9 @@
 }
 
 .babble-img-div {
-
+    position: relative;
+    display: flex;
+    align-items: center;
 
 }
 
