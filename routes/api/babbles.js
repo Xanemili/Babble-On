@@ -62,9 +62,9 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     const error = babbleNotFoundErr(req.params.id)
     return next(error);
   } else {
-    res.json({
+    res.json(
       babble
-    })
+    )
   }
 
 }));
