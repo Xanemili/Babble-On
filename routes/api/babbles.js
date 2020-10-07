@@ -76,8 +76,8 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     content,
     readTime,
     topicID,
-    url,
-  } = req.body.babble;
+    userID
+  } = req.body;
 
   await Babble.create({
     title,
@@ -85,8 +85,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     content,
     readTime,
     topicID,
-    url,
-    userID: req.user.id
+    userID
   });
   res.json({
     message: 'Babble was created!'

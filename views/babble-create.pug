@@ -10,7 +10,7 @@ html(lang="en")
   //- +validationErrorSummery(errors
 
 
-  div.create-babble-form
+  div.create-babble-form-div
     form(class = "create-babble-form" action='/api/babbles' method="post")
       .create-babble-form__title
         +field( null, "title", null, null, "Title")
@@ -19,7 +19,7 @@ html(lang="en")
       .create-babble-form__reading-time
         +field(null, "readTime", "number", null, "reading time")
       .create-babble-form__topic
-        +field(null, "topic", null, null, "topic")
+        +field(null, "topicID", null, null, "topicID")
         select()
       .create-babble-form__content
         +field(null, "content", null, null, `Babble-on \n here to your \n heart's content...`)
@@ -27,3 +27,5 @@ html(lang="en")
         +field(null, "url", "url", null, "insert url of your image here")
       div.btn-container
           button(class = "publish-btn" type = "submit") Publish
+
+  script(src="js/create-babble.js" type="module")
