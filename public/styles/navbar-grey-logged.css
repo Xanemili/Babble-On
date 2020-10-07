@@ -1,0 +1,40 @@
+
+.nav-container {
+  background-color: rgb(183, 183, 183, .50);
+  height: 55px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  align-items: center;
+}
+
+.text-logo {
+  height: 50px;
+  width: 200px
+}
+
+.nav__icon {
+  position: relative;
+  display: flex;
+  height:45px;
+  padding-left: 30px;
+  align-self: center;
+}
+
+.nav__menu {
+  width:60px;
+  display: flex;
+  position: relative;
+  bottom: 12px;
+  right: 5px;
+}
+.nav__search {
+  display: flex;
+  position: relative;
+  height:27px;
+  border: 1px, solid, black;
+  right: 200px;
+  top: 21px;
+}
