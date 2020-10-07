@@ -12,6 +12,7 @@ html(lang="en")
 
   div.create-babble-form-div
     form(class = "create-babble-form" action='/api/babbles' method="post")
+      .errors-container
       .create-babble-form__title
         +field( null, "title", null, null, "Title")
       .create-babble-form__subheader

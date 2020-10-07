@@ -21,8 +21,6 @@ createBabbleForm.addEventListener('submit', async (e) => {
     url,
     userID
   }
-  console.log(localStorage.getItem('babble_access_token'));
-  console.log(body);
 
   try {
     const res = await fetch("api/babbles", {
