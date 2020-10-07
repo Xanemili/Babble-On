@@ -11,10 +11,6 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     const { user } = await res.json();
     const userInfoDiv = document.querySelector('.user-info-div')
 
-    const userHtml =
-    `<div>
-        <p> ${user.userName} ${user.firstName} ${user.lastName} ${user.email} ${user.biography}</p>
-    </div`
 
     userInfoDiv.innerHTML = userHtml
 } catch(err) {

@@ -1,0 +1,39 @@
+
+.top-div-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: grey;
+    height: 450px;
+}
+
+.top-left-div-container {
+    background-color: lightgray;
+    width: 400px;
+}
+
+
+.top-center-div-container {
+    background-color: lightgray;
+    width: 400px;
+}
+
+.top-right-div-container {
+    background-color: lightgray;
+    width: 400px;
+}
+.bottom-div-container {
+    display: flex;
+    margin: auto;
+    margin-top: 20px;
+    background-color: grey;
+    height: 450px;
+    width: 1000px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.bottom-left-div-container {
+    background-color: lightgray;
+    width: 200px;
+}

@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
+const { User } = require('../db/models');
 
-router.get('/', (req,res) => {
-  res.render('home');
+router.get('/', async(req,res) => {
+  res.render('profile');
   })
 
   router.get('/sign-up', (req, res) => {
