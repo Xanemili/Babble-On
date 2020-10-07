@@ -1,12 +1,15 @@
 doctype html
 include mix-in.pug
+
 html(lang="en")
   head
       link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Cabin")
-      link(rel="stylesheet", href="/styles/babbles-styles.css")
+      link(rel="stylesheet", href="/styles/babble-create-styles.css")
       title Babble
   body
   //- +validationErrorSummery(errors
+
+
   div.create-babble-form
     form(class = "create-babble-form" action='/api/babbles' method="post")
       .create-babble-form__title

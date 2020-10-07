@@ -2,40 +2,28 @@ doctype html
 include mix-in.pug
 html(lang="en")
   head
+      title
       link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Cabin")
       link(rel="stylesheet", href="/styles/babble-styles.css")
-      title Babble
+
   body
-  //- +validationErrorSummery(errors
+  include navbar.pug
 
 
+block content
 
   .babble-container
     .babble-header
+      h3(value) Topic is slacking
       h1(value) Ace your first coding project in 5 minutes!
       h2(value) Today's life is busy, go from zero to hero in no time
+    .babble-user
+        div(id='author') by Alejandro Larumbe
+        button(class = "follow-btn" type = "button") Follow
+    .babble-info
+      span(id="date") Nov 12 1999 *
+      span(id="read-time")   11 min read
     .babble-image
       img(src='https://miro.medium.com/max/2200/0*DaCxg9GGlwe5MA3o')
     .babble-content
       p() Curabitur in enim purus. Quisque ipsum dolor, pellentesque ac faucibus non, blandit at nulla. Maecenas rutrum imperdiet arcu id venenatis. Proin nec nunc a metus posuere interdum. Cras condimentum ante eu nunc commodo commodo. Aliquam justo augue, accumsan id laoreet ut, rutrum sit amet lorem. Aliquam rhoncus aliquet tincidunt. Maecenas vulputate mauris semper gravida aliquam. Proin nunc lorem, accumsan eget dapibus et, ultrices non lectus. Phasellus dignissim arcu ut diam pharetra, in interdum metus malesuada. Pellentesque commodo mi justo. Quisque condimentum volutpat tincidunt. Fusce hendrerit, justo a finibus finibus, lorem mauris iaculis diam, vel molestie libero orci quis justo. Integer ac lacus vel quam fermentum gravida a non sapien. Maecenas faucibus laoreet rutrum. Maecenas ut pharetra neque. Nunc tincidunt erat non metus lobortis, a aliquet ex ultrices. Phasellus ac elit id nibh molestie aliquet. Nunc at aliquam odio. Nulla eu justo a mi pharetra porttitor. Vivamus tincidunt viverra diam, vel maximus justo pulvinar ut. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris id ex id velit cursus interdum. Pellentesque sodales, augue vel rutrum aliquam, est ligula porttitor enim, nec mollis dui arcu ac ante. Cras eu quam eget leo sagittis finibus ut a leo. Vivamus at libero fermentum, luctus velit ac, vulputate diam. Quisque ac sapien quam. In vulputate laoreet ex, ac porttitor odio faucibus ut. Ut pulvinar ipsum accumsan lectus tempus, et facilisis quam commodo. Aenean condimentum in lacus a aliquet. Aliquam nec odio gravida, iaculis mauris sed, interdum justo. Fusce tincidunt diam in sagittis lobortis. Cras vel ante volutpat, fermentum diam sed, semper ante. Nunc consequat mattis faucibus. Curabitur rutrum mattis lobortis. Sed sed dictum urna. Cras rhoncus, risus eget dictum faucibus, augue lorem bibendum odio, non tempus dui libero eget est. Donec feugiat egestas euismod. Aenean facilisis, diam at placerat tempus, sem neque feugiat erat, non aliquam erat nulla placerat ex. In egestas ante arcu, finibus aliquam odio aliquam non. Fusce mattis lacinia varius. Cras sed finibus leo, sed pharetra eros. Praesent et lacus in turpis ultrices viverra quis sit amet quam. Aliquam pretium elit vel mollis rutrum. Suspendisse tincidunt tortor mauris, vitae pellentesque libero maximus non. Integer nec justo augue. Fusce semper, tortor non ornare dictum, odio eros tincidunt augue, ac iaculis lorem lorem at nisi.
-
-
-
-
-
-
-
-
-    //- form(class = "create-babble-form" action='/api/babbles' method="post")
-    //-   .create-babble-form__title
-    //-     +field( null, "title", null, "Ace yout coding project in 5 min", "Title")
-    //-   .create-babble-form__subheader
-    //-     +field(null, "subHeader", null, "Today's life is busy, do it all in 5 minutes", "Subheader")
-    //-   .create-babble-form__reading-time
-    //-     +field(null, "readTime",null, "8 minutes", "reading time")
-    //-   .create-babble-form__content
-    //-     +field(null, "content", "text", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies vitae sem nec placerat. Vivamus fringilla blandit vehicula. Cras viverra mauris sagittis nunc venenatis, id luctus tellus dapibus. Etiam cursus sed quam ultrices facilisis. Nunc nulla felis, molestie ac tincidunt nec, placerat vitae ex. Pellentesque tempor tristique dui nec iaculis. Aenean volutpat eros non dolor tincidunt, non suscipit velit ullamcorper. Aliquam ut volutpat nisi. In sem enim, iaculis sit amet efficitur sit amet, malesuada eget massa. Fusce sed nunc quis nisl fermentum aliquet id vel justo. Suspendisse potenti. Praesent diam arcu, vulputate at libero iaculis, blandit tincidunt tellus.", `Babble-on \n here to your \n heart's content...`)
-    //-   .create-babble-form__url
-    //-     +field(null, "url", "url", null, "insert url of your image here")
-    //-   div.btn-container
-    //-       button(class = "publish-btn" type = "submit") Publish

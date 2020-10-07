@@ -32,6 +32,7 @@ input{
 .create-babble-form__content input {
   height: 300px;
   font-size: 1.5em;
+  overflow: scroll;
 }
 .create-babble-form__url input {
   height: 40px;

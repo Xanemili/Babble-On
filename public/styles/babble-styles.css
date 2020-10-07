@@ -1,55 +1,26 @@
 body {
-  background-color: rgba(65, 172, 131, .25) ;
+  /* background-color: rgba(65, 172, 131, .25) ; */
+}
+* {
+ /* outline: solid; */
+ font-family: Cabin;
 }
 
-input{
-  font-family: Cabin;
-  margin: 0;
-  height: 40px;
-  width: 700px;
-  font-size: 22px;
-  position: relative;
-  bottom: 75px;
-  align-items: flex-end;
-  border: none;
-}
 
-.babble-header__title {
-  height: 70px;
-  font-size: 3em;
-  text-align: left;
-}
-.create-babble-form__subheader input{
-  height: 50px;
-  font-size: 2em;
-  text-align: left;
-}
-.create-babble-form__reading-time input {
-  height: 40px;
-  font-size: 1em;
-  text-align: left;
-}
-.create-babble-form__content input {
-  height: 300px;
-  font-size: 1.5em;
-}
-.create-babble-form__url input {
-  height: 40px;
-  font-size: 1em;
-}
+
 
 
 .babble-container{
   margin: auto;
   justify-content: left;
   display: flex;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
   align-content: flex-start;
   /* border: 1px solid black; */
   background-color: white;
   height: auto;
-  width: auto;
+  width: 700px;
   /* position: posit; */
 }
 
@@ -58,16 +29,39 @@ input{
 }
 .babble-header h2 {
   font-size: 25px;
+  padding: none;
+  margin: none;
 }
 
 .babble-image img {
-  width: 850px;
+  width: 700px;
+}
+.babble-info {
+  display: block;
+  text-align: left;
+  padding-bottom: 20px;
+}
+.babble-user {
+  width: 150px;
+  /* position: absolute; */
+  left: 90px;
+  top: 330px;
+  font-size: 10pt;
+  display: flex;
+  align-self: start;
+}
+
+.babble-user div {
+  width: 200px;
+  font-size: 20px;
 }
 
 .babble-content {
-  width: 850px;
+  width: 700px;
   font-size: 20px;
 }
+
+
 
 button{
   justify-self: right;
@@ -86,59 +80,38 @@ button{
   margin-bottom: 20px;
 }
 
+/* These are the nav bar styles: */
 
-/* .log-in-form{
-  align-content: center;
-  width: 400px;
-}
-*/
-
-
-
-/* .log-in-logo{
-  width: 194px;
-  height: 194px;
-  justify-content: center;
-  position: relative;
-  bottom: 100px;
-}
-
-
-input{
-  margin: 30px;
-  border-radius: 50px;
-  height: 40px;
-  width: 250px;
-  font-size: 22px;
-  position: relative;
-  bottom: 75px;
-  align-items: flex-end;
-}
-
-
-
-
-.redirect{
-  text-align: center;
-}
-
-p{
-  position: relative;
-  bottom: 75px;
-}
-
-label{
-  position: relative;
-  bottom: 75px;
-  width: 40px;
-}
-
-.btn-container{
+.nav-container {
+  /* padding-top: 500px; */
+  background-color: rgba(65, 172, 131, .25) ;
+  height: 55px;
+  width: 100%;
   display: flex;
-
-}
-.form-group{
   justify-content: space-between;
-  display: flex;
+  border-bottom: 1px solid rgba(189, 195, 199, 1);
   align-items: center;
-} */
+  /* position: relative; */
+}
+
+.nav__icon {
+  height:45px;
+  padding-left: 30px;
+}
+
+.nav__menu {
+  width:60px;
+  /* height:35px; */
+}
+.nav__search {
+    /* width:55px; */
+  height:27px;
+  border: 1px, solid, black;
+  /* position: relative; */
+}
+
+#babble-on-text {
+  font-family: 'Berkshire Swash';
+  font-size: 30px;
+
+}
