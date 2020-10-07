@@ -15,7 +15,9 @@ html(lang="en")
             +field("Password", "password","password")
             div.btn-container
                 button(class = "sign-up-btn" type = "submit") Log In
-                button(class = "demo-btn" type = "submit") Demo User
             div.redirect
-                a(href='/sign-up') Don't have an account? Sign up here.
+    .demo-form-container
+        form( class = "demo-form")
+            button(class = "demo-btn" type = "submit") Demo User
+        a(href='/sign-up') Don't have an account? Sign up here.
     script(src="js/log-in.js")

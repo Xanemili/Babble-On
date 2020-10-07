@@ -2,6 +2,35 @@ const logInForm = document.querySelector(".log-in-form");
 const logo = document.querySelector(".log-in-logo");
 const instructions= document.querySelector('.instructions');
 const demo = document.querySelector('.demo-btn')
+const demoForm = document.querySelector('.demo-form')
+
+
+demoForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = 'demo.user@email.com';
+    const password ='password'
+    const body = { email, password};
+
+    const res = await fetch('/api/users/token', {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (!res.ok) {
+        throw res;
+    }
+    const {
+        token,
+        user: { id },
+    } = await res.json();
+
+    localStorage.setItem('babble_access_token', token);
+    localStorage.setItem('babble_user_id', id)
+
+    window.location.href = '/';
+})
 
 
 logInForm.addEventListener('submit', async (e) => {
