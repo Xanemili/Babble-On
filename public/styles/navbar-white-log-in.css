@@ -1,0 +1,66 @@
+.nav-container {
+    position: relative;
+    bottom: 8px;
+    margin-bottom: 50px;
+    background-color: white;
+    height: 55px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    align-items: center;
+  }
+
+  .text-logo {
+    position: relative;
+    display: flex;
+    top: 200px;
+    height: 50px;
+    width: 200px
+  }
+
+  .nav__icon {
+    position: relative;
+    display: flex;
+    height:45px;
+    padding-left: 30px;
+    align-self: center;
+    right: 15px;
+  }
+
+  .nav__menu {
+    width:60px;
+    display: flex;
+    position: relative;
+    bottom: 12px;
+    right: 5px;
+  }
+  .nav__search {
+    display: flex;
+    position: relative;
+    height:27px;
+    border: 1px, solid, black;
+    right: 200px;
+    top: 21px;
+  }
+
+.links{
+    font-size: large;
+    display: inline;
+    position: relative;
+    display: flex;
+    top: 200px;
+    padding: 20px;
+    color: black;
+}
+
+a:link{
+    text-decoration: none;
+
+}
+
+.log-in{
+    margin-left: 25px;
+    padding-right: 25px;
+}
