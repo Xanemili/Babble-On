@@ -21,7 +21,7 @@
 .topics-btn {
     display: inline-block;
     padding: 0.35em 1.2em;
-    background-color: rgba(65, 172, 131, .75);
+    background-color: rgba(65, 172, 131, .45);
     border: 0.1em solid #FFFFFF;
     margin: 0.3em 0.3em 0;
     border-radius: 0.12em;
@@ -33,9 +33,10 @@
     transform: all 0.2s;
 }
 
-.h1-topics {
+.topics-div {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: column;
     text-align: center;
 }
 
@@ -45,7 +46,7 @@
 }
 
 .topics-name-div {
-    justify-content: center;
+    text-align: center;
     margin: 20px;
 }
 
@@ -109,6 +110,11 @@
     font-weight: bolder;
     margin: 10px;
     margin-bottom: 20px;
+    outline: none;
+}
+
+.babble-topic-div:hover {
+    background-color: lightgray;
 }
 
 .babble-timestamp-div {
