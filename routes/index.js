@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../db/models');
+const { User, Topic, Babble } = require('../db/models');
 
 router.get('/', async(req,res) => {
   res.render('profile');
@@ -11,11 +11,20 @@ router.get('/sign-up', (req, res) => {
   })
 
 router.get('/log-in', (req, res) => {
-        res.render('log-in')
+  res.render('log-in')
 })
 
 router.get('/babbles/:id(\\d+)', (req, res) => {
   res.render('babble')
+});
+
+
+
+
+router.get('/babbles/create', async(req, res) => {
+  const topics = await Topic.findAll();
+
+  res.render('babble-create', { topics })
 });
 
 module.exports = router;

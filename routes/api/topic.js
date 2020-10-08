@@ -40,3 +40,6 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
     topic
   });
 }));
+
+
+module.exports = router;

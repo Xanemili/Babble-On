@@ -38,6 +38,12 @@ input{
   height: 40px;
   font-size: 1em;
 }
+.create-babble-form__topic select{
+  height: 50px;
+  text-align:right;
+  align-self: right;
+}
+
 
 
 .create-babble-form{
