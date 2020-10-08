@@ -1,10 +1,18 @@
+* {
+    font-family: Cabin;
+    /* border: 1px solid black; */
+}
+
 
 .top-div-container{
+    margin: auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    background-color: grey;
+    justify-content: space-around;
+    /* background-color: grey; */
     height: 450px;
+    width: 70%;
+    /* justify-self: center; */
 }
 
 .top-left-div-container {
@@ -12,8 +20,9 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: lightgray;
-    width: 400px;
+    /* background-color: lightgray; */
+    width: 300px;
+    text-align: center;
 }
 
 .username-div {
@@ -25,8 +34,9 @@
     border-radius: 50%;
 }
 .top-center-div-container {
-    background-color: lightgray;
-    width: 400px;
+    /* background-color: lightgray; */
+    width: 300px;
+    align-self: center;
 }
 
 .bio-div {
@@ -34,8 +44,9 @@
 }
 
 .top-right-div-container {
-    background-color: lightgray;
-    width: 400px;
+    width: 300px;
+    align-self: center;
+    text-align: center;
 }
 
 .follow-list-div {
@@ -46,41 +57,49 @@
     display: flex;
     margin: auto;
     margin-top: 20px;
-    background-color: grey;
+    background-color: rgb(183, 183, 183, .50);
     height: 450px;
     width: 1000px;
     flex-direction: row;
     justify-content: space-around;
+    border-radius: 10px;
+    /* box-shadow: 1px 1px 3px */
+}
+
+.bottom-div-container:hover {
+    border: 5px solid rgb(183, 183, 183, .75)
 }
 
 .bottom-left-div-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    background-color: lightgray;
+    /* justify-content: space-around; */
+    align-items: flex-start;
+    /* background-color: rgb(183, 183, 183, .50); */
+    padding-top: 50px;
+    padding-left: 25px;
     width: 400px;
+    top: 10px;
 
-}
-
-.timestamp-div {
-    background-color: white;
-    display: flex;
-    justify-content: flex-start;
 }
 
 .bottom-right-div-container {
     display: flex;
     justify-content: flex-start;
     align-content: center;
-    background-color: lightgray;
-
-
+    /* background-color:rgb(183, 183, 183, .50); */
 }
+.timestamp-div {
+    background-color: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
 
 .babble-title-div {
     font-size: 32px;
     font-weight: bold;
+    padding-bottom: 5px;
 }
 
 .babble-img-div {
@@ -88,6 +107,11 @@
     display: flex;
     align-items: center;
 
+}
+
+.sub-title-div {
+    padding-bottom: 20px;
+    font-size: 22px;
 }
 
 .babble-img {
