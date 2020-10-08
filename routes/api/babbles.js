@@ -8,7 +8,8 @@ const {
 const {
   Babble,
   User,
-  Comment
+  Comment,
+  Topic
 } = require('../../db/models');
 
 const {
@@ -45,7 +46,11 @@ const validateCommentInputs = [
 ]
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const babbles = await Babble.findAll()
+  const babbles = await Babble.findAll({
+    include: [
+      { model: Topic }
+    ]
+  })
   res.json(babbles)
 }));
 

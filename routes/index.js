@@ -24,8 +24,13 @@ router.get('/babbles/:id(\\d+)', (req, res) => {
 
 router.get('/babbles/create', async(req, res) => {
   const topics = await Topic.findAll();
-
   res.render('babble-create', { topics })
+});
+
+
+router.get('/babbles', async(req, res) => {
+  const topics = await Topic.findAll();
+  res.render('babble-feed', { topics });
 });
 
 

@@ -1,0 +1,13 @@
+.main-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.left-container {
+    background-color: gray;
+}
+
+.center-container {
+    background-color: grey;
+}
