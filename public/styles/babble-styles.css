@@ -1,16 +1,17 @@
 body {
   /* background-color: rgba(65, 172, 131, .25) ; */
 }
+
 * {
- /* outline: solid; */
- font-family: Cabin;
+  /* outline: solid; */
+  font-family: Cabin;
 }
 
 
 
 
 
-.babble-container{
+.babble-container {
   margin: auto;
   justify-content: left;
   display: flex;
@@ -27,6 +28,7 @@ body {
 .babble-header h1 {
   font-size: 45px;
 }
+
 .babble-header h2 {
   font-size: 25px;
   padding: none;
@@ -36,11 +38,13 @@ body {
 .babble-image img {
   width: 700px;
 }
+
 .babble-info {
   display: block;
   text-align: left;
   padding-bottom: 20px;
 }
+
 .babble-user {
   width: 150px;
   /* position: absolute; */
@@ -63,13 +67,13 @@ body {
 
 
 
-button{
+button {
   justify-self: right;
   position: relative;
   background-color: rgba(65, 172, 131, .75);
   color: white;
   border-radius: 5px;
-  border: 1px solid rgba(0,0,0,.15);
+  border: 1px solid rgba(0, 0, 0, .15);
   height: 30px;
   width: 80px;
   font-family: Cabin;
@@ -84,7 +88,7 @@ button{
 
 .nav-container {
   /* padding-top: 500px; */
-  background-color: rgba(65, 172, 131, .25) ;
+  background-color: rgba(65, 172, 131, .25);
   height: 55px;
   width: 100%;
   display: flex;
@@ -95,17 +99,18 @@ button{
 }
 
 .nav__icon {
-  height:45px;
+  height: 45px;
   padding-left: 30px;
 }
 
 .nav__menu {
-  width:60px;
+  width: 60px;
   /* height:35px; */
 }
+
 .nav__search {
-    /* width:55px; */
-  height:27px;
+  /* width:55px; */
+  height: 27px;
   border: 1px, solid, black;
   /* position: relative; */
 }
@@ -114,4 +119,77 @@ button{
   font-family: 'Berkshire Swash';
   font-size: 30px;
 
+}
+
+.babble-comments-container {
+  margin: 2px;
+
+}
+
+.comment {
+  border: 2px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  margin: 2px;
+  padding: 4px;
+  background-color: white;
+  background-clip: padding-box;
+}
+
+.babble-comments {
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.babble-comments-header {
+  font-size: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.babble-comments-container {
+  border: 2px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  padding: 4px;
+  background-color: rgb(183, 183, 183, .50);
+
+}
+
+.comment-username {
+  font-size: 1.2em;
+}
+
+.comment-text {
+  font-size: .9em;
+}
+
+.hidden {
+  display: none;
+}
+
+.babble-new-comment {
+  display: flex;
+  flex-direction: column;
+}
+
+#comment-buttons {
+  display: flex;
+  align-items: space-around;
+  padding: 3px;
+  }
+
+  #comment-cancel {
+    color: red;
+    background-color: lightgrey;
+  }
+
+  #comment-add {
+    width: auto;
+  }
+
+#new-comment__textarea {
+  width: 100%;
+  resize: none;
+  border-radius: 4px;
 }
