@@ -17,12 +17,10 @@ const {
 
 const {
   asyncHandler,
-  handleV,
   handleValidationErrors
 } = require('../utils');
 
 const router = express.Router();
-router.use(requireAuth)
 
 const babbleNotFoundErr = (id) => {
   const error = new Error();
@@ -47,36 +45,39 @@ const validateCommentInputs = [
 ]
 
 router.get('/', asyncHandler(async (req, res, next) => {
-  const {
-
-  } = req.body;
-  res.json({
-    title: 'test'
-  })
+  const babbles = await Babble.findAll()
+  res.json(babbles)
 }));
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
-  const babble = await Babble.findByPk(req.params.id);
+  const babble = await Babble.findByPk(req.params.id, {
+    include: {
+      model: User,
+      required: true,
+      attributes: ['userName', 'firstName', 'lastName', 'email']
+    }
+  });
 
   if (!babble) {
     const error = babbleNotFoundErr(req.params.id)
     return next(error);
   } else {
-    res.json({
+    res.json(
       babble
-    })
+    )
   }
 
 }));
 
-router.post('/', validateBabble, handleValidationErrors, asyncHandler(async (req, res, next) => {
+router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const {
     title,
     subHeader,
     content,
     readTime,
-    topicID
-  } = req.body.babble;
+    topicID,
+    userID
+  } = req.body;
 
   await Babble.create({
     title,
@@ -84,18 +85,18 @@ router.post('/', validateBabble, handleValidationErrors, asyncHandler(async (req
     content,
     readTime,
     topicID,
-    userID: req.user.id
+    userID
   });
   res.json({
     message: 'Babble was created!'
   })
 }));
 
-router.put(':/id(\\d+)', validateBabble, asyncHandler(async (req, res, next) => {
-  const babble = await Babble.findOne({
+router.put(':/id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, res, next) => {
+  const babble = await Babble.findAll({
     where: {
       id: req.params.id
-    },
+    }
   });
 
   if (req.user.id !== babble.userID) {
@@ -115,7 +116,7 @@ router.put(':/id(\\d+)', validateBabble, asyncHandler(async (req, res, next) => 
   }
 }));
 
-router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
+router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
   const babble = await Babble.findByPk(req.params.id)
 
   if (req.user.id !== babble.userID) {
@@ -137,7 +138,7 @@ router.delete('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   }
 }))
 
-router.post('/:id(\\d+)/comments', validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
+router.post('/:id(\\d+)/comments', requireAuth, validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const {
     commentText
   } = req.body;
@@ -151,7 +152,7 @@ router.post('/:id(\\d+)/comments', validateCommentInputs, handleValidationErrors
   })
 }));
 
-router.get('/:id(\\d+)/comments/:id(\\d+)', asyncHandler(async (req, res, next) => {
+router.get('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
   const commentId = req.params.commentId;
   const comment = await Comment.findByPk(commentId);
 
@@ -167,7 +168,7 @@ router.get('/:id(\\d+)/comments/:id(\\d+)', asyncHandler(async (req, res, next) 
   }
 }));
 
-router.patch('/:id(\\d+)/comments/:id(\\d+)', validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
+router.patch('/:id(\\d+)/comments/:id(\\d+)', requireAuth, validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const commentId = req.params.commentId;
   const {
     commentText
@@ -188,7 +189,7 @@ router.patch('/:id(\\d+)/comments/:id(\\d+)', validateCommentInputs, handleValid
   }
 }));
 
-router.delete('/:id(\\d+)/comments/:id(\\d+)', asyncHandler(async (req, res, next) => {
+router.delete('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
   const commentId = req.params.id;
   const comment = await Comment.findByPk(commentId);
   if (comment) {
