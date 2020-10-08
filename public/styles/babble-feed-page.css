@@ -1,22 +1,25 @@
-.main-container {
 
+body{
+    /* background-image: linear-gradient(to bottom left, rgba(65, 172, 131, .45), white); */
 }
+
 
 .left-container {
     display: flex;
     background-color:lightgray;
     justify-content: center;
-    width: 150px;
+    width: 200px;
     position: fixed;
     border: 1px solid grey;
     border-radius: 2%;
-    margin-left: 25px;
+    margin-left: 75px;
 
 }
 
 
 
 .topics-btn {
+    width: 100px;
     display: inline-block;
     padding: 0.35em 1.2em;
     background-color: rgba(65, 172, 131, .45);
@@ -50,7 +53,7 @@
 .topics-div-titles {
     text-align: center;
 }
-
+/*
 .center-container {
     /* align-items: center; */
     /* justify-content: center; */
@@ -60,7 +63,7 @@
     /* flex-direction: row; */
     /* background-color: grey; */
     /* width: 800px; */
-}
+/* } */
 .babble-div {
     margin: auto;
     margin-top: 100px;
@@ -74,11 +77,11 @@
     /* border: 2px solid lightgray; */
     border-radius: 2%;
     height: auto;
-    width: 700px;
+    width: 1000px;
     /* position: posit; */
 }
 .babble-img {
-    width: 700px;
+    width: 500px;
     height: 375px;
 }
 
@@ -106,7 +109,7 @@
     /* background-color: rgba(65, 172, 131, .75); */
     border-radius: 50px;
     height: 50px;
-    width: 100px;
+    width: fit-content;
     font-size: 14pt;
     font-weight: bolder;
     margin: 10px;
@@ -116,6 +119,7 @@
 
 .babble-topic-div:hover {
     background-color: lightgray;
+    cursor: pointer;
 }
 
 .babble-timestamp-div {
