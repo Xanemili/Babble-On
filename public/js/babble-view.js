@@ -42,18 +42,25 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const res = await fetch(`/api${window.location.pathname}`);
-
     const babble = await res.json()
     document.querySelector('#babble-header').innerHTML = babble.title;
     document.querySelector('#babble-subheader').innerHTML = babble.subHeader;
     document.querySelector('#babble-user').innerHTML = `${babble.User.userName}`
     document.querySelector('#babble-user-fullname').innerHTML = `${babble.User.firstName} ${babble.User.lastName}`
     document.querySelector('#babble-date').innerHTML = `insert date here!`;
-    document.querySelector('#babble-read-time').innerHTML = `${babble.readTime}`;
-    document.querySelector('#babble-topic').innerHTML = `${babble.topicID}`;
+    document.querySelector('#babble-read-time').innerHTML = `${babble.readTime} minute read`;
+    document.querySelector('#babble-topic').innerHTML = `${babble.Topic.name}`;
 
+    console.log(babble)
     const babbleImage = document.querySelector('#babble-image');
+<<<<<<< HEAD
     babbleImage.setAttribute('src', `${babble.url}`);
+=======
+    if (babble.url) {
+      babbleImage.classList.remove('hidden')
+      babbleImage.setAttribute('src', `${babble.url}`);
+    }
+>>>>>>> addressed header within the babbles page
 
     document.querySelector('.babble-content').innerHTML = babble.content;
 
