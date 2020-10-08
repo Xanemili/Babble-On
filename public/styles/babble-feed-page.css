@@ -1,13 +1,135 @@
-.main-container {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+
+body{
+    /* background-image: linear-gradient(to bottom left, rgba(65, 172, 131, .45), white); */
 }
+
 
 .left-container {
-    background-color: gray;
+    display: flex;
+    background-color:lightgray;
+    justify-content: center;
+    width: 200px;
+    position: fixed;
+    border: 1px solid grey;
+    border-radius: 2%;
+    margin-left: 75px;
+
 }
 
+
+
+.topics-btn {
+    width: 100px;
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    background-color: rgba(65, 172, 131, .45);
+    border: 0.1em solid #FFFFFF;
+    margin: 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-align: center;
+    transform: all 0.2s;
+}
+
+.topics-div {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column;
+    /* text-align: center; */
+}
+
+.topics-btn:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+.topics-name-div {
+    margin: 7px;
+}
+
+.topics-div-titles {
+    text-align: center;
+}
+/*
 .center-container {
-    background-color: grey;
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* /* display: flex; */
+    /* flex-wrap: wrap;
+    align-self: center; */
+    /* flex-direction: row; */
+    /* background-color: grey; */
+    /* width: 800px; */
+/* } */
+.babble-div {
+    margin: auto;
+    margin-top: 100px;
+    justify-content: center;
+    display: flex;
+    /* align-items: left; */
+    flex-direction: column;
+    align-content: flex-start;
+    /* border: 1px solid black; */
+    background-color: white;
+    border: 2px solid lightgray;
+    border-radius: 2%;
+    height: auto;
+    width: 1000px;
+    /* position: posit; */
+}
+.babble-img {
+    width: 500px;
+    height: 375px;
+}
+
+.babble-title-div {
+    display: flex;
+    justify-content: center;
+    font-size: 32pt;
+}
+
+.babble-sub-header-div {
+    display: flex;
+    justify-content: center;
+    font-size: 22pt;
+}
+
+.babble-read-time {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 25px;
+}
+
+.babble-topic-div {
+    justify-self: center;
+    position: relative;
+    /* background-color: rgba(65, 172, 131, .75); */
+    border-radius: 50px;
+    height: 50px;
+    width: fit-content;
+    font-size: 14pt;
+    font-weight: bolder;
+    margin: 10px;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.babble-topic-div:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.babble-timestamp-div {
+    display: flex;
+    justify-content: center;
+}
+
+.feed-header-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+
 }
