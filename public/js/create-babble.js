@@ -12,6 +12,7 @@ createBabbleForm.addEventListener('submit', async (e) => {
   const url = formData.get("url");
   const userID = localStorage.getItem('babble_user_id')
 
+
   const body = {
     title,
     subHeader,
@@ -19,11 +20,12 @@ createBabbleForm.addEventListener('submit', async (e) => {
     content,
     topicID,
     url,
-    userID
+    userID,
+    // topics
   }
 
   try {
-    const res = await fetch("api/babbles", {
+    const res = await fetch("/api/babbles", {
       method: "POST",
       body: JSON.stringify(body),
       headers: {

@@ -11,11 +11,17 @@ router.get('/sign-up', (req, res) => {
   })
 
 router.get('/log-in', (req, res) => {
-        res.render('log-in')
+  res.render('log-in')
 })
 
 router.get('/babbles/:id(\\d+)', (req, res) => {
   res.render('babble')
+});
+
+//do fetch here and then pass the object
+
+router.get('/babbles/create', (req, res) => {
+  res.render('babble-create')
 });
 
 module.exports = router;

@@ -19,14 +19,15 @@ html(lang="en")
         +field(null, "subHeader", 'text', null, "Subheader")
       .create-babble-form__reading-time
         +field(null, "readTime", "number", null, "reading time")
-      .create-babble-form__topic
-        select()
-          each topin in topic
-            option
-
+      //- p()= topics
       //- .create-babble-form__topic
-      //-   +field(null, "topicID", 'dropdown', null, "topicID")
       //-   select()
+      //-     each topin in topic
+      //-       option
+
+      .create-babble-form__topic
+        +field(null, "topicID", 'dropdown', null, "topicID")
+        //- select()
       .create-babble-form__content
         +field(null, "content", 'text', null, `Babble-on \n here to your \n heart's content...`)
       .create-babble-form__url
@@ -34,4 +35,4 @@ html(lang="en")
       div.btn-container
           button(class = "publish-btn" type = "submit") Publish
 
-  script(src="js/create-babble.js" type="module")
+  script(src="/js/create-babble.js" type="module")
