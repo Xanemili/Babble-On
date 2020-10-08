@@ -1,0 +1,226 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}
+
+
+.nav-container {
+    position: relative;
+    bottom: 8px;
+    margin-bottom: 50px;
+    background-color: rgb(183, 183, 183, .50);
+    height: 55px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    align-items: center;
+  }
+
+  .text-logo {
+    position: relative;
+    display: flex;
+    height: 50px;
+    width: 200px
+  }
+
+  .nav__icon {
+    position: relative;
+    display: flex;
+    height:45px;
+    padding-left: 30px;
+    align-self: center;
+    right: 15px;
+  }
+
+  .nav__menu {
+    width:60px;
+    display: flex;
+    position: relative;
+    bottom: 12px;
+    right: 5px;
+  }
+  .nav__search {
+    display: flex;
+    position: relative;
+    height:27px;
+    border: 1px, solid, black;
+    right: 200px;
+    top: 21px;
+  }
+
+.links{
+    font-size: large;
+    display: inline;
+    position: relative;
+    display: flex;
+    padding: 20px;
+    color: black;
+}
+
+a:link{
+    text-decoration: none;
+
+}
+
+.log-in{
+    margin-left: 25px;
+    padding-right: 25px;
+}
+.log-in-link{
+    color: black;
+    font-size: large;
+    font-weight: bolder;
+}
+.sign-up-link{
+    color: black;
+    font-size: large;
+    font-weight: bolder;
+}
+
+.header{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    font-size: 35pt;
+}
+
+button {
+    background-color: rgba(65, 172, 131, 0.24);
+    border: 4px solid rgba(65, 172, 131, .75);;
+    border-radius: 50px;
+    height: 50px;
+    width: 200px;
+    font-size: 30px;
+    font-weight: bolder;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+
+.bottom-logo{
+    position: relative;
+    display: flex;
+    bottom: 550px;
+}
+
+.topic__1{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 400px;
+    top: 125px;
+    outline:none;
+}
+.topic__2{
+    outline:none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 500px;
+    top: 150px
+}
+.topic__3{
+    outline:none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 400px;
+    top: 175px
+}
+.topic__4{
+    outline:none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 750px;
+    bottom: 85px
+}
+.topic__5{
+    outline:none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 850px;
+    bottom: 60px
+}
+.topic__6{
+    outline:none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 750px;
+    bottom: 35px
+}
+.topic__7{
+    outline:none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 1100px;
+    bottom: 295px
+}
+.topic__8{
+    outline:none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 1200px;
+    bottom: 270px
+}
+.topic__9{
+    outline:none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 1100px;
+    bottom: 245px
+}
+
+.sign-up-btn{
+    text-decoration: none;
+    font-size: xx-large;
+    font-weight: bolder;
+    border-radius: 10px;
+    border: 2px solid rgba(65, 172, 131, .75);
+    color: black;
+    outline:none;
+    background-color: rgba(65, 172, 131, 0.50);
+    width: 250px;
+    height: 75px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    left: 35%;
+}
+.log-in-btn{
+    text-decoration: none;
+    font-size: xx-large;
+    font-weight: bolder;
+    border-radius: 10px;
+    border: 2px solid rgba(65, 172, 131, .75);
+    color: black;
+    outline:none;
+    background-color: rgba(65, 172, 131, 0.50);
+    width: 250px;
+    height: 75px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    bottom: 80px;
+}

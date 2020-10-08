@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+}
+
 
 .nav-container {
   background-color: rgb(183, 183, 183, .50);
@@ -28,7 +32,7 @@
   display: flex;
   position: relative;
   bottom: 25px;
-  right: 5px;
+  right: 30px;
 }
 
 .nav__search {
@@ -57,6 +61,7 @@
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border: 1px solid black;
   padding: 12px 16px;
   z-index: 1;
 }
