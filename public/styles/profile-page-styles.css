@@ -5,11 +5,14 @@
 
 
 .top-div-container{
+    margin: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     /* background-color: grey; */
     height: 450px;
+    width: 60%;
+    /* justify-self: center; */
 }
 
 .top-left-div-container {
@@ -54,11 +57,12 @@
     display: flex;
     margin: auto;
     margin-top: 20px;
-    background-color: lightgray;
+    background-color: rgb(183, 183, 183, .50);
     height: 450px;
     width: 1000px;
     flex-direction: row;
     justify-content: space-around;
+    border-radius: 10px;
 }
 
 .bottom-left-div-container {
@@ -66,7 +70,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-color: lightgray;
+    /* background-color: rgb(183, 183, 183, .50); */
     width: 400px;
 
 }
@@ -75,10 +79,10 @@
     display: flex;
     justify-content: flex-start;
     align-content: center;
-    background-color: lightgray;
+    /* background-color:rgb(183, 183, 183, .50); */
 }
 .timestamp-div {
-    background-color:lightgray;
+    background-color: none;
     display: flex;
     justify-content: flex-start;
 }

@@ -25,6 +25,9 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     document.querySelector('.follow-list-div').innerHTML = "This will display user following list"
     const profileContainer = document.querySelector('.main-container')
 //Implement tennery
+
+
+
     for (let i = 0; i < 5; i++) {
     const date = new Date(Date(babbles.updatedAt))
     const babbleDiv = document.createElement('div');
