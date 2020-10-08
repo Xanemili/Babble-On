@@ -9,5 +9,16 @@
 }
 
 .center-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: row; */
     background-color: grey;
+}
+.babble-div {
+    background-color: white;
+    justify-content: space-evenly;
+}
+.babble-img {
+    width: 200px;
+    height: 200px;
 }

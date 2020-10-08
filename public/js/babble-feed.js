@@ -68,6 +68,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             const babbleTimestampDiv = document.createElement('div');
             const babbleImg = document.createElement('img');
             const babbleImgDiv = document.createElement('div');
+            const babbleLink = document.createElement('a');
 
 
             babbleDiv.classList.add('babble-div');
@@ -76,7 +77,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             babbleTopicDiv.classList.add('babble-topic-div');
             babbleReadTimeDiv.classList.add('babble-read-time');
             babbleTimestampDiv.classList.add('babble-timestamp-div');
-            babbleImg.classList.add('babble-ing');
+            babbleImg.classList.add('babble-img');
             babbleImgDiv.classList.add('babble-img-div');
 
             const babbleTitle = babbles[i].title;
@@ -84,21 +85,23 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             const babbleReadTime = babbles[i].readTime;
             const babbleTimestamp = babbles[i].updatedAt
             const babbleTopic = babbles[i].Topic.name
-            babbleImg.setAttribute('src', );
+            babbleImg.setAttribute('src', 'https://www.njea.org/wp-content/uploads/2014/10/Coding.jpg');
+            babbleLink.setAttribute('href', ``)
 
             babbleTitleDiv.innerHTML = babbleTitle;
             babbleSubHeaderDiv.innerHTML = babbleSubHeader
             babbleReadTimeDiv.innerHTML = babbleReadTime;
             babbleTopicDiv.innerHTML = babbleTopic;
             babbleTimestampDiv.innerHTML = babbleTimestamp;
-            babbleImgDiv.innerHTML = babbleImg
+
 
             babbleDiv.append(babbleTitleDiv);
             babbleDiv.append(babbleSubHeaderDiv)
             babbleDiv.append(babbleReadTimeDiv);
             babbleDiv.append(babbleTopicDiv);
             babbleDiv.append(babbleTimestampDiv);
-            babbleDiv.append(babbleImgDiv)
+            babbleDiv.append(babbleImg)
+            babbleDiv.append(babbleLink)
 
             centerContainer.append(babbleDiv);
         }
