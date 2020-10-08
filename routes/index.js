@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../db/models');
+const { User, Topic, Babble } = require('../db/models');
 
 router.get('/', async(req,res) => {
   res.render('profile');
@@ -18,10 +18,13 @@ router.get('/babbles/:id(\\d+)', (req, res) => {
   res.render('babble')
 });
 
-//do fetch here and then pass the object
 
-router.get('/babbles/create', (req, res) => {
-  res.render('babble-create')
+
+
+router.get('/babbles/create', async(req, res) => {
+  const topics = await Topic.findAll();
+
+  res.render('babble-create', { topics })
 });
 
 module.exports = router;
