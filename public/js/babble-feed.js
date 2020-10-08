@@ -56,6 +56,9 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const rightContainer = document.querySelector('.right-container')
         const topicsDiv = document.createElement('div');
 
+        topicsDiv.classList.add('topics-div')
+        topicsDiv.innerHTML = 'Topics'
+
 
         //Loop for babbles
         for (let i = 0; i < 4; i++) {
@@ -63,7 +66,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             const babbleDiv = document.createElement('div');
             const babbleTitleDiv = document.createElement('div');
             const babbleSubHeaderDiv = document.createElement('div');
-            const babbleTopicDiv = document.createElement('div');
+            const babbleTopicDiv = document.createElement('button');
             const babbleReadTimeDiv = document.createElement('div');
             const babbleTimestampDiv = document.createElement('div');
             const babbleImg = document.createElement('img');
@@ -82,7 +85,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
             const babbleTitle = babbles[i].title;
             const babbleSubHeader = babbles[i].subHeader
-            const babbleReadTime = babbles[i].readTime;
+            const babbleReadTime = `${babbles[i].readTime} minute(s) read time`;
             const babbleTimestamp = babbles[i].updatedAt
             const babbleTopic = babbles[i].Topic.name
             babbleImg.setAttribute('src', 'https://www.njea.org/wp-content/uploads/2014/10/Coding.jpg');
@@ -95,7 +98,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             babbleTimestampDiv.innerHTML = babbleTimestamp;
 
 
-            babbleDiv.append(babbleTitleDiv);ç
+            babbleDiv.append(babbleTitleDiv);
             babbleDiv.append(babbleSubHeaderDiv)
             babbleDiv.append(babbleReadTimeDiv);
             babbleDiv.append(babbleTopicDiv);
@@ -109,6 +112,9 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         for (let i = 0; i < topics.length; i++) {
             const topicsNameDiv = document.createElement('div');
             const topicsBtn = document.createElement('button');
+
+            topicsNameDiv.classList.add('topics-name-div');
+            topicsBtn.classList.add('topics-btn');
 
             const topicsName = topics[i].name;
 
