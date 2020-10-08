@@ -10,13 +10,6 @@ html(lang="en")
 
 
   div.create-babble-form-div
-    .create-babble-form__topic
-      span
-        label(for="topics") Topics
-      span
-        select(name="Topics" id="topics") Topics
-          each topic in topics
-            option(value=topic.id)= topic.name
     form(class = "create-babble-form" action='/api/babbles' method="post")
       .errors-container
       .create-babble-form__title
@@ -25,12 +18,17 @@ html(lang="en")
         +field(null, "subHeader", 'text', null, "Subheader")
       .create-babble-form__reading-time
         +field(null, "readTime", "number", null, "reading time")
-        //- +field(null, "topicID", 'dropdown', null, "topicID")
-        //- select()
       .create-babble-form__content
         +field(null, "content", 'text', null, `Babble-on \n here to your \n heart's content...`)
       .create-babble-form__url
         +field(null, "url", "url", null, "insert url of your image here")
+      .create-babble-form__topic
+        span
+          label(for="topics") Topics
+        span
+          select(name="topicID" id="topicID") Topics
+            each topic in topics
+              option(value=topic.id)= topic.name
       div.btn-container
           button(class = "publish-btn" type = "submit") Publish
 

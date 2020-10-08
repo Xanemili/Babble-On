@@ -41,6 +41,7 @@ input{
 .create-babble-form__topic select{
   height: 50px;
   text-align:right;
+  align-self: right;
 }
 
 
