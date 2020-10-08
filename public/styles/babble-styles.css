@@ -25,11 +25,17 @@ body {
   /* position: posit; */
 }
 
-.babble-header h1 {
+.babble-header {
+  border-bottom: 1px solid lightgray;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+#babble-header {
   font-size: 45px;
 }
 
-.babble-header h2 {
+#babble-subheader {
   font-size: 25px;
   padding: none;
   margin: none;
@@ -63,6 +69,9 @@ body {
 .babble-content {
   width: 700px;
   font-size: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
 }
 
 
@@ -177,6 +186,7 @@ button {
   display: flex;
   align-items: space-around;
   padding: 3px;
+  width: auto;
   }
 
   #comment-cancel {
@@ -184,7 +194,7 @@ button {
     background-color: lightgrey;
   }
 
-  #comment-add {
+  #comment-submit {
     width: auto;
   }
 
