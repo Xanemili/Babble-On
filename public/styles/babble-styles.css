@@ -115,3 +115,50 @@ button{
   font-size: 30px;
 
 }
+
+.babble-comments-container {
+  margin: 2px;
+
+}
+
+.comment {
+  border: 2px solid rgba(0, 0, 0, .15);
+  margin: 2px;
+  padding: 3px;
+}
+
+.babble-comments {
+  border: 2px solid rgba(0, 0, 0, .15);
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.babble-comments-header {
+  font-size: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-username {
+  font-size: 1.2em;
+}
+
+.comment-text {
+  font-size: .9em;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.babble-new-comment {
+  display: flex;
+  flex-direction: column;
+}
+
+#new-comment {
+  width: 100%
+}

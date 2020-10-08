@@ -143,6 +143,20 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => 
   }
 }))
 
+router.get('/:id(\\d+)/comments', asyncHandler(async (req, res, next) => {
+  const comments = await Comment.findAll({
+    where: {
+      postID: req.params.id
+    },
+    include: {
+      model: User,
+      attributes: ['userName']
+    }
+  });
+
+  res.json(comments);
+}))
+
 router.post('/:id(\\d+)/comments', requireAuth, validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const {
     commentText
@@ -159,7 +173,7 @@ router.post('/:id(\\d+)/comments', requireAuth, validateCommentInputs, handleVal
 
 router.get('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
   const commentId = req.params.commentId;
-  const comment = await Comment.findByPk(commentId);
+  const comment = await Comment.findByPk(commentId, {});
 
   if (comment) {
     res.json({

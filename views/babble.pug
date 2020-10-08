@@ -28,4 +28,15 @@ block content
       img(id="babble-image")
     .babble-content
       p()
+
+    .babble-comments-container
+      .babble-comments-header Comments
+        .comments-button
+          button(id='comment-add') Comment
+      .babble-comments
+        form(class='babble-new-comment hidden')
+          .new-comment New Comment
+          textarea#new-comment(name="newComment" rows="4")
+          button#comment-add(type="submit") Add Comment
+
   script(src='../js/babble-view.js')
