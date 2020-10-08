@@ -34,9 +34,13 @@ block content
         .comments-button
           button(id='comment-add') Comment
       .babble-comments
-        form(class='babble-new-comment hidden')
-          .new-comment New Comment
-          textarea#new-comment(name="newComment" rows="4")
-          button#comment-add(type="submit") Add Comment
+        .babble-comments-errors-container
+        .babble-new-comment-div.hidden
+          form(class='babble-new-comment')
+            .new-comment() New Comment
+            textarea#new-comment(name="newComment" rows="4")
+            #comment-buttons
+              button#comment-cancel(type="reset") Cancel
+              button#comment-add(type="submit") Add Comment
 
   script(src='../js/babble-view.js')

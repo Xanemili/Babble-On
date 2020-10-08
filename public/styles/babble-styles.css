@@ -151,7 +151,6 @@ button{
 
 .hidden {
   display: none;
-  visibility: hidden;
 }
 
 .babble-new-comment {

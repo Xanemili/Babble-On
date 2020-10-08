@@ -48,19 +48,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     const commentContainer = document.querySelector('.babble-comments')
 
     insertComments(babble.id, commentContainer);
-
-    document.querySelector('.comments-button').addEventListener('click', (event) => {
-      document.querySelector('.babble-new-comment').classList.remove('hidden');
-
-
-      // let newComment = document.createElement('div')
-      // let input = document.createElement('input')
-      // let addComment = document.createElement('button')
-      // newComment.innerHTML = 'new comment'
-      // newComment.appendChild(input)
-      // commentContainer.prepend(newComment)
-    })
-
   } catch (err) {
     if (err.status >= 400 && err.status < 600) {
       const errorJSON = await err.json();
@@ -92,6 +79,10 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
   }
   });
+
+  document.querySelector('.comments-button').addEventListener('click', (event) => {
+    document.querySelector('.babble-new-comment-div').classList.remove('hidden');
+  })
 
   document.querySelector('.babble-new-comment')
     .addEventListener('submit', async (event) => {
