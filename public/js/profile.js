@@ -67,16 +67,16 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     babbleImgUrl.setAttribute('src', babbles[i].url);
     babbleAnchor.setAttribute('href', `/babbles/${babbles[i].id}`)
 
-    babbleLeftDiv.append(babbleTitleDiv);
-    babbleLeftDiv.append(babbleSubHeaderDiv);
-    babbleLeftDiv.append(babbleTimestampDiv);
-    babbleLeftDiv.append(readTimeDiv)
 
     babbleAnchor.append(babbleImgUrl)
     babbleImgDiv.append(babbleAnchor);
 
     babbleRightDiv.append(babbleImgDiv);
 
+    babbleLeftDiv.append(babbleTitleDiv);
+    babbleLeftDiv.append(babbleSubHeaderDiv);
+    babbleLeftDiv.append(babbleTimestampDiv);
+    babbleLeftDiv.append(readTimeDiv)
 
     babbleDiv.append(babbleLeftDiv)
     babbleDiv.append(babbleRightDiv);
