@@ -18,18 +18,17 @@ router.get('/babbles/:id(\\d+)', (req, res) => {
   res.render('babble')
 });
 
-<<<<<<< HEAD
 
 
 
 router.get('/babbles/create', async(req, res) => {
   const topics = await Topic.findAll();
-
   res.render('babble-create', { topics })
-=======
-router.get('/babbles', (req, res) => {
-  res.render('babble-feed')
->>>>>>> 9a20b9c... Fixing babble-feed.js
+});
+
+router.get('/babbles', async(req, res) => {
+  const topics = await Topic.findAll();
+  res.render('babble-feed', { topics });
 });
 
 module.exports = router;
