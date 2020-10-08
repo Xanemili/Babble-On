@@ -95,7 +95,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             babbleTimestampDiv.innerHTML = babbleTimestamp;
 
 
-            babbleDiv.append(babbleTitleDiv);
+            babbleDiv.append(babbleTitleDiv);ç
             babbleDiv.append(babbleSubHeaderDiv)
             babbleDiv.append(babbleReadTimeDiv);
             babbleDiv.append(babbleTopicDiv);
