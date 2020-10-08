@@ -55,9 +55,16 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const centerContainer = document.querySelector('.center-container');
         const rightContainer = document.querySelector('.right-container')
         const topicsDiv = document.createElement('div');
+        const topicsDivTitle = document.createElement('h2');
+
+        topicsDivTitle.innerHTML = 'Topics'
+
+        topicsDivTitle.classList.add('topics-div-titles')
 
         topicsDiv.classList.add('topics-div')
-        topicsDiv.innerHTML = 'Topics'
+
+        topicsDiv.append(topicsDivTitle);
+
 
 
         //Loop for babbles
