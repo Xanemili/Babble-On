@@ -22,24 +22,15 @@ router.get('/babbles/:id(\\d+)', (req, res) => {
   res.render('babble')
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 511f4c7ec8251f38df023ef509e70050719dc0be
 router.get('/babbles/create', async(req, res) => {
   const topics = await Topic.findAll();
   res.render('babble-create', { topics })
 });
 
-<<<<<<< HEAD
-router.get('/babbles', (req, res) => {
-  res.render('babble-feed')
-=======
 
 router.get('/babbles', async(req, res) => {
   const topics = await Topic.findAll();
   res.render('babble-feed', { topics });
->>>>>>> 511f4c7ec8251f38df023ef509e70050719dc0be
 });
 
 

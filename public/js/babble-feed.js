@@ -41,7 +41,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             const babbleReadTime = babbles[i].readTime;
             const babbleTimestamp = babbles[i].updatedAt
             const babbleTopic = babbles[i].Topic.name
-            babbleImg.setAttribute('src', babbles[i].url);
+            babbleImg.setAttribute('src', );
 
             babbleTitleDiv.innerHTML = babbleTitle;
             babbleSubHeaderDiv.innerHTML = babbleSubHeader
