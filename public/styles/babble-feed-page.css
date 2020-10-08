@@ -74,7 +74,7 @@ body{
     align-content: flex-start;
     /* border: 1px solid black; */
     background-color: white;
-    border: 2px solid lightgray;
+    /* border: 2px solid lightgray; */
     border-radius: 2%;
     height: auto;
     width: 1000px;
