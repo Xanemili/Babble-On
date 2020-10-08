@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     document.querySelector('.username-div').innerHTML = user.userName
     document.querySelector('.user-name-div').innerHTML = `${user.firstName} ${user.lastName}`
     document.querySelector('.user-email-div').innerHTML = user.email
-    document.querySelector('.bio-div').innerHTML = `This will display user biography: ${user.biography}`
+    document.querySelector('.bio-div').innerHTML = user.biography
     document.querySelector('.follow-list-div').innerHTML = "This will display user following list"
     const profileContainer = document.querySelector('.main-container')
 //Implement tennery

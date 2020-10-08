@@ -1,9 +1,14 @@
+* {
+    font-family: Cabin;
+    /* border: 1px solid black; */
+}
+
 
 .top-div-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    background-color: grey;
+    justify-content: space-around;
+    /* background-color: grey; */
     height: 450px;
 }
 
@@ -12,8 +17,9 @@
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: lightgray;
-    width: 400px;
+    /* background-color: lightgray; */
+    width: 300px;
+    text-align: center;
 }
 
 .username-div {
@@ -25,8 +31,9 @@
     border-radius: 50%;
 }
 .top-center-div-container {
-    background-color: lightgray;
-    width: 400px;
+    /* background-color: lightgray; */
+    width: 300px;
+    align-self: center;
 }
 
 .bio-div {
@@ -34,8 +41,9 @@
 }
 
 .top-right-div-container {
-    background-color: lightgray;
-    width: 400px;
+    width: 300px;
+    align-self: center;
+    text-align: center;
 }
 
 .follow-list-div {
@@ -46,7 +54,7 @@
     display: flex;
     margin: auto;
     margin-top: 20px;
-    background-color: grey;
+    background-color: lightgray;
     height: 450px;
     width: 1000px;
     flex-direction: row;
@@ -63,20 +71,18 @@
 
 }
 
-.timestamp-div {
-    background-color: white;
-    display: flex;
-    justify-content: flex-start;
-}
-
 .bottom-right-div-container {
     display: flex;
     justify-content: flex-start;
     align-content: center;
     background-color: lightgray;
-
-
 }
+.timestamp-div {
+    background-color:lightgray;
+    display: flex;
+    justify-content: flex-start;
+}
+
 
 .babble-title-div {
     font-size: 32px;
