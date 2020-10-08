@@ -134,6 +134,7 @@ button {
 
 .babble-comments {
   border: 2px solid rgba(0, 0, 0, .15);
+  border-radius: 3%;
   margin: 5px;
   padding: 5px;
   display: flex;
@@ -161,6 +162,11 @@ button {
 .babble-new-comment {
   display: flex;
   flex-direction: column;
+}
+
+#comment-buttons {
+  display: flex;
+  align-items: space-around;
 }
 
 #new-comment {

@@ -8,7 +8,6 @@ input{
   height: 40px;
   width: 700px;
   font-size: 22px;
-  position: relative;
   bottom: 75px;
   align-items: flex-end;
   border: none;
@@ -29,10 +28,9 @@ input{
   font-size: 1em;
   text-align: left;
 }
-.create-babble-form__content input {
-  height: 300px;
+.create-babble-form__content {
   font-size: 1.5em;
-  overflow: scroll;
+  width: 700px
 }
 .create-babble-form__url input {
   height: 40px;
@@ -44,11 +42,15 @@ input{
   align-self: right;
 }
 
+.errors-container {
+  color: black;
+  background-color: lightcoral;
+}
 
-
-.create-babble-form{
+.create-babble-form-div {
   margin: auto;
-  justify-content: center;
+  padding: 12px;
+  justify-content: space-between;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -56,8 +58,13 @@ input{
   /* border: 1px solid black; */
   background-color: white;
   border-radius: 5%;
-  height: 843px;
+  height: 100%;
   width: 960px;
+}
+
+#babble-form__textarea {
+  resize: none;
+  width: 100%;
 }
 
 button{
