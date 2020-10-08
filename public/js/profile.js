@@ -57,13 +57,15 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
     const babbleTitle = babbles[i].title;
     const babbleSubHeader = babbles[i].subHeader;
-    const babbleTimestamp = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+
+
+    const babbleTimestamp = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${minutes}`;
     const babbleReadTime = babbles[i].readTime;
 
     babbleTitleDiv.innerHTML = babbleTitle;
     babbleSubHeaderDiv.innerHTML = babbleSubHeader;
-    babbleTimestampDiv.innerHTML = babbleTimestamp;
-    readTimeDiv.innerHTML = `${babbleReadTime} minutes`;
+    babbleTimestampDiv.innerHTML = `Created on ${babbleTimestamp}`;
+    readTimeDiv.innerHTML = `Reading time: ${babbleReadTime} minutes`;
     babbleImgUrl.setAttribute('src', babbles[i].url);
     babbleAnchor.setAttribute('href', `/babbles/${babbles[i].id}`)
 
