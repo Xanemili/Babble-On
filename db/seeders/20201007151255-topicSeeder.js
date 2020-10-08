@@ -17,7 +17,27 @@ module.exports = {
       {
         name: 'Technology',
         description: 'Robots will take over the world!'
-      }
+      },
+      {
+        name: 'Business',
+        description: 'Business advice from the best!'
+      },
+      {
+        name: 'Finances',
+        description: 'How others are raising their accounts.'
+      },
+      {
+        name: 'Health',
+        description: 'Health tips from self proclaimed professionals.'
+      },
+      {
+        name: 'Fashion',
+        description: 'Trends and tips from the fashion world.'
+      },
+      {
+        name: 'Science',
+        description: 'Really? ANOTHER planet?.'
+      },
     ]);
   },
 

@@ -13,4 +13,8 @@ router.get('/', (req,res) => {
         res.render('log-in')
 })
 
+router.get('/welcome', (req, res) => {
+  res.render('welcome')
+})
+
 module.exports = router;

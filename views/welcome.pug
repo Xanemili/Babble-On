@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+  head
+      link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Cabin")
+      link(rel="stylesheet", href="/styles/landing-page.css")
+      title Welcome to Babble-On
+  body
+    include navbar-grey-landing.pug
+    h1.header See what everyone is Babbling about!
+    button.topic__1 Sports
+    button.topic__2 Cooking
+    button.topic__3 Politics
+    button.topic__4 Technology
+    button.topic__5 Business
+    button.topic__6 Finances
+    button.topic__7 Health
+    button.topic__8 Fashion
+    button.topic__9 Science
+    a.sign-up-btn(href="/sign-up") Sign Up
+    a.log-in-btn(href="/log-in") Log In
+    img(class="bottom-logo" src='/resources/landing-megaphone_PNG77.png')
