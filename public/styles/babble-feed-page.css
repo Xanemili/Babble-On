@@ -1,19 +1,15 @@
-/* .main-container { */
-    /* display: flex; */
-    /* justify-content: space-between; */
-    /* flex-direction: row; */
-/* } */
+
 
 .left-container {
     display: flex;
     background-color:lightgray;
     justify-content: center;
     width: 150px;
-    height: 500px;
     position: fixed;
     border: 1px solid grey;
     border-radius: 2%;
     margin-left: 25px;
+
 }
 
 
@@ -35,9 +31,9 @@
 
 .topics-div {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex-direction: column;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .topics-btn:hover {
@@ -46,8 +42,11 @@
 }
 
 .topics-name-div {
+    margin: 7px;
+}
+
+.topics-div-titles {
     text-align: center;
-    margin: 20px;
 }
 /*
 .center-container {
