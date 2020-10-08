@@ -46,23 +46,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     document.querySelector('.babble-content').innerHTML = babble.content;
 
     const commentContainer = document.querySelector('.babble-comments')
-<<<<<<< HEAD
-=======
-
-    insertComments(babble.id, commentContainer);
-
-    document.querySelector('.comments-button').addEventListener('click', (event) => {
-      document.querySelector('.babble-new-comment').classList.remove('hidden');
-
-
-      // let newComment = document.createElement('div')
-      // let input = document.createElement('input')
-      // let addComment = document.createElement('button')
-      // newComment.innerHTML = 'new comment'
-      // newComment.appendChild(input)
-      // commentContainer.prepend(newComment)
-    })
->>>>>>> comment feature added
 
     insertComments(babble.id, commentContainer);
   } catch (err) {
@@ -95,43 +78,40 @@ window.addEventListener("DOMContentLoaded", async () => {
       alert("Something went wrong. Please check your internet connection and try again!")
     }
   }
-  });
+});
 
-<<<<<<< HEAD
-  document.querySelector('.comments-button').addEventListener('click', (event) => {
-    document.querySelector('.babble-new-comment-div').classList.remove('hidden');
-  })
-
-=======
->>>>>>> comment feature added
-  document.querySelector('.babble-new-comment')
-    .addEventListener('submit', async (event) => {
-          event.preventDefault();
-
-          const formData = new FormData(document.querySelector('.babble-new-comment'));
-          const username = 'xanxan';
-          const commentText = formData.get('newComment');
-
-          const body = {
-            username,
-            commentText
-          }
-          try {
-
-            const res = await fetch(`/api${window.location.pathname}/comments`, {
-              method: 'POST',
-              body: JSON.stringify(body),
-              headers: {
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo1LCJlbWFpbCI6InhhbkBnbWFpbC5jb20ifSwiaWF0IjoxNjAyMDE4MzM2LCJleHAiOjE2MDI2MjMxMzZ9.2Ao4CiNzFMCYktacNFnsiQUVar_2NWOoKgmSWqa6Qt4',
-                'Content-Type': 'application/json'
-              }
-            });
-            if (!res.ok) {
-              throw res;
-            }
-
-            //update comments with ajax
-          } catch (err) {
-
-          }
+document.querySelector('.comments-button').addEventListener('click', (event) => {
+  document.querySelector('.babble-new-comment-div').classList.remove('hidden');
 })
+
+document.querySelector('.babble-new-comment')
+  .addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(document.querySelector('.babble-new-comment'));
+    const username = 'xanxan';
+    const commentText = formData.get('newComment');
+
+    const body = {
+      username,
+      commentText
+    }
+    try {
+
+      const res = await fetch(`/api${window.location.pathname}/comments`, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo1LCJlbWFpbCI6InhhbkBnbWFpbC5jb20ifSwiaWF0IjoxNjAyMDE4MzM2LCJleHAiOjE2MDI2MjMxMzZ9.2Ao4CiNzFMCYktacNFnsiQUVar_2NWOoKgmSWqa6Qt4',
+          'Content-Type': 'application/json'
+        }
+      });
+      if (!res.ok) {
+        throw res;
+      }
+
+      //update comments with ajax
+    } catch (err) {
+
+    }
+  })
