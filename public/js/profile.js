@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     const babbleSubHeader = babbles[i].subHeader;
 
 
-    const babbleTimestamp = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${minutes}`;
+    const babbleTimestamp = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
     const babbleReadTime = babbles[i].readTime;
 
     babbleTitleDiv.innerHTML = babbleTitle;
@@ -85,10 +85,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
     profileContainer.append(babbleDiv)
 
-    // document.querySelector('bottom-div-container')
-    // .addEventListener('click', () => {
-    //     /babbles/babble[i].id
-    // })
+
     }
 
 
