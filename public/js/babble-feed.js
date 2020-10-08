@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
 
         //Loop for babbles
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < babbles.length; i++) {
             // const date = new Date(Date(babbles[i].updatedAt))
             const babbleDiv = document.createElement('div');
             const babbleTitleDiv = document.createElement('div');
