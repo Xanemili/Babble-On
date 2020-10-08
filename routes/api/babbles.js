@@ -1,4 +1,5 @@
 const express = require('express');
+const { Op } = require("sequelize");
 
 const {
   check,
@@ -22,7 +23,6 @@ const {
 } = require('../utils');
 
 const router = express.Router();
-
 const babbleNotFoundErr = (id) => {
   const error = new Error();
   error.title = `Babble with ${id} does not exist`
@@ -256,5 +256,25 @@ router.delete('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (
     next(err);
   }
 }))
+
+router.get('/search/:searchVal', asyncHandler(async (req, res, next) => {
+  const search = req.params.searchVal
+  console.log(req.body)
+  const babble = await Babble.findAll({
+    where: {
+      title: {[Op.iLike]: `%${search}%`}
+    }
+  });
+  if (babble) {
+    res.json(
+      babble
+    );
+  }else {
+    const err = new Error();
+    err.title = 'No results were found for that search.';
+    err.status = 404;
+    next(err);
+  }
+}));
 
 module.exports = router;
