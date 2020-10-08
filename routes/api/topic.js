@@ -4,7 +4,7 @@ const {
   check,
   validationResult
 } = require('express-validator');
-const router = require('..');
+const router = express.Router();
 
 const {
   Babble,
