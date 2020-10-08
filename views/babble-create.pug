@@ -9,27 +9,27 @@ html(lang="en")
   body
 
 
-  div.create-babble-form-div
-    form(class = "create-babble-form" action='/api/babbles' method="post")
+    div.create-babble-form-div
       .errors-container
-      .create-babble-form__title
-        +field( null, "title", 'text', null, "Title")
-      .create-babble-form__subheader
-        +field(null, "subHeader", 'text', null, "Subheader")
-      .create-babble-form__reading-time
-        +field(null, "readTime", "number", null, "reading time")
-      .create-babble-form__content
-        +field(null, "content", 'text', null, `Babble-on \n here to your \n heart's content...`)
-      .create-babble-form__url
-        +field(null, "url", "url", null, "insert url of your image here")
-      .create-babble-form__topic
-        span
-          label(for="topics") Topics
-        span
-          select(name="topicID" id="topicID") Topics
-            each topic in topics
-              option(value=topic.id)= topic.name
-      div.btn-container
-          button(class = "publish-btn" type = "submit") Publish
+      form(class = "create-babble-form" action='/api/babbles' method="post")
+        .create-babble-form__title
+          +field( null, "title", 'text', null, "Title")
+        .create-babble-form__subheader
+          +field(null, "subHeader", 'text', null, "Subheader")
+        .create-babble-form__reading-time
+          +field(null, "readTime", "number", null, "reading time")
+        .create-babble-form__content
+          textarea#babble-form__textarea(name="content", placeholder= `Babble-on here to your heart's content...` rows=20)
+        .create-babble-form__url
+          +field(null, "url", "url", null, "insert url of your image here")
+        .create-babble-form__topic
+          span
+            label(for="topics") Topics
+          span
+            select(name="topicID" id="topicID") Topics
+              each topic in topics
+                option(value=topic.id)= topic.name
+        div.btn-container
+            button(class = "publish-btn" type = "submit") Publish
 
   script(src="/js/create-babble.js" type="module")

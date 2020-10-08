@@ -31,7 +31,36 @@ const babbleNotFoundErr = (id) => {
 }
 
 const validateBabble = [
-  check('')
+  check('title')
+    .exists({
+      checkFalsy: true
+    })
+    .withMessage('Please enter a title for your babble')
+    .isLength({
+      max: 100
+    })
+    .withMessage('Babble titles must be less than 100 characters long.'),
+    check('subHeader')
+    .exists({
+      checkFalsy: true
+    })
+    .withMessage('Please enter a Sub-Header for your babble')
+    .isLength({
+      max: 150
+    })
+    .withMessage('Sub-Headers must be less than 150 characters long.'),
+    check('content')
+    .exists({
+      checkFalsy: true
+    }).withMessage('Please enter content for your babble'),
+    check('readTime')
+    .exists({
+      checkFalsy: true
+    }).withMessage('Please enter an estimated read time for your babble'),
+    check('topicID')
+    .exists({
+      checkFalsy: true
+    }).withMessage('Please enter at least one topic for your babble')
 ]
 const validateCommentInputs = [
   check('commentText')
@@ -94,7 +123,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
   });
   res.json({
     message: 'Babble was created!'
-  })
+  });
 }));
 
 router.put(':/id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, res, next) => {
@@ -143,6 +172,20 @@ router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => 
   }
 }))
 
+router.get('/:id(\\d+)/comments', asyncHandler(async (req, res, next) => {
+  const comments = await Comment.findAll({
+    where: {
+      postID: req.params.id
+    },
+    include: {
+      model: User,
+      attributes: ['userName']
+    }
+  });
+
+  res.json(comments);
+}))
+
 router.post('/:id(\\d+)/comments', requireAuth, validateCommentInputs, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const {
     commentText
@@ -152,14 +195,20 @@ router.post('/:id(\\d+)/comments', requireAuth, validateCommentInputs, handleVal
     userID: req.user.id,
     postID: req.params.id
   })
-  res.status(201).json({
-    comment
-  })
+const newComment = await Comment.findByPk(comment.id, {
+      include: {
+        model: User,
+        required: true
+      }
+})
+  res.status(201).json(
+    newComment
+  )
 }));
 
 router.get('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
   const commentId = req.params.commentId;
-  const comment = await Comment.findByPk(commentId);
+  const comment = await Comment.findByPk(commentId, {});
 
   if (comment) {
     res.json({
