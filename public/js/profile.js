@@ -1,4 +1,6 @@
 window.addEventListener('DOMContentLoaded', async (e) => {
+
+
     try {
     const userId = localStorage.getItem('babble_user_id');
 
@@ -37,10 +39,12 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     const babbleSubHeaderDiv = document.createElement('div');
     const babbleTimestampDiv = document.createElement('div');
     const readTimeDiv = document.createElement('div');
+
+    const babbleAnchor = document.createElement('a');
     const babbleImgUrl = document.createElement('img');
     const babbleImgDiv = document.createElement('div');
 
-
+    babbleAnchor.classList.add('babble-anchor')
     babbleDiv.classList.add('bottom-div-container');
     babbleLeftDiv.classList.add('bottom-left-div-container');
     babbleRightDiv.classList.add('bottom-right-div-container');
@@ -61,22 +65,30 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     babbleTimestampDiv.innerHTML = babbleTimestamp;
     readTimeDiv.innerHTML = `${babbleReadTime} minutes`;
     babbleImgUrl.setAttribute('src', babbles[i].url);
+    babbleAnchor.setAttribute('href', `/babbles/${babbles[i].id}`)
 
     babbleLeftDiv.append(babbleTitleDiv);
     babbleLeftDiv.append(babbleSubHeaderDiv);
     babbleLeftDiv.append(babbleTimestampDiv);
     babbleLeftDiv.append(readTimeDiv)
 
-    babbleImgDiv.append(babbleImgUrl);
+    babbleAnchor.append(babbleImgUrl)
+    babbleImgDiv.append(babbleAnchor);
 
     babbleRightDiv.append(babbleImgDiv);
+
 
     babbleDiv.append(babbleLeftDiv)
     babbleDiv.append(babbleRightDiv);
 
     profileContainer.append(babbleDiv)
 
+    // document.querySelector('bottom-div-container')
+    // .addEventListener('click', () => {
+    //     /babbles/babble[i].id
+    // })
     }
+
 
 } catch(err) {
     console.error(err)
