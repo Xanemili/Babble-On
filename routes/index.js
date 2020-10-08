@@ -14,17 +14,19 @@ router.get('/log-in', (req, res) => {
   res.render('log-in')
 })
 
+router.get('/welcome', (req, res) => {
+  res.render('welcome')
+})
+
 router.get('/babbles/:id(\\d+)', (req, res) => {
   res.render('babble')
 });
-
-
-
 
 router.get('/babbles/create', async(req, res) => {
   const topics = await Topic.findAll();
 
   res.render('babble-create', { topics })
 });
+
 
 module.exports = router;
