@@ -1,27 +1,22 @@
-const insertComments = async (id, container) => {
-  const res = await fetch(`/api/babbles/${id}/comments`);
-
-  const comments = await res.json()
-  for (index of comments) {
+const insertComments = async (container, comment) => {
     let newComment = document.createElement('div')
     let user = document.createElement('div')
     let text = document.createElement('div')
 
 
-    let commentClasses = [`comment-${index.id}`, 'comment']
+    let commentClasses = [`comment-${comment.id}`, 'comment']
 
     newComment.classList.add(...commentClasses)
     user.classList.add('comment-username')
     text.classList.add('comment-text')
 
 
-    user.innerHTML = index.User.userName;
-    text.innerHTML = index.comment;
+    user.innerHTML = comment.User.userName;
+    text.innerHTML = comment.comment;
 
     newComment.appendChild(user);
     newComment.appendChild(text);
-    container.appendChild(newComment);
-  }
+    container.prepend(newComment);
 
 }
 
@@ -41,19 +36,25 @@ window.addEventListener("DOMContentLoaded", async () => {
     document.querySelector('#babble-topic').innerHTML = `${babble.topicID}`;
 
     const babbleImage = document.querySelector('#babble-image');
-    babbleImage.setAttribute('src', `${babble.url}`);
+    if (babble.url) {
+      babble.classList.remove('hidden')
+      babbleImage.setAttribute('src', `${babble.url}`);
+    }
 
     document.querySelector('.babble-content').innerHTML = babble.content;
 
-    const commentContainer = document.querySelector('.babble-comments')
+    const commentContainer = document.querySelector('.babble-old-comments')
 
-    insertComments(babble.id, commentContainer);
+    const resComm = await fetch(`/api${window.location.pathname}/comments`);
+    const comments = await resComm.json()
+
+    for (comment of comments) {
+      insertComments(commentContainer, comment);
+    }
   } catch (err) {
     if (err.status >= 400 && err.status < 600) {
       const errorJSON = await err.json();
       const errorsContainer = document.querySelector('.errors-container');
-      logo.setAttribute("class", "logo-left")
-      instructions.innerHTML = 'There seems to be some issues, please refer to the instructions above'
       let errorsHtml = [
         `
         <div class="error-alert">
@@ -102,16 +103,55 @@ document.querySelector('.babble-new-comment')
         method: 'POST',
         body: JSON.stringify(body),
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjo1LCJlbWFpbCI6InhhbkBnbWFpbC5jb20ifSwiaWF0IjoxNjAyMDE4MzM2LCJleHAiOjE2MDI2MjMxMzZ9.2Ao4CiNzFMCYktacNFnsiQUVar_2NWOoKgmSWqa6Qt4',
+          Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
           'Content-Type': 'application/json'
         }
       });
       if (!res.ok) {
         throw res;
-      }
+      };
 
-      //update comments with ajax
+      comment = await res.json()
+      console.log(comment)
+      insertComments(document.querySelector('.babble-old-comments'), comment)
     } catch (err) {
+      if (err.status >= 400 && err.status < 600) {
+        const errorJSON = await err.json();
+        const errorsContainer = document.querySelector('.babble-comments-errors-container');
+        let errorsHtml = [
+          `
+        <div class="error-alert">
+            Something went wrong. Please try again.
+        </div>
+        `,
+        ];
 
+        if (err.status === 401) {
+          errorsContainer.innerHTML = 'You must log in to leave a comment'
+        } else {
+
+          const {
+            errors
+          } = errorJSON;
+          if (errors && Array.isArray(errors)) {
+            errorsHtml = errors.map(
+              (message) => `
+            <div class "error-alert">
+                ${message}
+            </div> `
+            );
+          }
+          errorsContainer.innerHTML = errorsHtml.join("");
+          }
+          }
+          else {
+            alert("Something went wrong. Please check your internet connection and try again!")
+          }
     }
-  })
+  });
+
+  document.querySelector('#comment-cancel')
+    .addEventListener('click', (event) => {
+        document.querySelector('#new-comment__textarea').value = '';
+        document.querySelector('.babble-new-comment-div').classList.add('hidden');
+    })

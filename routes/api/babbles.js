@@ -195,9 +195,15 @@ router.post('/:id(\\d+)/comments', requireAuth, validateCommentInputs, handleVal
     userID: req.user.id,
     postID: req.params.id
   })
-  res.status(201).json({
-    comment
-  })
+const newComment = await Comment.findByPk(comment.id, {
+      include: {
+        model: User,
+        required: true
+      }
+})
+  res.status(201).json(
+    newComment
+  )
 }));
 
 router.get('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {

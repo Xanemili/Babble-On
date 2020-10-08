@@ -16,16 +16,16 @@ block content
     .babble-header
       h1(id="babble-header")
       h2(id="babble-subheader")
-    .babble-user
-      #babble-user
-      #babble-user-fullname
+
+    #babble-user
+    #babble-user-fullname
         //- button(class = "follow-btn" type = "button") Follow
     .babble-info
       span(id="babble-date")
       span(id="babble-read-time")
       span(id="babble-topic")
     .babble-image
-      img(id="babble-image")
+      img(id="babble-image" class='hidden')
     .babble-content
       p()
 
@@ -33,27 +33,16 @@ block content
       .babble-comments-header Comments
         .comments-button
           button(id='comment-add') Comment
-      .babble-comments
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> adding comment functionality
-        .babble-comments-errors-container
+      .babble-comments-errors-container
+      .babble-comments-div
         .babble-new-comment-div.hidden
           form(class='babble-new-comment')
             .new-comment() New Comment
-            textarea#new-comment(name="newComment" rows="4")
+            textarea#new-comment__textarea(name="newComment" rows="4")
             #comment-buttons
-              button#comment-cancel(type="reset") Cancel
-              button#comment-add(type="submit") Add Comment
-<<<<<<< HEAD
-=======
-        form(class='babble-new-comment hidden')
-          .new-comment New Comment
-          textarea#new-comment(name="newComment" rows="4")
-          button#comment-add(type="submit") Add Comment
->>>>>>> comment feature added
-=======
->>>>>>> adding comment functionality
+              button#comment-cancel(type='reset') Cancel
+              button#comment-add() Add Comment
+        .babble-old-comments
+
 
   script(src='../js/babble-view.js')
