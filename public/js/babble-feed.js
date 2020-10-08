@@ -95,7 +95,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             const babbleReadTime = `${babbles[i].readTime} minute(s) read time`;
             const babbleTimestamp = babbles[i].updatedAt
             const babbleTopic = babbles[i].Topic.name
-            babbleImg.setAttribute('src', 'https://www.njea.org/wp-content/uploads/2014/10/Coding.jpg');
+            babbleImg.setAttribute('src', `${babbles[i].url}`);
             babbleLink.setAttribute('href', ``)
 
             babbleTitleDiv.innerHTML = babbleTitle;
