@@ -113,6 +113,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     content,
     readTime,
     topicID,
+    url,
     userID
   } = req.body;
 
@@ -122,6 +123,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     content,
     readTime,
     topicID,
+    url,
     userID
   });
   res.json({
