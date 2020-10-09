@@ -11,8 +11,8 @@ router.get('/edit', async(req, res) => {
 })
 
 router.get('/sign-up', (req, res) => {
-    res.render('sign-up')
-  })
+  res.render('sign-up')
+})
 
 router.get('/log-in', (req, res) => {
   res.render('log-in')
@@ -30,8 +30,6 @@ router.get('/babbles/create', async(req, res) => {
   const topics = await Topic.findAll();
   res.render('babble-create', { topics })
 });
-
-
 
 router.get('/babbles', async(req, res) => {
   const topics = await Topic.findAll();

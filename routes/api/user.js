@@ -149,7 +149,7 @@ router.patch('/:id(\\d+)/edit', requireAuth, asyncHandler(async (req, res, next)
   //   email,
   //   firstName,
   //   lastName,
-  })
+  // })
 
 }));
 
