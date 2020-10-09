@@ -1,3 +1,9 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+  }
+
 * {
     font-family: Cabin;
     /* border: 1px solid black; */
@@ -39,18 +45,10 @@
     align-self: center;
 }
 
-.bio-div {
-
-}
-
 .top-right-div-container {
     width: 300px;
     align-self: center;
     text-align: center;
-}
-
-.follow-list-div {
-
 }
 
 .bottom-div-container {

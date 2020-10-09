@@ -1,9 +1,11 @@
-body {
-  /* background-color: rgba(65, 172, 131, .25) ; */
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden
 }
 
 * {
-  /* outline: solid; */
+
   font-family: Cabin;
 }
 

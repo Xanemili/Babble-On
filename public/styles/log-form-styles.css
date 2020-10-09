@@ -4,6 +4,12 @@ body{
     font-family: Cabin;
 }
 
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+  }
+
 
 
 .log-in-form-container{
@@ -83,6 +89,7 @@ a{
     justify-content: center;
     display: flex;
     bottom: 200px;
+    font-weight: bold;
 }
 
 
