@@ -73,6 +73,10 @@ input{
   width: 100%;
 }
 
+.hidden {
+  display: none;
+}
+
 button{
   justify-self: right;
   position: relative;
@@ -83,13 +87,14 @@ button{
   height: 30px;
   width: 80px;
   font-family: Cabin;
-
-  /* font-size: 10px; */
-  /* font-weight: bold; */
   margin: auto;
   margin-bottom: 20px;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+}
 
 /* .log-in-form{
   align-content: center;
@@ -135,11 +140,6 @@ label{
   position: relative;
   bottom: 75px;
   width: 40px;
-}
-
-.btn-container{
-  display: flex;
-
 }
 .form-group{
   justify-content: space-between;

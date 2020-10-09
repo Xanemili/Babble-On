@@ -132,8 +132,8 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
   });
 }));
 
-router.put(':/id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, res, next) => {
-  const babble = await Babble.findAll({
+router.put('/:id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, res, next) => {
+          const babble = await Babble.findOne({
     where: {
       id: req.params.id
     }
@@ -141,19 +141,38 @@ router.put(':/id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, r
 
   if (req.user.id !== babble.userID) {
     const err = new Error("Unauthorized");
-    error.status = 401;
+    err.status = 401;
     err.message = "You are not authorized to edit this Babble.";
     err.title = "Unauthroized"
     throw err;
   }
 
   if (babble) {
+const {
+  title,
+  subHeader,
+  content,
+  readTime,
+  topicID,
+  url,
+  userID
+} = req.body;
+
     await babble.update({
-      //insert update logic
+      title,
+      subHeader,
+      content,
+      readTime,
+      topicID,
+      url,
+      userID
     })
   } else {
     next(babbleNotFoundErr(req.params.id))
   }
+  res.status(201).json({
+    id: req.params.id
+  })
 }));
 
 router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
