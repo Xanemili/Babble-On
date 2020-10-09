@@ -1,6 +1,5 @@
 window.addEventListener('DOMContentLoaded', async (e) => {
 
-
     try {
         const userId = localStorage.getItem('babble_user_id');
 
@@ -32,26 +31,76 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const  following  = await res3.json();
         const  follower  = await res4.json();
 
-        // console.log(following)
-
-        // let followerLength = 0
-
-
-        // for (let follow of follower) {
-        //     followerLength++
-        // }
-
-
         document.querySelector('.username-div').innerHTML = user.userName
         document.querySelector('.user-name-div').innerHTML = `${user.firstName} ${user.lastName}`
         document.querySelector('.user-email-div').innerHTML = user.email
         document.querySelector('.bio-div').innerHTML = user.biography
-        document.querySelector('.follow-list-div').innerHTML = `${follower.length} followers \n
-        ${following.length} following`
+        document.querySelector('.followers-count-div').innerHTML = `${follower.length} followers  `
+        document.querySelector('.following-count-div').innerHTML = `  ${following.length} following`
         const profileContainer = document.querySelector('.main-container')
+        const followersContainer = document.querySelector('.followers-list-div')
         //Implement tennery
 
+        for(let follow of following) {
+            const id = follow.followerUserID
+            console.log(follow)
 
+            let followerDiv = document.createElement('div');
+            followerDiv.setAttribute('class', 'follower-div')
+            let followerNameAnchor = document.createElement('a')
+            let followerPicAnchor = document.createElement('a')
+
+            const name = `${follow.User.firstName} ${follow.User.lastName}`
+            let profilePic = document.createElement('img')
+            profilePic.setAttribute('class', "mini-profile-pic")
+            profilePic.setAttribute('src', "https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
+
+            followerNameAnchor.setAttribute('href', `/users/${follow.followerUserID}`);
+            followerNameAnchor.setAttribute('class', `name-anchor`);
+            followerPicAnchor.setAttribute('href', `/users/${follow.followerUserID}`)
+
+
+            followerNameAnchor.innerHTML = name
+
+
+            followerDiv.append(profilePic)
+            followerDiv.append(followerNameAnchor)
+
+            followersContainer.append(followerDiv)
+
+        }
+        // for(let follow of follower) {
+        //     const id = follow.followerUserID
+        //     console.log(follow)
+
+        //     let followerDiv = document.createElement('div');
+
+        //     let followerNameAnchor = document.createElement('a')
+        //     let followerPicAnchor = document.createElement('a')
+
+        //     const name = `${follow.User.firstName} ${follow.User.lastName}`
+        //     let profilePic = document.createElement('img')
+        //     profilePic.setAttribute('class', "mini-profile-pic")
+        //     profilePic.setAttribute('src', "https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
+
+        //     followerNameAnchor.setAttribute('href', `/users/${follow.followerUserID}`);
+        //     followerPicAnchor.setAttribute('href', `/users/${follow.followerUserID}`)
+
+        //     let followerNameSpan = document.createElement('span')
+        //     let followerPicSpan = document.createElement('span')
+
+        //     followerNameSpan.innerHTML = name
+        //     followerPicSpan.appendChild = profilePic
+
+        //     followerPicAnchor.append(followerPicSpan)
+        //     followerNameAnchor.append(followerNameSpan)
+
+        //     followerDiv.append(followerPicAnchor)
+        //     followerDiv.append(followerNameAnchor)
+
+        //     followersContainer.append(followerDiv)
+
+        // }
 
         for (let i = 0; i < 5; i++) {
             const date = new Date(Date(babbles.updatedAt))
@@ -108,9 +157,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
             profileContainer.append(babbleDiv)
 
-
         }
-
 
     } catch (err) {
         console.error(err)
