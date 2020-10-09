@@ -129,7 +129,8 @@ router.get('/:id(\\d+)/edit', asyncHandler(async(req, res, next) => {
 }));
 
 router.patch('/:id(\\d+)/edit', requireAuth, asyncHandler(async (req, res, next) => {
-  const userId = req.params.id
+  const userToUpdate = await User.findByPk(req.params.id)
+
   const {
     biography,
     email,
@@ -137,14 +138,17 @@ router.patch('/:id(\\d+)/edit', requireAuth, asyncHandler(async (req, res, next)
     lastName,
   } = req.body;
 
-  const userToUpdate = await User.findByPk(req.params.id)
 
-  res.json({
+  userToUpdate.update({
 
-    biography,
-    email,
-    firstName,
-    lastName,
+  })
+
+  // res.json({
+
+  //   biography,
+  //   email,
+  //   firstName,
+  //   lastName,
   })
 
 }));
