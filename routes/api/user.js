@@ -114,6 +114,12 @@ router.post('/token', validateEmailAndPassword, asyncHandler(async (req, res, ne
   })
 }));
 
+router.get('/', asyncHandler( async(req, res) => {
+  const user = await User.findAll()
+
+  res.json(user)
+}));
+
 router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   // const id = parseInt(req.params.id, 10)
   const user = await User.findByPk(req.params.id, { attributes: [ "userName", "firstName", "email", "lastName", "biography"] });
