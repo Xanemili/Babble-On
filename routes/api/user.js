@@ -21,6 +21,7 @@ const {
   requireAuth
 } = require('../../auth');
 const follower = require('../../db/models/follower');
+const user = require('../../db/models/user');
 
 const router = express.Router();
 
@@ -139,6 +140,9 @@ router.get('/:id(\\d+)/followers', asyncHandler(async (req, res, next) => {
     },
     order: [['updatedAt', 'DESC']]
   })
+  // console.log("following: ", followers)
+  // console.log("length: ", following.length)
+
   res.status(201).json(followers)
 
 }))
@@ -156,7 +160,7 @@ router.post('/:id(\\d+)/followers', requireAuth, asyncHandler(async (req, res, n
       followerUserID
     }
   })
-  console.log(follow)
+
   if (follow) {
     await follow.destroy()
     res.status(200).end()
@@ -169,14 +173,6 @@ router.post('/:id(\\d+)/followers', requireAuth, asyncHandler(async (req, res, n
     res.status(201).end()
   }
 }));
-
-
-  // const follow = await Follower.create({
-  //   userID: userID,
-  //   followerUserID: followerUserID
-  // });
-
-
 
 router.get('/:id(\\d+)/following', asyncHandler(async (req, res, next) => {
   const following = await Follower.findAll({
