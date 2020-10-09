@@ -70,6 +70,11 @@
   display: block;
 }
 
+#create-babble__link {
+  border-top: 2px solid lightgray;
+  padding: 5px;
+}
+
 /* @keyframes magnify_slide {
   from { right: 200px;}
   to {right: 400px;}
