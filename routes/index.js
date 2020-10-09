@@ -6,6 +6,10 @@ router.get('/', async(req,res) => {
   res.render('profile');
   })
 
+router.get('/edit', async(req, res) => {
+  res.render('profile-edit')
+})
+
 router.get('/sign-up', (req, res) => {
     res.render('sign-up')
   })
@@ -27,16 +31,6 @@ router.get('/babbles/create', async(req, res) => {
   res.render('babble-create', { topics })
 });
 
-router.get('/:id(\\d+)/edit'), (req, res) => {
-  const userData = await User.findOne({
-    where: {
-      id = req.params;
-    }
-  })
-  const user = {
-
-  }
-}
 
 
 router.get('/babbles', async(req, res) => {

@@ -3,28 +3,46 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    link(rel="stylesheet", href="/styles/profile-page-styles.css")
+    link(rel="stylesheet", href="/styles/profile-edit-styles.css")
     link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Cabin")
     title Document
   body
 
     include navbar-grey-logged.pug
 
+    //- div(class="main-container")
+    //-   div(class="top-div-container")
+    //-     div(class="top-left-div-container")
+    //-       div(class="profile-pic-div")
+    //-         img(src="https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
+    //-       div(class="user-info-div")
+    //-         div(class="user-firstName-div")
+    //-         div(class="user-lastName-div")
+    //-         div(class="user-email-div")
+    //-     div(class="top-center-div-container")
+    //-       div(class="bio-div")
+    //-     div(class="top-right-div-container")
+    //-       div(class="follow-list-div")
+
+
+
     div(class="main-container")
-      div(class="top-div-container")
-        div(class="top-left-div-container")
-          div(class="profile-pic-div")
-            img(src="https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
-          div(class="user-info-div")
-            div(class="user-firstName-div")
-            div(class="user-lastName-div")
-            div(class="user-email-div")
-        div(class="top-center-div-container")
+      div(class="profile-pic-div")
+        img(src="https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
+      div(class="form-container")
+        form(class="profile-edit-form")
+          div(class="firstName-div")
+            label(for="firstName-label" class="firstName-label first-Name-group")
+            input(id="firstName-label" class="firstName-input first-Name-group")
+          div(class="lastName-div")
+            label(for="lastName-label" class="lastName-label last-Name-group")
+            input(id="lastName-label" class="lastName-input last-Name-group")
+          div(class="email-div")
+            label(for="email-label" class="email-label email-group")
+            input(id="email-label" class="email-input email-group")
           div(class="bio-div")
-        div(class="top-right-div-container")
-          div(class="follow-list-div")
+            label(for="bio-label" class="bio-label bio-group")
+            textarea(id="bio-label" class="bio-input")
 
 
-
-
-script(src="js/profile-edit.js")
+script(src="/js/profile-edit.js")

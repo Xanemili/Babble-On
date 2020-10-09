@@ -8,11 +8,26 @@ window.addEventListener('DOMContentLoaded', async(e) => {
 
     console.log(user)
 
-    document.querySelector('.user-firstName-div').innerHTML = `${user.firstName} ${user.lastName}`
-    document.querySelector('.user-lastName-div').innerHTML = `${user.firstName} ${user.lastName}`
-    document.querySelector('.user-email-div').innerHTML = user.email
-    document.querySelector('.bio-div').innerHTML = user.biography
-    const profileContainer = document.querySelector('.main-container')
+    const firstNameInput = document.querySelector('.firstName-input')
+    const lastNameInput = document.querySelector('.lastName-input')
+    const emailInput = document.querySelector('.email-input')
+    const bioInput = document.querySelector('.bio-input')
+    const firstNameLabel = document.querySelector('.firstName-label')
+    const lastNameLabel = document.querySelector('.lastName-label')
+    const emailLabel = document.querySelector('.email-label')
+    const bioLabel = document.querySelector('.bio-label')
+
+
+    bioInput.value = user.biography
+    firstNameInput.setAttribute('value', user.firstName)
+    lastNameInput.setAttribute('value', user.lastName)
+    emailInput.setAttribute('value', user.email)
+
+    bioLabel.innerHTML = "biography"
+    firstNameLabel.innerHTML = "first name"
+    lastNameLabel.innerHTML = "last name"
+    emailLabel.innerHTML = "e-mail"
+
 
   } catch (e) {
     console.log(e)
