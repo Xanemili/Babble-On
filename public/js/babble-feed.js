@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
     const babbles = await res1.json();
     const users = await res2.json();
-     console.log(users[1].profilePicture)
+
 
     //Don't forget to include the date!!
     function mainBableInfo() {
@@ -100,7 +100,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         const sideBabbleAuthor = document.createElement('div')
         sideBabbleAuthor.classList.add('side-babble-author')
-        sideBabbleAuthor.innerHTML = `By: ${babbles[i].User.firstName} ${babbles[0].User.lastName}`
+        sideBabbleAuthor.innerHTML = `By: ${babbles[i].User.firstName} ${babbles[i].User.lastName}`
 
         const sideBabbleReadTime = document.createElement('div')
         sideBabbleReadTime.classList.add('side-babble-read-time')
@@ -153,14 +153,115 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         followUserDiv.append(followUserImgDiv)
         followUserDiv.append(followUserInfoDiv)
+11}
 
+    }
+
+    function trendingBabbleInfo() {
+
+        for (let i = 7; i < 13; i++) {
+
+        const trendingBabble = document.querySelector(`.trending-babble-${i}`)
+
+        const trendingBabbleUserInfoDiv = document.createElement('div')
+        trendingBabbleUserInfoDiv.classList.add('trending-babble-user-info-div')
+
+        const trendingBabbleUserInfo = document.createElement('div')
+        trendingBabbleUserInfo.classList.add('trending-babble-user-info')
+        trendingBabbleUserInfo.innerHTML = `${babbles[i].User.firstName} ${babbles[i].User.lastName}`
+        const trendingBabbleUserImg = document.createElement('img')
+        if (babbles[i].User.profilePicture !== null)  {
+        trendingBabbleUserImg.classList.add('trending-babble-user-img');
+        trendingBabbleUserImg.setAttribute('src', `${babbles[i].User.profilePicture}`)
+        }
+
+        const trendingBabbleInfoDiv = document.createElement('div')
+        trendingBabbleInfoDiv.classList.add('trending-babble-info-div')
+
+        const trendingBabbleInfo = document.createElement('div')
+        trendingBabbleInfo.classList.add('trending-babble-info')
+
+        const trendingBabbleTitle = document.createElement('div')
+        trendingBabbleTitle.classList.add('trending-babble-title')
+        trendingBabbleTitle.innerHTML = babbles[i].title
+        const trendingBabbleSubHeader = document.createElement('div')
+        trendingBabbleSubHeader.classList.add('trending-babble-subHeader')
+        trendingBabbleSubHeader.innerHTML = babbles[i].subHeader
+        const trendingBabbleReadTime = document.createElement('div')
+        trendingBabbleReadTime.classList.add('trending-babble-readTime')
+        trendingBabbleReadTime.innerHTML = `${babbles[i].readTime} min read`
+
+        const trendingUserInfoDiv = document.createElement('div');
+        trendingUserInfoDiv.classList.add('trending-user-info-div')
+
+        trendingBabbleUserInfoDiv.append(trendingBabbleUserInfo);
+
+        if (babbles[i].User.profilePicture !== null) {
+        trendingBabbleUserInfoDiv.append(trendingBabbleUserImg)
+        }
+        trendingBabbleInfo.append(trendingBabbleTitle)
+        trendingBabbleInfo.append(trendingBabbleSubHeader)
+        trendingBabbleInfo.append(trendingBabbleReadTime)
+
+        trendingBabbleInfoDiv.append(trendingBabbleInfo)
+        trendingBabble.append(trendingBabbleUserInfoDiv)
+        trendingBabble.append(trendingBabbleInfoDiv)
+        }
+    }
+
+    function babbleInfo() {
+      for (let i = 13; i <  18; i++) {
+        const babbleContainer = document.querySelector('.babbles-container')
+        // console.log(babbles[i])
+
+        const babble = document.createElement('div');
+        babble.classList.add(`babble-${i}`)
+        const babbleInfoDiv = document.createElement('div')
+        babbleInfoDiv.classList.add('babble-info-div');
+        const babbleImgDiv = document.createElement('div')
+        babbleImgDiv.classList.add('babble-img-div');
+
+        const babbleUserName = document.createElement('div')
+        babbleUserName.classList.add('babble-user-name')
+        babbleUserName.innerHTML = babbles[i].User.userName
+        console.log(babbleUserName)
+        const babbleAuthor = document.createElement('div')
+        babbleAuthor.classList.add('babble-author')
+        babbleAuthor.innerHTML = `${babbles[i].User.firstName} ${babbles[i].User.lastName}`
+        const babbleProfilePic = document.createElement('img')
+        babbleProfilePic.classList.add('babble-profile-pic')
+        babbleProfilePic.setAttribute('src', `${babbles[i].User.profilePicture}`)
+        const babbleTitle = document.createElement('div')
+        babbleTitle.classList.add('babble-title')
+        babbleTitle.innerHTML = babbles[i].title
+
+        const babbleImg = document.createElement('img')
+        babbleImg.classList.add('babble-img')
+        babbleImg.setAttribute('src', `${babbles[i].url}`)
+
+        babbleInfoDiv.append(babbleUserName)
+        babbleInfoDiv.append(babbleAuthor)
+        if (babbles[i].User.profilePicture !== null) {
+        babbleInfoDiv.append(babbleProfilePic)
+        }
+        babbleInfoDiv.append(babbleTitle)
+        babbleImgDiv.append(babbleImg)
+
+        babble.append(babbleInfoDiv)
+        babble.append(babbleImgDiv)
+        babbleContainer.append(babble)
 
       }
     }
 
-    mainBableInfo();
-    sideBabbleInfo();
-    userFollowInfo();
+
+      await mainBableInfo();
+      await sideBabbleInfo();
+      await userFollowInfo();
+      await trendingBabbleInfo();
+      await babbleInfo();
+
+
 
   } catch (err) {
     console.error(err);

@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     hashedPassword: {
       type: DataTypes.STRING.BINARY
+    },
+    profilePicture: {
+      type: DataTypes.STRING(1000)
     }
   }, {});
   User.associate = function (models) {
