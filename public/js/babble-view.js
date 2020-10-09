@@ -161,3 +161,7 @@ document.querySelector('#comment-cancel')
     document.querySelector('#new-comment__textarea').value = '';
     document.querySelector('.babble-new-comment-div').classList.add('hidden');
   })
+
+document.querySelector('.multi-purpose-button').addEventListener('click', e => {
+
+})
