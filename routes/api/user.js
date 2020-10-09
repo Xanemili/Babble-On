@@ -139,7 +139,7 @@ router.get('/:id(\\d+)/followers', asyncHandler(async (req, res, next) => {
     },
     order: [['updatedAt', 'DESC']]
   })
-  res.json(followers)
+  res.status(201).json(followers)
 
 }))
 
@@ -150,14 +150,33 @@ router.post('/:id(\\d+)/followers', requireAuth, asyncHandler(async (req, res, n
 
   const userID = parseInt(req.params.id, 10);
 
+  const follow = await Follower.findOne({
+    where: {
+      userID,
+      followerUserID
+    }
+  })
+  console.log(follow)
+  if (follow) {
+    await follow.destroy()
+    res.status(200).end()
 
-  const follow = await Follower.create({
-    userID: userID,
-    followerUserID: followerUserID
-  });
+  } else {
+    await Follower.create({
+      userID: userID,
+      followerUserID: followerUserID
+    })
+    res.status(201).end()
+  }
+}));
 
 
-}))
+  // const follow = await Follower.create({
+  //   userID: userID,
+  //   followerUserID: followerUserID
+  // });
+
+
 
 router.get('/:id(\\d+)/following', asyncHandler(async (req, res, next) => {
   const following = await Follower.findAll({
