@@ -7,4 +7,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.location.href = '/log-in';
   })
+let id = localStorage.getItem('babble_user_id');
+if (id) {
+  document.querySelector('#babble-on-text').setAttribute('href', '/feed')
+  document.querySelector('#babble-on-my-profile').setAttribute('href', `/users/${id}/profile`)
+}
 })

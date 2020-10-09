@@ -14,7 +14,9 @@ module.exports = {
         lastName: faker.name.lastName(),
         email: faker.internet.email(),
         biography: faker.company.catchPhrase(),
-        hashedPassword: hashedPassword
+        hashedPassword: hashedPassword,
+        profilePicture: faker.internet.avatar()
+
       })
     }
 

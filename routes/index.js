@@ -2,9 +2,16 @@ const express = require('express');
 const router = express.Router();
 const { User, Topic, Babble } = require('../db/models');
 
-router.get('/', async(req,res) => {
-  res.render('profile');
-  })
+router.get('/', async (req, res) => {
+  res.redirect('/welcome')
+  // res.render('profile');
+})
+
+router.get('/users/:id(\\d+)/profile', async (req, res) => {
+  res.render('profile', {
+    id: req.params.id
+  });
+}) // implement viewing others profiles
 
 router.get('/edit', async(req, res) => {
   res.render('profile-edit')
@@ -29,6 +36,13 @@ router.get('/babbles/:id(\\d+)', (req, res) => {
 router.get('/babbles/create', async(req, res) => {
   const topics = await Topic.findAll();
   res.render('babble-create', { topics })
+});
+
+router.get('/babbles/:id(\\d+)/edit', async (req, res) => {
+  const topics = await Topic.findAll();
+  res.render('babble-create', {
+    topics
+  })
 });
 
 router.get('/babbles', async(req, res) => {

@@ -1,3 +1,47 @@
+window.addEventListener('DOMContentLoaded', async () => {
+  let pathName = window.location.pathname.split('/')
+  let editCheck = pathName.pop()
+  let path = pathName.join('/')
+  if (editCheck === 'edit') {
+  const deleteButton = document.querySelector('.delete-btn')
+
+    try {
+      const res = await fetch(`/api${path}`);
+      const babble = await res.json();
+
+
+      document.querySelector('.form-control__title').value = babble.title
+      document.querySelector('.form-control__subHeader').value = babble.subHeader
+      document.querySelector('#babble-form__textarea').value = babble.content
+      document.querySelector('.form-control__url').value = babble.url
+      document.querySelector('.form-control__readTime').value = babble.readTime
+      document.querySelector('#topicID').value = babble.topicID
+
+      deleteButton.classList.remove('hidden');
+
+    } catch (e) {
+      throw e;
+    }
+    try {
+
+      deleteButton.addEventListener('click', async (e) => {
+        e.preventDefault()
+        let deleteResponse = await fetch(`/api${path}`, {
+          method: 'DELETE',
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('babble_access_token')}`
+          }
+        });
+
+        console.log(deleteResponse)
+      })
+    } catch (err) {
+      throw err;
+    }
+}
+})
+
 const createBabbleForm = document.querySelector(".create-babble-form")
 
 createBabbleForm.addEventListener('submit', async (e) => {
@@ -21,12 +65,23 @@ createBabbleForm.addEventListener('submit', async (e) => {
     topicID,
     url,
     userID,
-    // topics
+  }
+
+  let methodType = 'POST'
+  let apiUrl = "/api/babbles"
+
+  let path = window.location.pathname.split('/')
+  let editCheck = path.pop()
+
+  if (editCheck) {
+    methodType = 'PUT'
+    apiUrl = `/api${path.join('/')}`
   }
 
   try {
-    const res = await fetch("/api/babbles", {
-      method: "POST",
+    const res = await fetch(apiUrl, {
+
+          method: methodType,
       body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
@@ -35,7 +90,6 @@ createBabbleForm.addEventListener('submit', async (e) => {
     });
 
     if (res.status === 401) {
-      console.log("here")
       window.location.href = "/log-in";
     }
 
@@ -43,7 +97,7 @@ createBabbleForm.addEventListener('submit', async (e) => {
       throw res;
     }
 
-    window.location.href = '/';
+    window.location.href = `${path.join('/')}`;
 
   } catch (err) {
     if (err.status >= 400 && err.status < 600) {
