@@ -112,7 +112,6 @@ document.querySelector('.babble-new-comment')
       };
 
       comment = await res.json()
-      console.log(comment)
       insertComments(document.querySelector('.babble-old-comments'), comment)
     } catch (err) {
       if (err.status >= 400 && err.status < 600) {
