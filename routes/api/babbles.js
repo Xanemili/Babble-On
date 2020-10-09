@@ -176,9 +176,13 @@ const {
 }));
 
 router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
-  const babble = await Babble.findByPk(req.params.id)
+  const babble = await Babble.findOne({
+    where: {
+      id: req.params.id
+    }
+  });
 
-  if (req.user.id !== babble.userID) {
+  if (req.user.id !== babble.dataValues.userID) {
     const err = new Error("Unauthorized");
     error.status = 401;
     err.message = "You are not authorized to edit this Babble.";

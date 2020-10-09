@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   // res.render('profile');
 })
 
-router.get('users/:id(\\d+)/profile', async (req, res) => {
+router.get('/users/:id(\\d+)/profile', async (req, res) => {
   res.render('profile', {
     id: req.params.id
   });

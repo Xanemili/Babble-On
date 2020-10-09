@@ -1,10 +1,12 @@
 window.addEventListener('DOMContentLoaded', async () => {
-  let path = window.location.pathname.split('/')
-  let editCheck = path.pop()
+  let pathName = window.location.pathname.split('/')
+  let editCheck = pathName.pop()
+  let path = pathName.join('/')
   if (editCheck === 'edit') {
+  const deleteButton = document.querySelector('.delete-btn')
 
     try {
-      const res = await fetch(`/api${path.join('/')}`);
+      const res = await fetch(`/api${path}`);
       const babble = await res.json();
 
 
@@ -15,11 +17,29 @@ window.addEventListener('DOMContentLoaded', async () => {
       document.querySelector('.form-control__readTime').value = babble.readTime
       document.querySelector('#topicID').value = babble.topicID
 
-      document.querySelector('.delete-btn').classList.remove('hidden')
+      deleteButton.classList.remove('hidden');
+
     } catch (e) {
       throw e;
     }
-  }
+    try {
+
+      deleteButton.addEventListener('click', async (e) => {
+        e.preventDefault()
+        let deleteResponse = await fetch(`/api${path}`, {
+          method: 'DELETE',
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('babble_access_token')}`
+          }
+        });
+
+        console.log(deleteResponse)
+      })
+    } catch (err) {
+      throw err;
+    }
+}
 })
 
 const createBabbleForm = document.querySelector(".create-babble-form")
@@ -106,5 +126,3 @@ createBabbleForm.addEventListener('submit', async (e) => {
     }
   }
 });
-
-document.addEventListener('click')
