@@ -1,3 +1,9 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+  }
+
 .main-container {
     display: flex;
     justify-content: center;
@@ -146,11 +152,12 @@
     align-self: center;
     width: 25%;
     height: 80%;
+
 }
 
 .follow-user-img {
     height: 100%;
-    width: 100%;
+    width: 65px;
     border-radius: 50%;
 }
 
@@ -159,6 +166,7 @@
     align-self: center;
     width: 65%;
     height: 60%;
+    padding-left: 15px;
 }
 
  .main-center-container {
@@ -167,7 +175,6 @@
     margin-top: 50px;
     width: 100%;
     height: 350px;
-    background-color: lightblue;
 }
 
 .trending-babbles-container {
@@ -175,65 +182,71 @@
     flex-direction: row;
     flex-wrap: wrap;
     width: 75%;
-    background-color: darkblue;
 }
 
-.trending-babble-1 {
+.trending-babble-7 {
     display: flex;
     flex-direction: column;
     margin: 10px;
     width: 48%;
-    background-color: darkgoldenrod;
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 
-.trending-babble-2 {
+.trending-babble-8 {
     display: flex;
     flex-direction: column;
     margin: 10px;
     width: 48%;
-    background-color: darkmagenta;
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 
-.trending-babble-3 {
+.trending-babble-9 {
     display: flex;
     flex-direction: column;
     margin: 10px;
     width: 48%;
-    background-color: darkgoldenrod;
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 
-.trending-babble-4 {
+.trending-babble-10 {
     display: flex;
     flex-direction: column;
     margin: 10px;
     width: 48%;
-    background-color: darkmagenta;
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 
-.trending-babble-5 {
+.trending-babble-11 {
     display: flex;
     flex-direction: column;
     margin: 10px;
     width: 48%;
-    background-color: darkgoldenrod;
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 
-.trending-babble-6 {
+.trending-babble-12 {
     display: flex;
     flex-direction: column;
     margin: 10px;
     width: 48%;
-    background-color: darkmagenta;
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 
-.trending-babble-user-info {
+.trending-babble-user-info-div {
+    display: flex;
     align-self: center;
     height: 35%;
     width: 90%;
-    background-color: white;
 }
 
-.trending-babble-info {
+.trending-babble-user-img {
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+    border-radius: 50%;
+}
+
+.trending-babble-info-div {
     margin: 5px;
     align-self: center;
     height: 65%;
@@ -248,7 +261,6 @@
     margin-top: 50px;
     width: 100%;
     height: 750px;
-    background-color: lightblue;
 }
 
 .babbles-container {
@@ -256,66 +268,80 @@
     align-items: center;
     flex-direction: column;
     width: 60%;
-    background-color: firebrick;
 }
 
-.babble-1 {
+.babble-13 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 10px;
     width: 75%;
     height: 20%;
-    background-color: lightpink;
+    border: 1px solid rgba(128, 128, 128, .2);
 }
 
-.babble-2 {
+.babble-14 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 10px;
     width: 75%;
     height: 20%;
-    background-color: lightpink;
+    border: 1px solid rgba(128, 128, 128, .2);
 }
 
-.babble-3 {
+.babble-15 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 10px;
     width: 75%;
     height: 20%;
-    background-color: lightpink;
+    border: 1px solid rgba(128, 128, 128, .2);
 }
 
-.babble-4 {
+.babble-16 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 10px;
     width: 75%;
     height: 20%;
-    background-color: lightpink;
+    border: 1px solid rgba(128, 128, 128, .2);
 }
 
-.babble-5 {
+.babble-17 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 10px;
     width: 75%;
     height: 20%;
-    background-color: lightpink;
+    border: 1px solid rgba(128, 128, 128, .2);
 }
 
-.babble-info {
+.babble-info-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 30px;
-    height: 75%;
+    height: 85%;
     width: 40%;
-    background-color: white;
     align-self: center;
 }
 
-.babble-img {
+.babble-img-div {
     margin: 15px;
     height: 90%;
     width: 30%;
-    background-color: grey;
     align-self: center;
+}
+
+.babble-profile-pic {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.babble-img {
+    height: 100%;
+    width: 100%;
+    border-radius: 6%;
+
 }

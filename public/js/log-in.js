@@ -29,7 +29,7 @@ demoForm.addEventListener('submit', async (e) => {
     localStorage.setItem('babble_access_token', token);
     localStorage.setItem('babble_user_id', id)
 
-    window.location.href = '/';
+    window.location.href = '/feed';
 })
 
 

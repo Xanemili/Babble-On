@@ -16,8 +16,10 @@ script(src="/js/nav-bar.js")
     div.dropdown
       img(class="nav__menu" src='/resources/drop-down-logo.png')
       div.dropdown-content
-        a(href="/") My Profile
+        a.dropdown-link(href="/") My Profile
         div
-        a(href="/") Edit Profile
+        a.dropdown-link(href="/") Edit Profile
         div
-        a(href="/log-in" id='nav-bar__sign-out') Sign Out
+        a.dropdown-link(href="/log-in") Sign Out
+        div(id='create-babble__link')
+        a.dropdown-link(href='/babbles/create') Create Babble

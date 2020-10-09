@@ -1,9 +1,11 @@
-body {
-  /* background-color: rgba(65, 172, 131, .25) ; */
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden
 }
 
 * {
-  /* outline: solid; */
+
   font-family: Cabin;
 }
 
@@ -71,6 +73,7 @@ body {
   font-size: 20px;
   margin-top: 20px;
   padding-bottom: 20px;
+  overflow-wrap: break-word;
 }
 
 .extra-info {
@@ -98,6 +101,10 @@ button {
 }
 
 /* These are the nav bar styles: */
+
+#babble-read-time {
+  margin: 10px;
+}
 
 .nav-container {
   /* padding-top: 500px; */
