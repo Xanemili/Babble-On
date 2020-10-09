@@ -49,87 +49,39 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const babbles = await res1.json();
         const topics  = await res2.json();
 
-        console.log(res2);
-
-        const leftContainer = document.querySelector('.left-container');
-        const centerContainer = document.querySelector('.center-container');
-        const rightContainer = document.querySelector('.right-container')
-        const topicsDiv = document.createElement('div');
-        const topicsDivTitle = document.createElement('h2');
-
-        topicsDivTitle.innerHTML = 'Topics'
-
-        topicsDivTitle.classList.add('topics-div-titles')
-
-        topicsDiv.classList.add('topics-div')
-
-        topicsDiv.append(topicsDivTitle);
+        const mainBabbleImgDiv = document.querySelector('.main-babble-img')
+        const mainBabbleImg = document.createElement('img')
+        // mainBabbleImg.classList.add('babble-image')
+        // mainBabbleImg.setAttribute('src', 'https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg')
+        mainBabbleImgDiv.innerHTML = "<img src = 'https://image.shutterstock.com/image-photo/bright-spring-view-cameo-island-260nw-1048185397.jpg'>";
 
 
+        function mainBableInfo() {
+        const mainBabbleTitle = document.createElement('div')
+        mainBabbleTitle.classList.add('babble-title');
+        mainBabbleTitle.innerHTML = babbles[0].title
 
-        //Loop for babbles
-        for (let i = 0; i < babbles.length; i++) {
-            // const date = new Date(Date(babbles[i].updatedAt))
-            const babbleDiv = document.createElement('div');
-            const babbleTitleDiv = document.createElement('div');
-            const babbleSubHeaderDiv = document.createElement('div');
-            const babbleTopicDiv = document.createElement('button');
-            const babbleReadTimeDiv = document.createElement('div');
-            const babbleTimestampDiv = document.createElement('div');
-            const babbleImg = document.createElement('img');
-            const babbleImgDiv = document.createElement('div');
-            const babbleLink = document.createElement('a');
+        const mainBabbleSubHeader = document.createElement('div')
+        mainBabbleSubHeader.classList.add('babble-subHeader')
+        mainBabbleSubHeader.innerHTML = babbles[0].subHeader
 
+        const mainBabbleAuthor = document.createElement('div')
+        mainBabbleAuthor.classList.add('babble-author')
+        mainBabbleAuthor.innerHTML = `By: ${babbles[0].User.firstName} ${babbles[0].User.lastName}`
 
-            babbleDiv.classList.add('babble-div');
-            babbleTitleDiv.classList.add('babble-title-div');
-            babbleSubHeaderDiv.classList.add('babble-sub-header-div');
-            babbleTopicDiv.classList.add('babble-topic-div');
-            babbleReadTimeDiv.classList.add('babble-read-time');
-            babbleTimestampDiv.classList.add('babble-timestamp-div');
-            babbleImg.classList.add('babble-img');
-            babbleImgDiv.classList.add('babble-img-div');
+        const mainBabbleReadTime = document.createElement('div')
+        mainBabbleReadTime.classList.add('main-babble-read-time')
+        mainBabbleReadTime.innerHTML = `${babbles[0].readTime} min read`
 
-            const babbleTitle = babbles[i].title;
-            const babbleSubHeader = babbles[i].subHeader
-            const babbleReadTime = `${babbles[i].readTime} minute(s) read time`;
-            const babbleTimestamp = babbles[i].updatedAt
-            const babbleTopic = babbles[i].Topic.name
-            babbleImg.setAttribute('src', `${babbles[i].url}`);
-            babbleLink.setAttribute('href', ``)
+        const mainBabbleInfo = document.querySelector('.main-babble-info');
 
-            babbleTitleDiv.innerHTML = babbleTitle;
-            babbleSubHeaderDiv.innerHTML = babbleSubHeader
-            babbleReadTimeDiv.innerHTML = babbleReadTime;
-            babbleTopicDiv.innerHTML = babbleTopic;
-            babbleTimestampDiv.innerHTML = babbleTimestamp;
-
-
-            babbleDiv.append(babbleTitleDiv);
-            babbleDiv.append(babbleSubHeaderDiv)
-            babbleDiv.append(babbleReadTimeDiv);
-            babbleDiv.append(babbleTopicDiv);
-            babbleDiv.append(babbleTimestampDiv);
-            babbleDiv.append(babbleImg)
-            babbleDiv.append(babbleLink)
-
-            centerContainer.append(babbleDiv);
+        mainBabbleInfo.append(mainBabbleTitle)
+        mainBabbleInfo.append(mainBabbleSubHeader)
+        mainBabbleInfo.append(mainBabbleAuthor)
+        mainBabbleInfo.append(mainBabbleReadTime)
         }
-        //Loop for topics
-        for (let i = 0; i < topics.length; i++) {
-            const topicsNameDiv = document.createElement('div');
-            const topicsBtn = document.createElement('button');
 
-            topicsNameDiv.classList.add('topics-name-div');
-            topicsBtn.classList.add('topics-btn');
-
-            const topicsName = topics[i].name;
-
-            topicsBtn.innerHTML = topicsName;
-            topicsNameDiv.append(topicsBtn);
-            topicsDiv.append(topicsNameDiv);
-            leftContainer.append(topicsDiv)
-     }
+        mainBableInfo();
 
     } catch (err){
         console.error(err);

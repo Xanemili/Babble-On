@@ -77,7 +77,8 @@ const validateCommentInputs = [
 router.get('/', asyncHandler(async (req, res, next) => {
   const babbles = await Babble.findAll({
     include: [
-      { model: Topic }
+      { model: Topic },
+      { model: User},
     ]
   })
   res.json(babbles)
