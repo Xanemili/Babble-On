@@ -4,16 +4,13 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     try {
     const userId = localStorage.getItem('babble_user_id');
 
-    const res1 = await fetch(`/api/users/${userId}`, {
+    const res1 = await fetch(`/api${window.location.pathname}`, {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
         },
     });
 
-    const res2 = await fetch(`/api/users/${userId}/babbles`, {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
-        },
+    const res2 = await fetch(`/api${window.location.pathname}/babbles`, {
     });
 
 

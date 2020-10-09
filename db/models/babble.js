@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'topicID'
     })
     Babble.hasMany(models.Comment, {
-      foreignKey: 'postID'
+      foreignKey: 'postID',
+        onDelete: 'CASCADE'
     })
   };
   return Babble;
