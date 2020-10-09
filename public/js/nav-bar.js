@@ -7,4 +7,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     window.location.href = '/log-in';
   })
+if (localStorage.getItem('babble_access_token')) {
+  document.querySelector('#babble-on-text').setAttribute('href', '/feed')
+}
 })

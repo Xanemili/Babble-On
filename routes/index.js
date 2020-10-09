@@ -3,11 +3,14 @@ const router = express.Router();
 const { User, Topic, Babble } = require('../db/models');
 
 router.get('/', async (req, res) => {
-  res.render('profile');
+  res.redirect('/welcome')
+  // res.render('profile');
 })
 
 router.get('users/:id(\\d+)/profile', async (req, res) => {
-  res.render('profile');
+  res.render('profile', {
+    id: req.params.id
+  });
 }) // implement viewing others profiles
 
 router.get('/sign-up', (req, res) => {
