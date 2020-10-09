@@ -33,16 +33,18 @@ html(lang="en")
         form(class="profile-edit-form")
           div(class="firstName-div")
             label(for="firstName-label" class="firstName-label first-Name-group")
-            input(id="firstName-label" class="firstName-input first-Name-group")
+            input(id="firstName-input" class="firstName-input first-Name-group")
           div(class="lastName-div")
             label(for="lastName-label" class="lastName-label last-Name-group")
-            input(id="lastName-label" class="lastName-input last-Name-group")
+            input(id="lastName-input" class="lastName-input last-Name-group")
           div(class="email-div")
             label(for="email-label" class="email-label email-group")
-            input(id="email-label" class="email-input email-group")
+            input(id="email-input" class="email-input email-group")
           div(class="bio-div")
             label(for="bio-label" class="bio-label bio-group")
-            textarea(id="bio-label" class="bio-input")
+            textarea(id="bio-input" class="bio-input")
+          div.btn-container
+            button(class = "update-btn" type ="submit") update
 
 
 script(src="/js/profile-edit.js")

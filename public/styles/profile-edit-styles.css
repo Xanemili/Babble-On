@@ -32,13 +32,45 @@
   border-radius: 50%;
 }
 
+/* .firstName-label {
+  grid-area: left-a;
+}
+.lastName-label {
+  grid-area: left-b;
+}
+.email-label {
+  grid-area: left-c;
+}
+.bio-label {
+  grid-area: left-d;
+}
+.firstName-input {
+  grid-area: right-a
+}
+.lastName-input {
+  grid-area: right-b
+}
+.email-input {
+  grid-area: right-c
+}
+.bio-input {
+  grid-area: right-d
+} */
 
 .form-container {
-  display: flex;
-  width: auto;
-  /* align-items: center; */
-  /* justify-content: top; */
+  display:  flex;
+  width: 70%;
+  align-items: center;
+  justify-content: top;
   /* flex-direction: column; */
+
+  /* grid-template-columns: 30% 70%;
+  grid-template-rows: 20% 20% 20% 40%;
+  grid-template-areas:
+    "left-a right-a"
+    "left-b right-b"
+    "left-c right-c"
+    "left-d right-d"; */
 }
 
 .bio-label {
@@ -55,3 +87,7 @@ textarea:hover, input:hover {
 /* bio-input:hover {
   border: 5px solid rgb(183, 183, 183, .75)
 } */
+
+label {
+  width: 500px;
+}

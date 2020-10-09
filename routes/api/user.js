@@ -128,7 +128,26 @@ router.get('/:id(\\d+)/edit', asyncHandler(async(req, res, next) => {
   res.json( {user} );
 }));
 
+router.patch('/:id(\\d+)/edit', requireAuth, asyncHandler(async (req, res, next) => {
+  const userId = req.params.id
+  const {
+    biography,
+    email,
+    firstName,
+    lastName,
+  } = req.body;
 
+  const userToUpdate = await User.findByPk(req.params.id)
+
+  res.json({
+
+    biography,
+    email,
+    firstName,
+    lastName,
+  })
+
+}));
 
 router.get('/:id(\\d+)/babbles', asyncHandler( async(req, res, next) => {
   const babbles = await Babble.findAll({
