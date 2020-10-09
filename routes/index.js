@@ -13,7 +13,7 @@ router.get('/users/:id(\\d+)/profile', async (req, res) => {
   });
 }) // implement viewing others profiles
 
-router.get('/edit', async(req, res) => {
+router.get('/users/:id(\\d+)/profile/edit', async(req, res) => {
   res.render('profile-edit')
 })
 
@@ -49,6 +49,5 @@ router.get('/babbles', async(req, res) => {
   const topics = await Topic.findAll();
   res.render('babble-feed', { topics });
 });
-
 
 module.exports = router;

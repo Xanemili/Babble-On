@@ -145,9 +145,13 @@ router.patch('/:id(\\d+)/edit', requireAuth, asyncHandler(async (req, res, next)
   } = req.body;
 
 
-  userToUpdate.update({
-
-  })
+  await userToUpdate.update({
+    biography,
+    email,
+    firstName,
+    lastName,
+  });
+  res.json(userToUpdate)
 
   // res.json({
 
