@@ -399,6 +399,7 @@ html, body {
     border-radius: 6%;
 
 }
+<<<<<<< HEAD
 
 .babble-author {
     font-size:.85em ;
@@ -408,3 +409,5 @@ html, body {
     text-decoration: none;
     color: black
 }
+=======
+>>>>>>> 0d7ad29... Fixed overflow
