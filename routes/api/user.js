@@ -12,13 +12,15 @@ const {
 
 const {
   User,
-  Babble
+  Babble,
+  Follower
 } = require('../../db/models');
 
 const {
   getUserToken,
   requireAuth
 } = require('../../auth');
+const follower = require('../../db/models/follower');
 
 const router = express.Router();
 
@@ -128,5 +130,45 @@ router.get('/:id(\\d+)/babbles', asyncHandler( async(req, res, next) => {
   })
   res.json({babbles});
 }));
+
+
+router.get('/:id(\\d+)/followers', asyncHandler(async (req, res, next) => {
+  const followers = await Follower.findAll({
+    where: {
+      userID: req.params.id
+    },
+    order: [['updatedAt', 'DESC']]
+  })
+  res.json(followers)
+
+}))
+
+router.post('/:id(\\d+)/followers', requireAuth, asyncHandler(async (req, res, next) => {
+  const {
+    followerUserID
+  } = req.body;
+
+  const userID = parseInt(req.params.id, 10);
+
+
+  const follow = await Follower.create({
+    userID: userID,
+    followerUserID: followerUserID
+  });
+
+
+}))
+
+router.get('/:id(\\d+)/following', asyncHandler(async (req, res, next) => {
+  const following = await Follower.findAll({
+    where: {
+      followerUserID: req.params.id
+    },
+    order: [['updatedAt', 'DESC']]
+  })
+  res.json(following)
+}))
+
+
 
 module.exports = router;
