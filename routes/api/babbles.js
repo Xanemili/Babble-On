@@ -85,11 +85,14 @@ router.get('/', asyncHandler(async (req, res, next) => {
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const babble = await Babble.findByPk(req.params.id, {
-    include: {
+    include: [{
       model: User,
       required: true,
       attributes: ['userName', 'firstName', 'lastName', 'email']
-    }
+    }, {
+      model: Topic,
+      attributes: ['name', 'description']
+    }]
   });
 
   if (!babble) {
@@ -110,6 +113,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     content,
     readTime,
     topicID,
+    url,
     userID
   } = req.body;
 
@@ -119,6 +123,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     content,
     readTime,
     topicID,
+    url,
     userID
   });
   res.json({
