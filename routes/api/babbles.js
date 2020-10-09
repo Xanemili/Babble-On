@@ -288,14 +288,14 @@ router.delete('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (
 router.get('/search/:searchVal', asyncHandler(async (req, res, next) => {
   const search = req.params.searchVal
   console.log(req.body)
-  const babble = await Babble.findAll({
+  const babbles = await Babble.findAll({
     where: {
       title: {[Op.iLike]: `%${search}%`}
     }
   });
-  if (babble) {
+  if (babbles) {
     res.json(
-      babble
+      babbles
     );
   }else {
     const err = new Error();

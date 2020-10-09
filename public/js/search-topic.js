@@ -1,34 +1,17 @@
 window.addEventListener('DOMContentLoaded', async (e) => {
-
-
     try {
-    const userId = localStorage.getItem('babble_user_id');
-
-    const res1 = await fetch(`/api${window.location.pathname}`, {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
-        },
+    const res2 = await fetch(`/api${window.location.pathname}`, {
     });
+    console.log(res2);
+    const babbles =  await res2.json();
+    // const response =  await res2.json();
+    // console.log(response)
 
-    const res2 = await fetch(`/api${window.location.pathname}/babbles`, {
-    });
-
-
-    const { user } = await res1.json();
-    const { babbles } =  await res2.json();
-
-    document.querySelector('.username-div').innerHTML = user.userName
-    document.querySelector('.user-name-div').innerHTML = `${user.firstName} ${user.lastName}`
-    document.querySelector('.user-email-div').innerHTML = user.email
-    document.querySelector('.bio-div').innerHTML = user.biography
-    document.querySelector('.follow-list-div').innerHTML = "This will display user following list"
-    const profileContainer = document.querySelector('.main-container')
-//Implement tennery
-
-
-
-    for (let i = 0; i < 5; i++) {
+const searchContainer = document.querySelector('.search-container')
+for (let i = 0; i < babbles.length; i++) {
     const date = new Date(Date(babbles.updatedAt))
+    const babbleContainer = document.createElement('div');
+    babbleContainer.classList.add('babble-container')
     const babbleDiv = document.createElement('div');
     const babbleLeftDiv = document.createElement('div');
     const babbleRightDiv = document.createElement('div');
@@ -77,10 +60,11 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     babbleLeftDiv.append(babbleTimestampDiv);
     babbleLeftDiv.append(readTimeDiv)
 
-    babbleDiv.append(babbleLeftDiv)
+    babbleDiv.append(babbleLeftDiv);
     babbleDiv.append(babbleRightDiv);
+    babbleContainer.append(babbleDiv);
 
-    profileContainer.append(babbleDiv)
+    searchContainer.append(babbleDiv)
 
 
     }
