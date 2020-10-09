@@ -121,6 +121,15 @@ router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
   res.json( {user} );
 }));
 
+router.get('/:id(\\d+)/edit', asyncHandler(async(req, res, next) => {
+  // const id = parseInt(req.params.id, 10)
+  const user = await User.findByPk(req.params.id, { attributes: [ "firstName", "email", "lastName", "biography"] });
+
+  res.json( {user} );
+}));
+
+
+
 router.get('/:id(\\d+)/babbles', asyncHandler( async(req, res, next) => {
   const babbles = await Babble.findAll({
     where: {

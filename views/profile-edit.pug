@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="/styles/profile-page-styles.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Cabin")
+    title Document
+  body
+
+    include navbar-grey-logged.pug
+
+    div(class="main-container")
+      div(class="top-div-container")
+        div(class="top-left-div-container")
+          div(class="profile-pic-div")
+            img(src="https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
+          div(class="user-info-div")
+            div(class="user-firstName-div")
+            div(class="user-lastName-div")
+            div(class="user-email-div")
+        div(class="top-center-div-container")
+          div(class="bio-div")
+        div(class="top-right-div-container")
+          div(class="follow-list-div")
+
+
+
+
+script(src="js/profile-edit.js")

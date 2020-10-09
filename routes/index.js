@@ -27,6 +27,17 @@ router.get('/babbles/create', async(req, res) => {
   res.render('babble-create', { topics })
 });
 
+router.get('/:id(\\d+)/edit'), (req, res) => {
+  const userData = await User.findOne({
+    where: {
+      id = req.params;
+    }
+  })
+  const user = {
+
+  }
+}
+
 
 router.get('/babbles', async(req, res) => {
   const topics = await Topic.findAll();
