@@ -28,6 +28,12 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Comment, {
       foreignKey: 'userID'
     })
+    User.hasMany(models.Follower, {
+      foreignKey: 'userID'
+    })
+    User.hasMany(models.Follower, {
+      foreignKey: "followerUserID"
+    })
   };
 User.prototype.validatePassword = function (password) {
   return bcrypt.compareSync(password, this.hashedPassword.toString())
