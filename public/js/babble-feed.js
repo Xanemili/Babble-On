@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
     const babbles = await res1.json();
     const users = await res2.json();
-
+     console.log(users[1].profilePicture)
 
     //Don't forget to include the date!!
     function mainBableInfo() {
@@ -129,7 +129,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         const followUserImg = document.createElement('img');
         followUserImg.classList.add('follow-user-img')
-        followUserImg.setAttribute('src', 'https://placeimg.com/640/480/people')
+        followUserImg.setAttribute('src', `${users[i].profilePicture}`)
 
         const followUserInfoDiv = document.createElement('div')
         followUserInfoDiv.classList.add('follow-user-info-div')
