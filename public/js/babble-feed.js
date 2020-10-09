@@ -80,6 +80,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
       mainBabbleInfo.append(mainBabbleSubHeader)
       mainBabbleInfo.append(mainBabbleAuthor)
       mainBabbleInfo.append(mainBabbleReadTime)
+<<<<<<< HEAD
     }
 
     function sideBabbleInfo() {
@@ -122,15 +123,62 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
     function userFollowInfo() {
       for (i = 1; i < 6; i++) {
+=======
+    }
+
+    function sideBabbleInfo() {
+      for (i = 1; i < 5; i++) {
+        const sideBabbleImg = document.createElement('img')
+        sideBabbleImg.setAttribute('src', `${babbles[i].url}`)
+        sideBabbleImg.classList.add('side-babble-img')
+        const sideBabbleImgDiv = document.createElement('div')
+        sideBabbleImgDiv.classList.add('side-babble-img-div')
+
+        const sideBabbleTitle = document.createElement('div')
+        sideBabbleTitle.classList.add('side-babble-title');
+        sideBabbleTitle.innerHTML = babbles[i].title
+
+        const sideBabbleSubHeader = document.createElement('div')
+        sideBabbleSubHeader.classList.add('side-babble-subHeader')
+        sideBabbleSubHeader.innerHTML = babbles[i].subHeader
+
+        const sideBabbleAuthor = document.createElement('div')
+        sideBabbleAuthor.classList.add('side-babble-author')
+        sideBabbleAuthor.innerHTML = `By: ${babbles[i].User.firstName} ${babbles[0].User.lastName}`
+
+        const sideBabbleReadTime = document.createElement('div')
+        sideBabbleReadTime.classList.add('side-babble-read-time')
+        sideBabbleReadTime.innerHTML = `${babbles[i].readTime} min read`
+
+        const sideBabbleInfo = document.createElement('div')
+        sideBabbleInfo.classList.add('side-babble-info');
+        const sideBabble = document.querySelector(`.side-babble-${i}`)
+
+        sideBabbleInfo.append(sideBabbleTitle)
+        sideBabbleInfo.append(sideBabbleSubHeader)
+        sideBabbleInfo.append(sideBabbleAuthor)
+        sideBabbleInfo.append(sideBabbleReadTime)
+        sideBabbleImgDiv.append(sideBabbleImg)
+        sideBabble.append(sideBabbleImgDiv)
+        sideBabble.append(sideBabbleInfo)
+      }
+    }
+
+    function userFollowInfo() {
+      for (i = 0; i < 5; i++) {
+>>>>>>> 99dc494ab3ec8c34d0c2b5bbad51caf69eb4c63a
         const followUserDiv = document.querySelector(`.follow-user-${i}`)
 
         const followUserImgDiv = document.createElement('div')
         followUserImgDiv.classList.add('follow-user-img-div')
 
+<<<<<<< HEAD
         const followUserImg = document.createElement('img');
         followUserImg.classList.add('follow-user-img')
         followUserImg.setAttribute('src', 'https://placeimg.com/640/480/people')
 
+=======
+>>>>>>> 99dc494ab3ec8c34d0c2b5bbad51caf69eb4c63a
         const followUserInfoDiv = document.createElement('div')
         followUserInfoDiv.classList.add('follow-user-info-div')
 
@@ -143,6 +191,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         followUserFullName.innerHTML = `${users[i].firstName} ${users[i].lastName}`
 
         const userFollowBtn = document.createElement('button');
+<<<<<<< HEAD
         userFollowBtn.classList.add(`follow-user-btn-${i}`);
         userFollowBtn.innerHTML = 'Follow'
 
@@ -152,6 +201,12 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         followUserInfoDiv.append(userFollowBtn)
 
         followUserDiv.append(followUserImgDiv)
+=======
+        userFollowBtn.classList.add('user-follow-button');
+
+        followUserInfoDiv.append(followUserName)
+        followUserInfoDiv.append(followUserFullName);
+>>>>>>> 99dc494ab3ec8c34d0c2b5bbad51caf69eb4c63a
         followUserDiv.append(followUserInfoDiv)
 
 
