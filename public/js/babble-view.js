@@ -45,13 +45,23 @@ window.addEventListener("DOMContentLoaded", async () => {
     const babble = await res.json()
     document.querySelector('#babble-header').innerHTML = babble.title;
     document.querySelector('#babble-subheader').innerHTML = babble.subHeader;
-    document.querySelector('#babble-user').innerHTML = `${babble.User.userName}`
+    document.querySelector('#babble-user-fullname').setAttribute('href', `/users/profile/${babble.User.userName}`);
     document.querySelector('#babble-user-fullname').innerHTML = `${babble.User.firstName} ${babble.User.lastName}`
     document.querySelector('#babble-date').innerHTML = `insert date here!`;
     document.querySelector('#babble-read-time').innerHTML = `${babble.readTime} minute read`;
     document.querySelector('#babble-topic').innerHTML = `${babble.Topic.name}`;
+    console.log(babble.userID, localStorage.getItem('babble_user_id'))
+    if (babble.userID == localStorage.getItem('babble_user_id')) {
+      console.log('here')
+      let editButton = document.createElement('button');
+      editButton.classList.add('.edit-babble__button');
+      editButton.innerHTML = 'Edit Button'
+      document.querySelector('.babble-info').prepend(editButton)
 
-    console.log(babble)
+      editButton.addEventListener('click', (event) => {
+        window.location.href = `${window.location.pathname}/edit`
+      })
+      }
     const babbleImage = document.querySelector('#babble-image');
     if (babble.url) {
       babbleImage.classList.remove('hidden')
@@ -65,7 +75,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     if (err.status >= 400 && err.status < 600) {
       const errorJSON = await err.json();
       const errorsContainer = document.querySelector('.errors-container');
-      logo.setAttribute("class", "logo-left")
       instructions.innerHTML = 'There seems to be some issues, please refer to the instructions above'
       let errorsHtml = [
         `
@@ -161,7 +170,3 @@ document.querySelector('#comment-cancel')
     document.querySelector('#new-comment__textarea').value = '';
     document.querySelector('.babble-new-comment-div').classList.add('hidden');
   })
-
-document.querySelector('.multi-purpose-button').addEventListener('click', e => {
-
-})
