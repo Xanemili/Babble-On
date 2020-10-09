@@ -10,22 +10,17 @@
     margin-top: 50px;
     width: 100%;
     height: 500px;
-    background-color: darkgrey;
 }
 
 .top-babbles-container {
     display: flex;
     flex-direction: row;
     width: 75%;
-
-    background-color: darkcyan;
 }
 
 .babbles-container-left {
     margin: 10px;
     width: 40%;
-    background-color: darkgrey;
-
 }
 
 .main-babble {
@@ -33,15 +28,13 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    background-color: darkorange;
+    border-bottom: 1px solid rgba(128, 128, 128, .1);
+    border-left: 1px solid rgba(128, 128, 128, .1);
 }
 
 .main-babble-img-div {
     align-self: center;
     margin-top: 10px;
-    background-color: grey;
-    /* height: 90%;
-    width: 90%; */
 }
 
 .main-babble-img {
@@ -55,7 +48,6 @@
     flex-direction: column;
     align-self: center;
     margin-top: 10px;
-    background-color:  white;
     height: 30%;
     width: 90%;
 }
@@ -63,32 +55,34 @@
 .babbles-container-right {
     margin: 10px;
     width: 40%;
-    background-color: darkgreen;
 }
 
 .side-babble-1 {
-    /* justify-content: space-around; */
     display: flex;
     height: 25%;
-    background-color: darkslateblue;
+    border: 1px solid rgba(128, 128, 128, .2);
+    border-radius: 5%;
 }
 
 .side-babble-2 {
     display: flex;
     height: 25%;
-    background-color: blue;
+    border: 1px solid rgba(128, 128, 128, .2);
+    border-radius: 5%;
 }
 
 .side-babble-3 {
     display: flex;
     height: 25%;
-    background-color: darkslateblue;
+    border: 1px solid rgba(128, 128, 128, .2);
+    border-radius: 5%;
 }
 
 .side-babble-4 {
     display: flex;
     height: 25%;
-    background-color: blue;
+    border: 1px solid rgba(128, 128, 128, .2);
+    border-radius: 5%;
 }
 
 .side-babble-info {
@@ -101,7 +95,6 @@
 .side-babble-img-div {
     height: 100px;
     width: 100px;
-    background-color: grey;
     align-self: center;
     margin-left: 15px;
     margin-right: 22px;
@@ -110,46 +103,42 @@
 .side-babble-img {
     height: 100px;
     width: 100px;
+    border-radius: 10%;
 }
 
 .follow-container {
     margin: 10px;
     width: 20%;
-    background-color: darkgreen;
 }
 
-.follow-user-0 {
+.follow-user-1 {
     display: flex;
     height: 20%;
-    background-color: deeppink;
-
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 
-.follow-user-1{
+.follow-user-2{
     display: flex;
     height: 20%;
-    background-color: dodgerblue;
-
-}
-
-.follow-user-2 {
-    display: flex;
-    height: 20%;
-    background-color: deeppink;
-
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 
 .follow-user-3 {
     display: flex;
     height: 20%;
-    background-color: dodgerblue;
-
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 
 .follow-user-4 {
     display: flex;
     height: 20%;
-    background-color: deeppink;
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
+}
+
+.follow-user-5 {
+    display: flex;
+    height: 20%;
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
 }
 
 .follow-user-img-div {
@@ -157,7 +146,12 @@
     align-self: center;
     width: 25%;
     height: 80%;
-    background-color: grey;
+}
+
+.follow-user-img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
 }
 
 .follow-user-info-div {
@@ -165,7 +159,6 @@
     align-self: center;
     width: 65%;
     height: 60%;
-    background-color: white;
 }
 
  .main-center-container {

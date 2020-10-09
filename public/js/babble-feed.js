@@ -121,11 +121,15 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     }
 
     function userFollowInfo() {
-      for (i = 0; i < 5; i++) {
+      for (i = 1; i < 6; i++) {
         const followUserDiv = document.querySelector(`.follow-user-${i}`)
 
         const followUserImgDiv = document.createElement('div')
         followUserImgDiv.classList.add('follow-user-img-div')
+
+        const followUserImg = document.createElement('img');
+        followUserImg.classList.add('follow-user-img')
+        followUserImg.setAttribute('src', 'https://placeimg.com/640/480/people')
 
         const followUserInfoDiv = document.createElement('div')
         followUserInfoDiv.classList.add('follow-user-info-div')
@@ -139,10 +143,15 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         followUserFullName.innerHTML = `${users[i].firstName} ${users[i].lastName}`
 
         const userFollowBtn = document.createElement('button');
-        userFollowBtn.classList.add('user-follow-button');
+        userFollowBtn.classList.add(`follow-user-btn-${i}`);
+        userFollowBtn.innerHTML = 'Follow'
 
+        followUserImgDiv.append(followUserImg)
         followUserInfoDiv.append(followUserName)
         followUserInfoDiv.append(followUserFullName);
+        followUserInfoDiv.append(userFollowBtn)
+
+        followUserDiv.append(followUserImgDiv)
         followUserDiv.append(followUserInfoDiv)
 
 
