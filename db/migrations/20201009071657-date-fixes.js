@@ -5,7 +5,7 @@ module.exports = {
     const transaction = await queryInterface.sequelize.transaction();
     try {
       await queryInterface.changeColumn('Babble', 'createdAt', {
-        defaultValue: new Date()
+        defaultValue: date = `${new Date().getMonth}-${new Date().getDay}-${new Date().getYear}`
       })
       await transaction.commit();
     } catch (err) {

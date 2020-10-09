@@ -71,6 +71,7 @@ body {
   font-size: 20px;
   margin-top: 20px;
   padding-bottom: 20px;
+  overflow-wrap: break-word;
 }
 
 .extra-info {
@@ -98,6 +99,10 @@ button {
 }
 
 /* These are the nav bar styles: */
+
+#babble-read-time {
+  margin: 10px;
+}
 
 .nav-container {
   /* padding-top: 500px; */
