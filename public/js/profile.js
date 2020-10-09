@@ -31,6 +31,9 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const  following  = await res3.json();
         const  follower  = await res4.json();
 
+        console.log("following", following)
+        console.log("follower", follower)
+
         document.querySelector('.username-div').innerHTML = user.userName
         document.querySelector('.user-name-div').innerHTML = `${user.firstName} ${user.lastName}`
         document.querySelector('.user-email-div').innerHTML = user.email
@@ -43,7 +46,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         for(let follow of following) {
             const id = follow.followerUserID
-            console.log(follow)
+            // console.log(follow)
 
             let followerDiv = document.createElement('div');
             followerDiv.setAttribute('class', 'follower-div')
