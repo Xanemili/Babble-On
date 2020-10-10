@@ -4,8 +4,7 @@ searchbtn.addEventListener('click', async () => {
   try {
     const searchObj = searchVal.value;
 
-    const res = await fetch(`/api/babbles/search/${searchObj}`);
-    const search = await res.json();
+    window.location.href = `/babbles/search/${searchObj}`
   } catch (err) {
     if (err.status >= 400 && err.status < 600) {
       const errorJSON = await err.json();

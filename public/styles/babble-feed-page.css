@@ -37,6 +37,14 @@ html, body {
     border-left: 1px solid rgba(128, 128, 128, .1);
 }
 
+.main-babble-title {
+    font-size: 1.5em;
+}
+
+.main-babble-read-time {
+    color: rgba(128, 128, 128, .75);
+}
+
 .main-babble-img-div {
     align-self: center;
     margin-top: 10px;
@@ -88,6 +96,23 @@ html, body {
     height: 25%;
     border: 1px solid rgba(128, 128, 128, .2);
     border-radius: 5%;
+}
+
+.side-babble-title {
+    font-size: 1em;
+}
+
+.side-babble-subHeader {
+    font-size: .85em;
+}
+
+.side-babble-author {
+    font-size: .85em;
+}
+
+.side-babble-read-time {
+    font-size: .75em;
+    color: rgba(128, 128, 128, .75);
 }
 
 .side-babble-info {
@@ -166,6 +191,23 @@ html, body {
     width: 65%;
     height: 60%;
     padding-left: 15px;
+}
+
+.follow-user-full-name {
+    font-size: .75em;
+    margin: 5px;
+}
+
+.follow-user-name {
+    margin: 5px;
+}
+
+.follow-user-btn-1 {
+    margin: 5px;
+}
+
+.follow-user-btn-1:hover {
+    background-color: rgba(65, 172, 131, .25);;
 }
 
  .main-center-container {
@@ -252,6 +294,19 @@ html, body {
     width: 90%;
     background-color: white;
 
+}
+
+.trending-babble-title {
+    font-size: 1.2em;
+}
+
+.trending-babble-subHeader {
+    font-size: .75em;
+}
+
+.trending-babble-readTime {
+    font-size: .75em;
+    color: rgba(128, 128, 128, .75);
 }
 
 .main-bottom-container {
@@ -344,3 +399,15 @@ html, body {
     border-radius: 6%;
 
 }
+<<<<<<< HEAD
+
+.babble-author {
+    font-size:.85em ;
+}
+
+.a-tag {
+    text-decoration: none;
+    color: black
+}
+=======
+>>>>>>> 0d7ad29... Fixed overflow
