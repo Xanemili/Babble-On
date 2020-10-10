@@ -1,6 +1,7 @@
 window.addEventListener('DOMContentLoaded', async (e) => {
 
 
+
     try {
     const userId = localStorage.getItem('babble_user_id');
 

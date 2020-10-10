@@ -127,6 +127,34 @@ router.get('/:id(\\d+)/profile', asyncHandler(async (req, res, next) => {
   res.json( {user} );
 }));
 
+router.get('/:id(\\d+)/edit', asyncHandler(async(req, res, next) => {
+  // const id = parseInt(req.params.id, 10)
+  const user = await User.findByPk(req.params.id, { attributes: [ "firstName", "email", "lastName", "biography"] });
+
+  res.json( {user} );
+}));
+
+router.patch('/:id(\\d+)/edit', requireAuth, asyncHandler(async (req, res, next) => {
+  const userToUpdate = await User.findByPk(req.params.id)
+
+  const {
+    biography,
+    email,
+    firstName,
+    lastName,
+  } = req.body;
+
+
+  await userToUpdate.update({
+    biography,
+    email,
+    firstName,
+    lastName,
+  });
+  res.json(userToUpdate)
+
+}));
+
 router.get('/:id(\\d+)/profile/babbles', asyncHandler(async (req, res, next) => {
   const babbles = await Babble.findAll({
     where: {
@@ -162,6 +190,7 @@ router.post('/:id(\\d+)/followers', requireAuth, asyncHandler(async (req, res, n
     followerUserID: followerUserID
   });
 
+// res.redirect('/');
 
 }))
 

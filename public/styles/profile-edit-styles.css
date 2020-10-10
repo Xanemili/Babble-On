@@ -1,0 +1,93 @@
+* {
+  font-family: Cabin;
+  border: 1px solid black;
+  font-size: 20px;
+}
+
+
+.main-container{
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  /* background-color: grey; */
+  height: 450px;
+  width: 40%;
+  padding-top: 5%;
+  /* justify-self: center; */
+}
+
+.profile-pic-div {
+  align-items: center;
+  /* background-color: lightgray; */
+  width: auto;
+  text-align: flex-start;
+  padding-right: 5%;
+}
+
+.profile-pic-div > img{
+  padding: 2%;
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+}
+
+/* .firstName-label {
+  grid-area: left-a;
+}
+.lastName-label {
+  grid-area: left-b;
+}
+.email-label {
+  grid-area: left-c;
+}
+.bio-label {
+  grid-area: left-d;
+}
+.firstName-input {
+  grid-area: right-a
+}
+.lastName-input {
+  grid-area: right-b
+}
+.email-input {
+  grid-area: right-c
+}
+.bio-input {
+  grid-area: right-d
+} */
+
+.form-container {
+  display:  flex;
+  width: 70%;
+  align-items: center;
+  justify-content: top;
+  /* flex-direction: column; */
+
+  /* grid-template-columns: 30% 70%;
+  grid-template-rows: 20% 20% 20% 40%;
+  grid-template-areas:
+    "left-a right-a"
+    "left-b right-b"
+    "left-c right-c"
+    "left-d right-d"; */
+}
+
+.bio-label {
+  align-self: flex-start
+}
+
+.bio-input {
+  font-size: 15px;
+}
+
+textarea:hover, input:hover {
+  border: 5px solid rgb(183, 183, 183, .75)
+}
+/* bio-input:hover {
+  border: 5px solid rgb(183, 183, 183, .75)
+} */
+
+label {
+  width: 500px;
+}
