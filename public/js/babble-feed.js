@@ -53,22 +53,26 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     //Don't forget to include the date!!
     function mainBableInfo() {
       const mainBabbleImgDiv = document.querySelector('.main-babble-img-div')
+      mainBabbleImgDiv.classList.add('a-tag')
+      mainBabbleImgDiv.setAttribute('href', `/babbles/${babbles[0].id}`)
       const mainBabbleImg = document.createElement('img')
       mainBabbleImg.classList.add('main-babble-img')
       mainBabbleImg.setAttribute('src', `${babbles[0].url}`)
       mainBabbleImgDiv.append(mainBabbleImg)
 
-      const mainBabbleTitle = document.createElement('div')
-      mainBabbleTitle.classList.add('babble-title');
+      const mainBabbleTitle = document.createElement('a')
+      mainBabbleTitle.classList.add('main-babble-title', 'a-tag');
       mainBabbleTitle.innerHTML = babbles[0].title
+      mainBabbleTitle.setAttribute('href', `/babbles/${babbles[0].id}`)
 
       const mainBabbleSubHeader = document.createElement('div')
       mainBabbleSubHeader.classList.add('babble-subHeader')
       mainBabbleSubHeader.innerHTML = babbles[0].subHeader
 
-      const mainBabbleAuthor = document.createElement('div')
-      mainBabbleAuthor.classList.add('babble-author')
+      const mainBabbleAuthor = document.createElement('a')
+      mainBabbleAuthor.classList.add('babble-author', 'a-tag')
       mainBabbleAuthor.innerHTML = `By: ${babbles[0].User.firstName} ${babbles[0].User.lastName}`
+      mainBabbleAuthor.setAttribute('href', `/users/${babbles[0].userID}/profile`)
 
       const mainBabbleReadTime = document.createElement('div')
       mainBabbleReadTime.classList.add('main-babble-read-time')
@@ -87,20 +91,23 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const sideBabbleImg = document.createElement('img')
         sideBabbleImg.setAttribute('src', `${babbles[i].url}`)
         sideBabbleImg.classList.add('side-babble-img')
-        const sideBabbleImgDiv = document.createElement('div')
-        sideBabbleImgDiv.classList.add('side-babble-img-div')
+        const sideBabbleImgDiv = document.createElement('a')
+        sideBabbleImgDiv.classList.add('side-babble-img-div', 'a-tag')
+        sideBabbleImgDiv.setAttribute('href', `/babbles/${babbles[i].id}`)
 
-        const sideBabbleTitle = document.createElement('div')
-        sideBabbleTitle.classList.add('side-babble-title');
+        const sideBabbleTitle = document.createElement('a')
+        sideBabbleTitle.classList.add('side-babble-title', 'a-tag');
         sideBabbleTitle.innerHTML = babbles[i].title
+        sideBabbleTitle.setAttribute('href', `/babbles/${babbles[i].id}`)
 
         const sideBabbleSubHeader = document.createElement('div')
         sideBabbleSubHeader.classList.add('side-babble-subHeader')
         sideBabbleSubHeader.innerHTML = babbles[i].subHeader
 
-        const sideBabbleAuthor = document.createElement('div')
-        sideBabbleAuthor.classList.add('side-babble-author')
+        const sideBabbleAuthor = document.createElement('a')
+        sideBabbleAuthor.classList.add('side-babble-author', 'a-tag')
         sideBabbleAuthor.innerHTML = `By: ${babbles[i].User.firstName} ${babbles[i].User.lastName}`
+        sideBabbleAuthor.setAttribute('href', `/users/${babbles[i].userID}/profile`)
 
         const sideBabbleReadTime = document.createElement('div')
         sideBabbleReadTime.classList.add('side-babble-read-time')
@@ -124,8 +131,9 @@ window.addEventListener('DOMContentLoaded', async (e) => {
       for (i = 1; i < 6; i++) {
         const followUserDiv = document.querySelector(`.follow-user-${i}`)
 
-        const followUserImgDiv = document.createElement('div')
-        followUserImgDiv.classList.add('follow-user-img-div')
+        const followUserImgDiv = document.createElement('a')
+        followUserImgDiv.classList.add('follow-user-img-div', 'a-tag')
+        followUserImgDiv.setAttribute('href', `/babbles/${babbles[i].id}`)
 
         const followUserImg = document.createElement('img');
         followUserImg.classList.add('follow-user-img')
@@ -134,13 +142,15 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const followUserInfoDiv = document.createElement('div')
         followUserInfoDiv.classList.add('follow-user-info-div')
 
-        const followUserName = document.createElement('div')
-        followUserName.classList.add('follow-user-name')
+        const followUserName = document.createElement('a')
+        followUserName.classList.add('follow-user-name', 'a-tag')
         followUserName.innerHTML = users[i].userName
+        followUserName.setAttribute('href',`/users/${babbles[i].userID}/profile`)
 
         const followUserFullName = document.createElement('div')
         followUserFullName.classList.add('follow-user-full-name');
         followUserFullName.innerHTML = `${users[i].firstName} ${users[i].lastName}`
+
 
         const userFollowBtn = document.createElement('button');
         userFollowBtn.classList.add(`follow-user-btn-${i}`);
@@ -166,9 +176,10 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const trendingBabbleUserInfoDiv = document.createElement('div')
         trendingBabbleUserInfoDiv.classList.add('trending-babble-user-info-div')
 
-        const trendingBabbleUserInfo = document.createElement('div')
-        trendingBabbleUserInfo.classList.add('trending-babble-user-info')
+        const trendingBabbleUserInfo = document.createElement('a')
+        trendingBabbleUserInfo.classList.add('trending-babble-user-info', 'a-tag')
         trendingBabbleUserInfo.innerHTML = `${babbles[i].User.firstName} ${babbles[i].User.lastName}`
+        trendingBabbleUserInfo.setAttribute('href', `/users/${babbles[i].userID}/profile` )
         const trendingBabbleUserImg = document.createElement('img')
         if (babbles[i].User.profilePicture !== null)  {
         trendingBabbleUserImg.classList.add('trending-babble-user-img');
@@ -181,9 +192,10 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const trendingBabbleInfo = document.createElement('div')
         trendingBabbleInfo.classList.add('trending-babble-info')
 
-        const trendingBabbleTitle = document.createElement('div')
-        trendingBabbleTitle.classList.add('trending-babble-title')
+        const trendingBabbleTitle = document.createElement('a')
+        trendingBabbleTitle.classList.add('trending-babble-title', 'a-tag')
         trendingBabbleTitle.innerHTML = babbles[i].title
+        trendingBabbleTitle.setAttribute('href', `/babbles/${babbles[i].id}`)
         const trendingBabbleSubHeader = document.createElement('div')
         trendingBabbleSubHeader.classList.add('trending-babble-subHeader')
         trendingBabbleSubHeader.innerHTML = babbles[i].subHeader
@@ -212,28 +224,29 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     function babbleInfo() {
       for (let i = 13; i <  18; i++) {
         const babbleContainer = document.querySelector('.babbles-container')
-        // console.log(babbles[i])
 
         const babble = document.createElement('div');
         babble.classList.add(`babble-${i}`)
         const babbleInfoDiv = document.createElement('div')
         babbleInfoDiv.classList.add('babble-info-div');
-        const babbleImgDiv = document.createElement('div')
-        babbleImgDiv.classList.add('babble-img-div');
+        const babbleImgDiv = document.createElement('a')
+        babbleImgDiv.classList.add('babble-img-div', 'a-tag');
+        babbleImgDiv.setAttribute('href', `/babbles/${babbles[i].id}`)
 
-        const babbleUserName = document.createElement('div')
-        babbleUserName.classList.add('babble-user-name')
+        const babbleUserName = document.createElement('a')
+        babbleUserName.classList.add('babble-user-name', 'a-tag')
         babbleUserName.innerHTML = babbles[i].User.userName
-        console.log(babbleUserName)
+        babbleUserName.setAttribute('href', `/users/${babbles[i].userID}/profile`)
         const babbleAuthor = document.createElement('div')
         babbleAuthor.classList.add('babble-author')
         babbleAuthor.innerHTML = `${babbles[i].User.firstName} ${babbles[i].User.lastName}`
         const babbleProfilePic = document.createElement('img')
         babbleProfilePic.classList.add('babble-profile-pic')
         babbleProfilePic.setAttribute('src', `${babbles[i].User.profilePicture}`)
-        const babbleTitle = document.createElement('div')
+        const babbleTitle = document.createElement('a', 'a-tag')
         babbleTitle.classList.add('babble-title')
         babbleTitle.innerHTML = babbles[i].title
+        babbleTitle.setAttribute('href', `/babbles/${babbles[i].id}`)
 
         const babbleImg = document.createElement('img')
         babbleImg.classList.add('babble-img')
