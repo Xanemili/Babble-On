@@ -11,5 +11,6 @@ let id = localStorage.getItem('babble_user_id');
 if (id) {
   document.querySelector('#babble-on-text').setAttribute('href', '/feed')
   document.querySelector('#babble-on-my-profile').setAttribute('href', `/users/${id}/profile`)
+  document.querySelector('#babble-on-edit-profile').setAttribute('href', `/users/${id}/profile/edit`)
 }
 })

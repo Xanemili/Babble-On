@@ -153,14 +153,6 @@ router.patch('/:id(\\d+)/edit', requireAuth, asyncHandler(async (req, res, next)
   });
   res.json(userToUpdate)
 
-  // res.json({
-
-  //   biography,
-  //   email,
-  //   firstName,
-  //   lastName,
-  // })
-
 }));
 
 router.get('/:id(\\d+)/profile/babbles', asyncHandler(async (req, res, next) => {
@@ -198,6 +190,7 @@ router.post('/:id(\\d+)/followers', requireAuth, asyncHandler(async (req, res, n
     followerUserID: followerUserID
   });
 
+// res.redirect('/');
 
 }))
 
