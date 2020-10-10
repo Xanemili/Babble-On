@@ -41,27 +41,47 @@ const validateUserInputs = [
     .withMessage('Please enter your last name')
     .isLength( { max: 25 })
     .withMessage('Last Name must not exceed 25 characters'),
-]
+  ]
 
-const validateEmailAndPassword = [
-  check('email')
+  const validateEmailAndPassword = [
+    check('email')
     .exists({
       checkFalsy: true
     })
     .withMessage('Please enter email address')
     .isEmail()
     .withMessage('Please enter a valid e-mail address'),
-  check('password')
+    check('password')
     .exists({
       checkFalsy: true
     })
     .withMessage('Please enter password')
-]
+  ]
 
-router.post('/', validateUserInputs, validateEmailAndPassword, handleValidationErrors, asyncHandler(async (req, res, next) => {
-  const {
-    username,
-    password,
+  const validateProfileEditInput = [
+    check('email')
+    .exists({
+      checkFalsy: true
+    })
+    .withMessage('Please enter email address')
+    .isEmail()
+    .withMessage('Please enter a valid e-mail address'),
+    check('firstName')
+      .exists( { checkFalsy : true })
+      .withMessage('Please enter your first name')
+      .isLength( { max: 25 })
+      .withMessage('First Name must not exceed 25 characters'),
+    check('lastName')
+      .exists( { checkFalsy : true })
+      .withMessage('Please enter your last name')
+      .isLength( { max: 25 })
+      .withMessage('Last Name must not exceed 25 characters'),
+  ]
+
+  router.post('/', validateUserInputs, validateEmailAndPassword, handleValidationErrors, asyncHandler(async (req, res, next) => {
+    const {
+      username,
+      password,
     email,
     firstName,
     lastName
@@ -135,7 +155,7 @@ router.get('/:id(\\d+)/edit', asyncHandler(async(req, res, next) => {
   res.json( {user} );
 }));
 
-router.patch('/:id(\\d+)/edit', requireAuth, asyncHandler(async (req, res, next) => {
+router.patch('/:id(\\d+)/edit', requireAuth, validateProfileEditInput, handleValidationErrors, asyncHandler(async (req, res, next) => {
   const userToUpdate = await User.findByPk(req.params.id)
 
   const {
