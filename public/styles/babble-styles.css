@@ -1,9 +1,10 @@
-body {
-  /* background-color: rgba(65, 172, 131, .25) ; */
+html, body {
+  margin: 0;
+  height: 100%;
 }
 
 * {
-  /* outline: solid; */
+
   font-family: Cabin;
 }
 
@@ -13,11 +14,9 @@ body {
 
 .babble-container {
   margin: auto;
-  justify-content: left;
+  justify-content: center;
   display: flex;
-  align-items: left;
   flex-direction: column;
-  align-content: flex-start;
   /* border: 1px solid black; */
   background-color: white;
   height: auto;
@@ -25,24 +24,32 @@ body {
   /* position: posit; */
 }
 
-.babble-header h1 {
+.babble-header {
+  border-bottom: 1px solid lightgray;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+#babble-header {
   font-size: 45px;
 }
 
-.babble-header h2 {
+#babble-subheader {
   font-size: 25px;
   padding: none;
   margin: none;
 }
 
-.babble-image img {
-  width: 700px;
+.babble-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-bottom: 1px solid lightgray;
 }
-
-.babble-info {
-  display: block;
-  text-align: left;
-  padding-bottom: 20px;
+.babble-image img {
+  width: 90%;
+  border-radius: 5px;
 }
 
 .babble-user {
@@ -63,9 +70,17 @@ body {
 .babble-content {
   width: 700px;
   font-size: 20px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  overflow-wrap: break-word;
 }
 
-
+.extra-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
 
 button {
   justify-self: right;
@@ -85,6 +100,10 @@ button {
 }
 
 /* These are the nav bar styles: */
+
+#babble-read-time {
+  margin: 10px;
+}
 
 .nav-container {
   /* padding-top: 500px; */
@@ -177,6 +196,7 @@ button {
   display: flex;
   align-items: space-around;
   padding: 3px;
+  width: auto;
   }
 
   #comment-cancel {
@@ -184,7 +204,7 @@ button {
     background-color: lightgrey;
   }
 
-  #comment-add {
+  #comment-submit {
     width: auto;
   }
 

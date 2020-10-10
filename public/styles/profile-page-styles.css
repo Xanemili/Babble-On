@@ -1,3 +1,8 @@
+html, body {
+    margin: 0;
+    height: 100%;
+  }
+
 * {
     font-family: Cabin;
     /* border: 1px solid black; */
@@ -37,10 +42,6 @@
     /* background-color: lightgray; */
     width: 300px;
     align-self: center;
-}
-
-.bio-div {
-
 }
 
 .top-right-div-container {

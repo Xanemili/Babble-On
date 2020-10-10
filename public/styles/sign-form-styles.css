@@ -1,8 +1,14 @@
 body{
     background-color: rgba(65, 172, 131, .25) ;
     font-size: 20px;
+    font-family: Cabin;
 }
 
+
+html, body {
+    margin: 0;
+    height: 100%;
+  }
 
 
 .sign-up-form-container{
@@ -54,6 +60,7 @@ input{
     bottom: 40px;
     align-items: flex-end;
     position: relative;
+    outline: none;
 }
 
 button{
@@ -67,11 +74,19 @@ button{
     font-weight: bolder;
     margin: auto;
     margin-bottom: 20px;
+    outline: none;
 }
 
 p{
     position: relative;
     bottom: 75px;
+}
+
+a{
+    position: relative;
+    justify-content: center;
+    display: flex;
+    font-weight: bold;
 }
 
 label{
@@ -107,5 +122,5 @@ label{
     align-items: center;
     padding: 10px;
     position: relative;
-    top: 50px;
+    top: 54px;
 }

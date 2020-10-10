@@ -14,16 +14,17 @@ block content
   .errors-container
   .babble-container
     .babble-header
-      h1(id="babble-header")
-      h2(id="babble-subheader")
+      #babble-header
 
-    #babble-user
-    #babble-user-fullname
-        //- button(class = "follow-btn" type = "button") Follow
-    .babble-info
-      span(id="babble-date")
-      span(id="babble-read-time")
-      span(id="babble-topic")
+      #babble-subheader
+      .extra-info
+        #babble-userinfo
+          a#babble-user-fullname(href='/')
+          #babble-time-metrics
+            span#babble-date
+            span#babble-read-time
+        .babble-info
+          #babble-topic
     .babble-image
       img(id="babble-image" class='hidden')
     .babble-content
@@ -41,7 +42,7 @@ block content
             textarea#new-comment__textarea(name="newComment" rows="4")
             #comment-buttons
               button#comment-cancel(type='reset') Cancel
-              button#comment-add() Add Comment
+              button#comment-submit() Add Comment
         .babble-old-comments
 
 

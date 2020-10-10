@@ -1,5 +1,6 @@
 link(rel="stylesheet", href="/styles/navbar-grey-logged.css")
 link(href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet")
+script(src="/js/nav-bar.js")
 
 .nav-container
   span
@@ -15,8 +16,10 @@ link(href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap
     div.dropdown
       img(class="nav__menu" src='/resources/drop-down-logo.png')
       div.dropdown-content
-        a(href="/") My Profile
+        a.dropdown-link#babble-on-my-profile(href="/") My Profile
         div
-        a(href="/") Edit Profile
+        a.dropdown-link#babble-on-edit-profile Edit Profile
         div
-        a(href="/log-in") Sign Out
+        a.dropdown-link#nav-bar__sign-out(href="/log-in") Sign Out
+        div(id='create-babble__link')
+        a.dropdown-link(href='/babbles/create') Create Babble

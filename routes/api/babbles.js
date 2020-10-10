@@ -77,7 +77,7 @@ const validateCommentInputs = [
 router.get('/', asyncHandler(async (req, res, next) => {
   const babbles = await Babble.findAll({
     include: [
-      { model: Topic }
+      { model: User},
     ]
   })
   res.json(babbles)
@@ -85,11 +85,14 @@ router.get('/', asyncHandler(async (req, res, next) => {
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   const babble = await Babble.findByPk(req.params.id, {
-    include: {
+    include: [{
       model: User,
       required: true,
       attributes: ['userName', 'firstName', 'lastName', 'email']
-    }
+    }, {
+      model: Topic,
+      attributes: ['name', 'description']
+    }]
   });
 
   if (!babble) {
@@ -110,6 +113,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     content,
     readTime,
     topicID,
+    url,
     userID
   } = req.body;
 
@@ -119,6 +123,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     content,
     readTime,
     topicID,
+    url,
     userID
   });
   res.json({
@@ -126,8 +131,8 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
   });
 }));
 
-router.put(':/id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, res, next) => {
-  const babble = await Babble.findAll({
+router.put('/:id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, res, next) => {
+          const babble = await Babble.findOne({
     where: {
       id: req.params.id
     }
@@ -135,25 +140,48 @@ router.put(':/id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, r
 
   if (req.user.id !== babble.userID) {
     const err = new Error("Unauthorized");
-    error.status = 401;
+    err.status = 401;
     err.message = "You are not authorized to edit this Babble.";
     err.title = "Unauthroized"
     throw err;
   }
 
   if (babble) {
+const {
+  title,
+  subHeader,
+  content,
+  readTime,
+  topicID,
+  url,
+  userID
+} = req.body;
+
     await babble.update({
-      //insert update logic
+      title,
+      subHeader,
+      content,
+      readTime,
+      topicID,
+      url,
+      userID
     })
   } else {
     next(babbleNotFoundErr(req.params.id))
   }
+  res.status(201).json({
+    id: req.params.id
+  })
 }));
 
 router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res, next) => {
-  const babble = await Babble.findByPk(req.params.id)
+  const babble = await Babble.findOne({
+    where: {
+      id: req.params.id
+    }
+  });
 
-  if (req.user.id !== babble.userID) {
+  if (req.user.id !== babble.dataValues.userID) {
     const err = new Error("Unauthorized");
     error.status = 401;
     err.message = "You are not authorized to edit this Babble.";
@@ -260,14 +288,14 @@ router.delete('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (
 router.get('/search/:searchVal', asyncHandler(async (req, res, next) => {
   const search = req.params.searchVal
   console.log(req.body)
-  const babble = await Babble.findAll({
+  const babbles = await Babble.findAll({
     where: {
       title: {[Op.iLike]: `%${search}%`}
     }
   });
-  if (babble) {
+  if (babbles) {
     res.json(
-      babble
+      babbles
     );
   }else {
     const err = new Error();

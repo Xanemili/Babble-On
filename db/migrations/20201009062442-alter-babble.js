@@ -21,18 +21,20 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
+      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Followers', null, {});
-
+    return queryInterface.changeColumn('Babbles', 'url', {
+      type: Sequelize.STRING
+    })
     /*
       Add reverting commands here.
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.bulkDelete('People', null, {});
+      return queryInterface.dropTable('users');
     */
   }
 };

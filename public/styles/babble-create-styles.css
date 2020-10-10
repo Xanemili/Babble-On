@@ -1,3 +1,8 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 body {
   background-color: rgba(65, 172, 131, .25) ;
 }
@@ -37,9 +42,15 @@ input{
   font-size: 1em;
 }
 .create-babble-form__topic select{
-  height: 50px;
+  height: auto;
+  width: 90%;
   text-align:right;
-  align-self: right;
+}
+
+.create-babble-form__topic {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .errors-container {
@@ -57,14 +68,18 @@ input{
   align-content: flex-start;
   /* border: 1px solid black; */
   background-color: white;
-  border-radius: 5%;
+  border-radius: 10px;
   height: 100%;
-  width: 960px;
+  width: 66%;
 }
 
 #babble-form__textarea {
   resize: none;
   width: 100%;
+}
+
+.hidden {
+  display: none;
 }
 
 button{
@@ -77,13 +92,14 @@ button{
   height: 30px;
   width: 80px;
   font-family: Cabin;
-
-  /* font-size: 10px; */
-  /* font-weight: bold; */
   margin: auto;
   margin-bottom: 20px;
 }
 
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+}
 
 /* .log-in-form{
   align-content: center;
@@ -129,11 +145,6 @@ label{
   position: relative;
   bottom: 75px;
   width: 40px;
-}
-
-.btn-container{
-  display: flex;
-
 }
 .form-group{
   justify-content: space-between;

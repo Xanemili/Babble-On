@@ -1,8 +1,14 @@
 window.addEventListener('DOMContentLoaded', async (e) => {
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> main
     try {
         const userId = localStorage.getItem('babble_user_id');
 
+<<<<<<< HEAD
         const res1 = await fetch(`/api/users/${userId}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
@@ -14,6 +20,16 @@ window.addEventListener('DOMContentLoaded', async (e) => {
                 Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
             },
         });
+=======
+    const res1 = await fetch(`/api${window.location.pathname}`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
+        },
+    });
+
+    const res2 = await fetch(`/api${window.location.pathname}/babbles`, {
+    });
+>>>>>>> main
 
         const res3 = await fetch(`api/users/${userId}/following`, {
             headers: {
@@ -69,7 +85,20 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             followerDiv.append(profilePic)
             followerDiv.append(followerNameAnchor)
 
+<<<<<<< HEAD
             followersContainer.append(followerDiv)
+=======
+    babbleAnchor.classList.add('babble-anchor')
+    babbleDiv.classList.add('bottom-div-container');
+    babbleLeftDiv.classList.add('bottom-left-div-container');
+    babbleRightDiv.classList.add('bottom-right-div-container');
+    babbleTitleDiv.classList.add('babble-title-div');
+    babbleSubHeaderDiv.classList.add('sub-title-div');
+    babbleTimestampDiv.classList.add('timestamp-div');
+    readTimeDiv.classList.add('read-time-div')
+    babbleImgDiv.classList.add('babble-img-div');
+    babbleImgUrl.classList.add('babble-img');
+>>>>>>> main
 
         }
         // for(let follow of follower) {

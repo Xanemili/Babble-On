@@ -2,6 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
+
     return queryInterface.bulkInsert('Topics', [{
         name: 'Sports',
         description: 'Related to all aspects of sports'

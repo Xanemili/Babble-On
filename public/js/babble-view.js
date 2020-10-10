@@ -1,15 +1,10 @@
-
 const searchVal = document.querySelector('.search__bar')
 const searchbtn = document.querySelector('.nav__search');
-searchbtn.addEventListener('click', async() => {
-  try{
-  const searchObj = searchVal.value;
+searchbtn.addEventListener('click', async () => {
+  try {
+    const searchObj = searchVal.value;
 
-  const res = await fetch(`/api/babbles/search/${searchObj}`);
-  const search = await res.json();
-  console.log(searchVal.value);
-  console.log(res);
-  console.log(search);
+    window.location.href = `/babbles/search/${searchObj}`
   } catch (err) {
     if (err.status >= 400 && err.status < 600) {
       const errorJSON = await err.json();
@@ -41,70 +36,76 @@ searchbtn.addEventListener('click', async() => {
     }
   }
 })
-=======
+
 const insertComments = async (container, comment) => {
-    let newComment = document.createElement('div')
-    let user = document.createElement('div')
-    let text = document.createElement('div')
-
-
-    let commentClasses = [`comment-${comment.id}`, 'comment']
-
-    newComment.classList.add(...commentClasses)
-    user.classList.add('comment-username')
-    text.classList.add('comment-text')
-
-
-    user.innerHTML = comment.User.userName;
-    text.innerHTML = comment.comment;
-
-    newComment.appendChild(user);
-    newComment.appendChild(text);
-    container.prepend(newComment);
-
+  let newComment = document.createElement('div')
+  let user = document.createElement('div')
+  let text = document.createElement('div')
+  let commentClasses = [`comment-${comment.id}`, 'comment']
+  newComment.classList.add(...commentClasses)
+  user.classList.add('comment-username')
+  text.classList.add('comment-text')
+  user.innerHTML = comment.User.userName;
+  text.innerHTML = comment.comment;
+  newComment.appendChild(user);
+  newComment.appendChild(text);
+  container.prepend(newComment);
 }
-
 
 window.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const res = await fetch(`/api${window.location.pathname}`);
-
     const babble = await res.json()
     document.querySelector('#babble-header').innerHTML = babble.title;
     document.querySelector('#babble-subheader').innerHTML = babble.subHeader;
-    document.querySelector('#babble-user').innerHTML = `${babble.User.userName}`
+    document.querySelector('#babble-user-fullname').setAttribute('href', `/users/${babble.userID}/profile`);
     document.querySelector('#babble-user-fullname').innerHTML = `${babble.User.firstName} ${babble.User.lastName}`
     document.querySelector('#babble-date').innerHTML = `insert date here!`;
-    document.querySelector('#babble-read-time').innerHTML = `${babble.readTime}`;
-    document.querySelector('#babble-topic').innerHTML = `${babble.topicID}`;
+    document.querySelector('#babble-read-time').innerHTML = `${babble.readTime} minute read`;
+    document.querySelector('#babble-topic').innerHTML = `${babble.Topic.name}`;
+    if (babble.userID == localStorage.getItem('babble_user_id')) {
+      let editButton = document.createElement('button');
+      editButton.classList.add('.edit-babble__button');
+      editButton.innerHTML = 'Edit Button'
+      document.querySelector('.babble-info').prepend(editButton)
 
+      editButton.addEventListener('click', (event) => {
+        window.location.href = `${window.location.pathname}/edit`
+      })
+      }
     const babbleImage = document.querySelector('#babble-image');
     if (babble.url) {
-      babble.classList.remove('hidden')
+      babbleImage.classList.remove('hidden')
       babbleImage.setAttribute('src', `${babble.url}`);
     }
 
+        const resComm = await fetch(`/api${window.location.pathname}/comments`);
+        const comments = await resComm.json()
+
+        const commentContainer = document.querySelector('.babble-old-comments')
+        for (comment of comments) {
+          insertComments(commentContainer, comment);
+        }
+
     document.querySelector('.babble-content').innerHTML = babble.content;
 
-    const commentContainer = document.querySelector('.babble-old-comments')
+    document.querySelector('#comment-add').addEventListener('click', () => {
+      document.querySelector('.babble-new-comment-div').classList.remove('hidden')
+    })
 
-    const resComm = await fetch(`/api${window.location.pathname}/comments`);
-    const comments = await resComm.json()
 
-    for (comment of comments) {
-      insertComments(commentContainer, comment);
-    }
   } catch (err) {
     if (err.status >= 400 && err.status < 600) {
       const errorJSON = await err.json();
       const errorsContainer = document.querySelector('.errors-container');
+      instructions.innerHTML = 'There seems to be some issues, please refer to the instructions above'
       let errorsHtml = [
         `
-        <div class="error-alert">
-            Something went wrong. Please try again.
-        </div>
-        `,
+                <div class="error-alert">
+                    Something went wrong. Please try again.
+                </div>
+              `,
       ];
 
       const {
@@ -113,9 +114,9 @@ window.addEventListener("DOMContentLoaded", async () => {
       if (errors && Array.isArray(errors)) {
         errorsHtml = errors.map(
           (message) => `
-          <div class "error-alert">
-              ${message}
-          </div> `
+                    <div class "error-alert">
+                        ${message}
+                    </div> `
         );
       }
       errorsContainer.innerHTML = errorsHtml.join("");
@@ -123,10 +124,6 @@ window.addEventListener("DOMContentLoaded", async () => {
       alert("Something went wrong. Please check your internet connection and try again!")
     }
   }
-});
-
-document.querySelector('.comments-button').addEventListener('click', (event) => {
-  document.querySelector('.babble-new-comment-div').classList.remove('hidden');
 })
 
 document.querySelector('.babble-new-comment')
@@ -156,7 +153,6 @@ document.querySelector('.babble-new-comment')
       };
 
       comment = await res.json()
-      console.log(comment)
       insertComments(document.querySelector('.babble-old-comments'), comment)
     } catch (err) {
       if (err.status >= 400 && err.status < 600) {
@@ -186,16 +182,15 @@ document.querySelector('.babble-new-comment')
             );
           }
           errorsContainer.innerHTML = errorsHtml.join("");
-          }
-          }
-          else {
-            alert("Something went wrong. Please check your internet connection and try again!")
-          }
+        }
+      } else {
+        alert("Something went wrong. Please check your internet connection and try again!")
+      }
     }
   });
 
-  document.querySelector('#comment-cancel')
-    .addEventListener('click', (event) => {
-        document.querySelector('#new-comment__textarea').value = '';
-        document.querySelector('.babble-new-comment-div').classList.add('hidden');
-    })
+document.querySelector('#comment-cancel')
+  .addEventListener('click', (event) => {
+    document.querySelector('#new-comment__textarea').value = '';
+    document.querySelector('.babble-new-comment-div').classList.add('hidden');
+  })

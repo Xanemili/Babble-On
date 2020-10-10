@@ -115,14 +115,48 @@ router.post('/token', validateEmailAndPassword, asyncHandler(async (req, res, ne
   })
 }));
 
-router.get('/:id(\\d+)', asyncHandler(async(req, res, next) => {
+router.get('/', asyncHandler( async(req, res) => {
+  const user = await User.findAll()
+
+  res.json(user)
+}));
+
+router.get('/:id(\\d+)/profile', asyncHandler(async (req, res, next) => {
   // const id = parseInt(req.params.id, 10)
   const user = await User.findByPk(req.params.id, { attributes: [ "userName", "firstName", "email", "lastName", "biography"] });
 
   res.json( {user} );
 }));
 
-router.get('/:id(\\d+)/babbles', asyncHandler( async(req, res, next) => {
+router.get('/:id(\\d+)/edit', asyncHandler(async(req, res, next) => {
+  // const id = parseInt(req.params.id, 10)
+  const user = await User.findByPk(req.params.id, { attributes: [ "firstName", "email", "lastName", "biography"] });
+
+  res.json( {user} );
+}));
+
+router.patch('/:id(\\d+)/edit', requireAuth, asyncHandler(async (req, res, next) => {
+  const userToUpdate = await User.findByPk(req.params.id)
+
+  const {
+    biography,
+    email,
+    firstName,
+    lastName,
+  } = req.body;
+
+
+  await userToUpdate.update({
+    biography,
+    email,
+    firstName,
+    lastName,
+  });
+  res.json(userToUpdate)
+
+}));
+
+router.get('/:id(\\d+)/profile/babbles', asyncHandler(async (req, res, next) => {
   const babbles = await Babble.findAll({
     where: {
       userID: req.params.id

@@ -1,7 +1,7 @@
 mixin field(labelText, fieldName, fieldType = 'text', fieldValue, placeHolder)
   div(class='form-group')
     label(for=fieldName)= labelText
-    input(type=fieldType id=fieldName name=fieldName value=fieldValue class='form-control' placeholder=placeHolder)
+    input(type=fieldType id=fieldName name=fieldName value=fieldValue class=`form-control form-control__${fieldName}` placeholder=placeHolder)
 
 
 mixin validationErrorSummary(errors)
@@ -11,3 +11,10 @@ mixin validationErrorSummary(errors)
       ul
         each error in errors
           li= error
+
+
+
+//- mixin fieldEditProfile(fieldName, fieldValue, labelText)
+//-   div(class="edit-form-group")
+//-     label(for=fieldName)= labelText
+//-     input(id=fieldName value=fieldValue class="edit-form-input" )

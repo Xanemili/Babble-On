@@ -1,0 +1,35 @@
+.babble-title-div{
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.sub-title-div{
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.timestamp-div{
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.read-time-div{
+    text-align: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.babble-img{
+    position: relative;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
