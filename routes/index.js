@@ -50,6 +50,7 @@ router.get('/babbles', async(req, res) => {
   res.render('babble-feed', { topics });
 });
 
+
 router.get('/babbles/search/:search', async(req, res) => {
   res.render('search-topic')
 })
