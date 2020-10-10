@@ -72,16 +72,16 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         }
 
-            babbleAnchor.classList.add('babble-anchor')
-            babbleDiv.classList.add('bottom-div-container');
-            babbleLeftDiv.classList.add('bottom-left-div-container');
-            babbleRightDiv.classList.add('bottom-right-div-container');
-            babbleTitleDiv.classList.add('babble-title-div');
-            babbleSubHeaderDiv.classList.add('sub-title-div');
-            babbleTimestampDiv.classList.add('timestamp-div');
-            readTimeDiv.classList.add('read-time-div')
-            babbleImgDiv.classList.add('babble-img-div');
-            babbleImgUrl.classList.add('babble-img');
+        babbleAnchor.classList.add('babble-anchor')
+        babbleDiv.classList.add('bottom-div-container');
+        babbleLeftDiv.classList.add('bottom-left-div-container');
+        babbleRightDiv.classList.add('bottom-right-div-container');
+        babbleTitleDiv.classList.add('babble-title-div');
+        babbleSubHeaderDiv.classList.add('sub-title-div');
+        babbleTimestampDiv.classList.add('timestamp-div');
+        readTimeDiv.classList.add('read-time-div')
+        babbleImgDiv.classList.add('babble-img-div');
+        babbleImgUrl.classList.add('babble-img');
 
         // for(let follow of follower) {
         //     const id = follow.followerUserID
