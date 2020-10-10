@@ -287,7 +287,6 @@ router.delete('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (
 
 router.get('/search/:searchVal', asyncHandler(async (req, res, next) => {
   const search = req.params.searchVal
-  console.log(req.body)
   const babbles = await Babble.findAll({
     where: {
       title: {[Op.iLike]: `%${search}%`}
