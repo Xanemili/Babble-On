@@ -190,9 +190,6 @@ router.get('/:id(\\d+)/profile/babbles', asyncHandler(async (req, res, next) => 
 router.get('/:id(\\d+)/followers', asyncHandler(async (req, res, next) => {
   const followers = await Follower.findAll({
     include: {
-      where: {
-
-      },
       model: User,
       attributes: [
         "userName",
@@ -241,9 +238,6 @@ router.post('/:id(\\d+)/followers', requireAuth, asyncHandler(async (req, res, n
 
 router.get('/:id(\\d+)/following', asyncHandler(async (req, res, next) => {
   const following = await Follower.findAll({
-    where: {
-      followerUserID: req.params.id
-    },
     include: {
       model: User,
       attributes: [
@@ -252,8 +246,14 @@ router.get('/:id(\\d+)/following', asyncHandler(async (req, res, next) => {
         "lastName"
       ]
     },
+    where: {
+      followerUserID: req.params.id,
+
+    },
     order: [['updatedAt', 'DESC']]
   })
+  console.log('following', following.userID)
+
   res.json(following)
 }))
 

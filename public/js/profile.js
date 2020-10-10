@@ -1,51 +1,34 @@
 window.addEventListener('DOMContentLoaded', async (e) => {
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> main
     try {
         const userId = localStorage.getItem('babble_user_id');
 
-<<<<<<< HEAD
-        const res1 = await fetch(`/api/users/${userId}`, {
+        const res1 = await fetch(`/api${window.location.pathname}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
             },
         });
 
-        const res2 = await fetch(`/api/users/${userId}/babbles`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
-            },
+        const res2 = await fetch(`/api${window.location.pathname}/babbles`, {
         });
-=======
-    const res1 = await fetch(`/api${window.location.pathname}`, {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
-        },
-    });
 
-    const res2 = await fetch(`/api${window.location.pathname}/babbles`, {
-    });
->>>>>>> main
-
-        const res3 = await fetch(`api/users/${userId}/following`, {
+        const res3 = await fetch(`/api/users/${userId}/following`, {
             headers: {
                 Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
             }
         })
-        const res4 = await fetch(`api/users/${userId}/followers`, {
+        const res4 = await fetch(`/api/users/${userId}/followers`, {
             headers: {
                 Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
             }
         })
-
+        console.log('location', window.location.pathname)
         const { user } = await res1.json();
         const { babbles } = await res2.json();
-        const  following  = await res3.json();
-        const  follower  = await res4.json();
+        const following = await res3.json();
+        const follower = await res4.json();
 
         console.log("following", following)
         console.log("follower", follower)
@@ -60,7 +43,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const followersContainer = document.querySelector('.followers-list-div')
         //Implement tennery
 
-        for(let follow of following) {
+        for (let follow of following) {
             const id = follow.followerUserID
             // console.log(follow)
 
@@ -85,22 +68,21 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             followerDiv.append(profilePic)
             followerDiv.append(followerNameAnchor)
 
-<<<<<<< HEAD
             followersContainer.append(followerDiv)
-=======
-    babbleAnchor.classList.add('babble-anchor')
-    babbleDiv.classList.add('bottom-div-container');
-    babbleLeftDiv.classList.add('bottom-left-div-container');
-    babbleRightDiv.classList.add('bottom-right-div-container');
-    babbleTitleDiv.classList.add('babble-title-div');
-    babbleSubHeaderDiv.classList.add('sub-title-div');
-    babbleTimestampDiv.classList.add('timestamp-div');
-    readTimeDiv.classList.add('read-time-div')
-    babbleImgDiv.classList.add('babble-img-div');
-    babbleImgUrl.classList.add('babble-img');
->>>>>>> main
 
         }
+
+            babbleAnchor.classList.add('babble-anchor')
+            babbleDiv.classList.add('bottom-div-container');
+            babbleLeftDiv.classList.add('bottom-left-div-container');
+            babbleRightDiv.classList.add('bottom-right-div-container');
+            babbleTitleDiv.classList.add('babble-title-div');
+            babbleSubHeaderDiv.classList.add('sub-title-div');
+            babbleTimestampDiv.classList.add('timestamp-div');
+            readTimeDiv.classList.add('read-time-div')
+            babbleImgDiv.classList.add('babble-img-div');
+            babbleImgUrl.classList.add('babble-img');
+
         // for(let follow of follower) {
         //     const id = follow.followerUserID
         //     console.log(follow)
