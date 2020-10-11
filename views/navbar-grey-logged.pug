@@ -4,7 +4,7 @@ script(src="/js/nav-bar.js")
 
 .nav-container
   span
-    a.home-container(id="babble-on-text" href='/')
+    a.home-container(id="babble-on-text" href='/babbles')
       img(class = 'text-logo' src="/resources/babble-on-text.png" alt="babble-on text logo")
     //- p(id="babble-on-text") Babble-On
   span
@@ -18,7 +18,7 @@ script(src="/js/nav-bar.js")
       div.dropdown-content
         a.dropdown-link#babble-on-my-profile(href="/") My Profile
         div
-        a.dropdown-link(href="/") Edit Profile
+        a.dropdown-link#babble-on-edit-profile Edit Profile
         div
         a.dropdown-link#nav-bar__sign-out(href="/log-in") Sign Out
         div(id='create-babble__link')

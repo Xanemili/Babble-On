@@ -13,9 +13,21 @@ router.get('/users/:id(\\d+)/profile', async (req, res) => {
   });
 }) // implement viewing others profiles
 
+router.get('/users/:id(\\d+)/profile/edit', async(req, res) => {
+  res.render('profile-edit')
+})
+
+router.get('/users/:id(\\d+)/followers', async(req, res) => {
+  res.render('followers')
+})
+
+router.get('/users/:id(\\d+)/following', async(req, res) => {
+  res.render('following')
+})
+
 router.get('/sign-up', (req, res) => {
-    res.render('sign-up')
-  })
+  res.render('sign-up')
+})
 
 router.get('/log-in', (req, res) => {
   res.render('log-in')
@@ -41,13 +53,17 @@ router.get('/babbles/:id(\\d+)/edit', async (req, res) => {
   })
 });
 
-
 router.get('/babbles', async(req, res) => {
   const topics = await Topic.findAll();
   res.render('babble-feed', { topics });
 });
 
+
 router.get('/babbles/search/:search', async(req, res) => {
+  res.render('search-topic')
+})
+
+router.get('/topics/search/:search', async (req, res) => {
   res.render('search-topic')
 })
 

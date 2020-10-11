@@ -41,5 +41,30 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res, next) => {
   });
 }));
 
+router.get('/search/:searchVal', asyncHandler(async (req, res, next) => {
+  const search = req.params.searchVal;
+  console.log('something')
+  const babbles = await Babble.findAll({
+    include: {
+      model: Topic,
+      where: {
+        name: `${search}`
+      },
+    }
+
+  });
+  console.log(babbles)
+  if (babbles) {
+    res.json(
+      babbles
+    );
+  } else {
+    const err = new Error();
+    err.title = 'No results were found for that search.';
+    err.status = 404;
+    next(err);
+  }
+}));
+
 
 module.exports = router;

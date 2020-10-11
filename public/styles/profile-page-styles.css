@@ -30,8 +30,8 @@ html, body {
     text-align: center;
 }
 
-.username-div {
-    font-size: 40px;
+.user-name-div {
+    font-size: 2em;
 }
 .profile-pic-div > img{
     width: 175px;
@@ -68,7 +68,7 @@ html, body {
 }
 
 .bottom-left-div-container {
-    display: flex;
+    display: block;
     flex-direction: column;
     /* justify-content: space-around; */
     align-items: flex-start;
@@ -114,5 +114,10 @@ html, body {
 .babble-img {
     height: 375px;
     width: 425px;
-
+}
+.mini-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* right: 10px; */
 }
