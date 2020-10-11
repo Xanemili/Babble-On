@@ -102,7 +102,9 @@ button {
 .bottom-logo{
     position: relative;
     display: flex;
-    bottom: 550px;
+    bottom: 560px;
+    right: 50px;
+    height: 550px;
 }
 
 .topic__1{
