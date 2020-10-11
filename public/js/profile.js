@@ -1,7 +1,5 @@
 window.addEventListener('DOMContentLoaded', async (e) => {
 
-
-
     try {
         const userId = parseInt(localStorage.getItem('babble_user_id'), 10);
 
@@ -11,10 +9,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             },
         });
 
-
-
         const res2 = await fetch(`/api${window.location.pathname}/babbles`, {});
-
 
         let path = window.location.pathname
         path = path.split('/')
@@ -31,9 +26,12 @@ window.addEventListener('DOMContentLoaded', async (e) => {
                 Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
             }
         })
-
-        const { user } = await res1.json();
-        const { babbles } = await res2.json();
+        const {
+            user
+        } = await res1.json();
+        const {
+            babbles
+        } = await res2.json();
         const following = await res3.json();
         const follower = await res4.json();
 
@@ -42,12 +40,12 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         document.querySelector('.user-email-div').innerHTML = user.email
         document.querySelector('.bio-div').innerHTML = user.biography
         console.log(user.profilePicture)
-            if (user.profilePicture) {
-                let profilePic = document.createElement('img');
-                profilePic.setAttribute('src', `${user.profilePicture}`)
-                document.querySelector('.profile-pic-div').appendChild(profilePic)
+        let profilePic = document.createElement('img');
+        document.querySelector(".profile-pic-div").append(profilePic)
+            if (!user.profilePicture) {
+                profilePic.setAttribute('src', 'https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png')
             } else {
-                document.querySelector('#profile-picture').setAttribute('src', `https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg`)
+                profilePic.setAttribute('src', `${user.profilePicture}`)
             }
         document.querySelector('.followers-count-div').innerHTML = `${follower.length} followers  `
         document.querySelector('.following-count-div').innerHTML = `  ${following.length} following`
@@ -99,12 +97,8 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         })
 
-
-
-
-
-
         const profileContainer = document.querySelector('.main-container')
+
         for (let i = 0; i < babbles.length; i++) {
             const date = new Date(Date.parse(babbles[i].updatedAt))
             const babbleDiv = document.createElement('div');
@@ -165,4 +159,5 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     } catch (err) {
         console.error(err)
     }
+
 });

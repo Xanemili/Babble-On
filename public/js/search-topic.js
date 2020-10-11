@@ -3,9 +3,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     const res2 = await fetch(`/api${window.location.pathname}`, {
     });
     console.log(res2);
-    const babbles =  await res2.json();
-    // const response =  await res2.json();
-    // console.log(response)
+    const babbles = await res2.json();
 
 const searchContainer = document.querySelector('.search-container')
 for (let i = 0; i < babbles.length; i++) {

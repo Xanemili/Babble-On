@@ -10,7 +10,8 @@ const {
   Babble,
   User,
   Comment,
-  Topic
+  Topic,
+  Reaction
 } = require('../../db/models');
 
 const {
@@ -21,6 +22,7 @@ const {
   asyncHandler,
   handleValidationErrors
 } = require('../utils');
+const reaction = require('../../db/models/reaction');
 
 const router = express.Router();
 const babbleNotFoundErr = (id) => {
@@ -287,7 +289,6 @@ router.delete('/:id(\\d+)/comments/:id(\\d+)', requireAuth, asyncHandler(async (
 
 router.get('/search/:searchVal', asyncHandler(async (req, res, next) => {
   const search = req.params.searchVal
-  console.log(req.body)
   const babbles = await Babble.findAll({
     where: {
       title: {[Op.iLike]: `%${search}%`}
@@ -304,5 +305,61 @@ router.get('/search/:searchVal', asyncHandler(async (req, res, next) => {
     next(err);
   }
 }));
+
+router.get('/:id(\\d+)/reactions/:reaction', asyncHandler(async (req, res, next) => {
+
+  const reaction = await Reaction.findOne({
+    where: {
+      babbleID: req.params.id
+    },
+    attributes: [`${req.params.reaction}`]
+  })
+
+  if (reaction) {
+    res.json(
+      reaction
+    );
+  } else {
+    const err = new Error();
+    err.title = 'No results were found for that reaction';
+    err.status = 404;
+    next(err)
+  }
+
+}));
+
+router.post('/:id(\\d+)/reactions/:reaction', requireAuth, asyncHandler(async (req, res, next) => {
+
+  try {
+    let reaction = await Reaction.create({
+      reaction: `${req.params.reaction}`,
+      babbleID: req.params.id,
+      userID: req.user.id,
+    })
+
+    res.json(reaction);
+
+  } catch (e) {
+    next(e)
+  }
+}))
+
+router.delete('/:id(\\d+)/reactions/:reaction', requireAuth, asyncHandler(async (req, res, next) => {
+
+  try {
+    let reaction = await Reaction.destroy({
+      where: {
+        reaction: `${req.params.reaction}`,
+        babbleID: req.params.id,
+        userID: req.user.id,
+      }
+    })
+
+    res.json(reaction);
+
+  } catch (e) {
+    next(e)
+  }
+}))
 
 module.exports = router;

@@ -143,7 +143,9 @@ router.get('/', asyncHandler( async(req, res) => {
 
 router.get('/:id(\\d+)/profile', asyncHandler(async (req, res, next) => {
   // const id = parseInt(req.params.id, 10)
-  const user = await User.findByPk(req.params.id, { attributes: [ "userName", "firstName", "email", "lastName", "biography"] });
+  const user = await User.findByPk(req.params.id, {
+    attributes: ["userName", "firstName", "email", "lastName", "biography", "profilePicture"]
+  });
 
   res.json( {user} );
 }));
