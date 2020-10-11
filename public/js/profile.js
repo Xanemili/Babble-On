@@ -39,16 +39,17 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         document.querySelector('.user-name-div').innerHTML = `${user.firstName} ${user.lastName}`
         document.querySelector('.user-email-div').innerHTML = user.email
         document.querySelector('.bio-div').innerHTML = user.biography
-        console.log(user.profilePicture)
         let profilePic = document.createElement('img');
         document.querySelector(".profile-pic-div").append(profilePic)
-            if (!user.profilePicture) {
-                profilePic.setAttribute('src', 'https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png')
-            } else {
-                profilePic.setAttribute('src', `${user.profilePicture}`)
-            }
-        document.querySelector('.followers-count-div').innerHTML = `${follower.length} followers  `
-        document.querySelector('.following-count-div').innerHTML = `  ${following.length} following`
+        if (!user.profilePicture) {
+            profilePic.setAttribute('src', 'https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png')
+        } else {
+            profilePic.setAttribute('src', `${user.profilePicture}`)
+        }
+        document.querySelector(".followers-count-a").setAttribute('href', `${path}/followers`)
+        document.querySelector(".following-count-a").setAttribute('href', `${path}/following`)
+        document.querySelector(".followers-count-a").innerHTML = `${follower.length} followers  `
+        document.querySelector(".following-count-a").innerHTML = `  ${following.length} following`
 
         let followButton = document.querySelector('.follow-button');
         let userID = window.location.pathname;
@@ -84,13 +85,14 @@ window.addEventListener('DOMContentLoaded', async (e) => {
                         'Content-Type': 'application/json'
                     }
                 })
-                // const res4 = await fetch(`/api${path}/followers`, {
-                //     headers: {
-                //         Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
-                //     }
-                // })
-                // const follower = await res4.json();
-                // document.querySelector('.following-count-div').innerHTML = `  ${follower.length} following`
+                const res = await fetch(`/api${path}/followers`, {
+                    headers: {
+                        Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
+                    }
+                })
+                const follower = await res.json();
+                console.log(follower.length)
+                document.querySelector('.following-count-div').innerHTML = `  ${follower.length} following`
             } catch (e) {
                 console.log(e)
             }

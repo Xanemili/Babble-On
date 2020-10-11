@@ -11,9 +11,6 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     })
 
     const follower = await res2.json();
-
-    // console.log("these are the followers", follower)
-
     const followersContainer = document.querySelector('.follow-list-div')
     followersContainer.setAttribute('id', "followers-list")
     for (let follow of follower) {
@@ -25,7 +22,11 @@ window.addEventListener('DOMContentLoaded', async (e) => {
       const name = `${follow.Following.firstName} ${follow.Following.lastName}`
       let profilePic = document.createElement('img')
       profilePic.setAttribute('class', "mini-profile-pic")
-      profilePic.setAttribute('src', follow.Following.profilePicture)
+      if (!follow.Following.profilePicture) {
+        profilePic.setAttribute('src', 'https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png')
+    } else {
+        profilePic.setAttribute('src', follow.Following.profilePicture)
+    }
       followNameAnchor.setAttribute('href', `/users/${follow.followerUserID}/profile`);
       followNameAnchor.setAttribute('class', `name-anchor`);
       followPicAnchor.setAttribute('href', `/users/${follow.followerUserID}/profile`)
