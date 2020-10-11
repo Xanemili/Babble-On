@@ -9,8 +9,6 @@ html(lang="en")
   body
 
     include navbar-grey-logged.pug
-    div(class="follow-list-div")
-      div(class="follow-title" id="followers-list" ) following
 
     div(class="main-container")
       div(class="top-div-container")
@@ -23,9 +21,10 @@ html(lang="en")
         div(class="top-center-div-container")
           div(class="bio-div")
         div(class="top-right-div-container")
-          span(class="followers-count-div")
-          span(class="following-count-div")
-
+          a(class="followers-count-a")
+          a(class="following-count-a")
+          div.btn-container
+              button(class = "follow-button" type ="button")
 
 
 

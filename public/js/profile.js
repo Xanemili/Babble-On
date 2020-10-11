@@ -1,9 +1,7 @@
 window.addEventListener('DOMContentLoaded', async (e) => {
 
-
-
     try {
-        const userId = localStorage.getItem('babble_user_id');
+        const userId = parseInt(localStorage.getItem('babble_user_id'), 10);
 
         const res1 = await fetch(`/api${window.location.pathname}`, {
             headers: {
@@ -13,12 +11,17 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         const res2 = await fetch(`/api${window.location.pathname}/babbles`, {});
 
-        const res3 = await fetch(`/api/users/${userId}/following`, {
+        let path = window.location.pathname
+        path = path.split('/')
+        path.pop();
+        path = path.join('/')
+
+        const res3 = await fetch(`/api${path}/following`, {
             headers: {
                 Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
             }
         })
-        const res4 = await fetch(`/api/users/${userId}/followers`, {
+        const res4 = await fetch(`/api${path}/followers`, {
             headers: {
                 Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
             }
@@ -36,39 +39,67 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         document.querySelector('.user-name-div').innerHTML = `${user.firstName} ${user.lastName}`
         document.querySelector('.user-email-div').innerHTML = user.email
         document.querySelector('.bio-div').innerHTML = user.biography
-        if (user.profilePicture) {
-            let profilePic = document.createElement('img');
-            profilePic.setAttribute('src', `${user.profilePicture}`)
-            document.querySelector('.profile-pic-div').appendChild(profilePic)
+        let profilePic = document.createElement('img');
+        document.querySelector(".profile-pic-div").append(profilePic)
+        if (!user.profilePicture) {
+            profilePic.setAttribute('src', 'https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png')
         } else {
-            document.querySelector('#profile-picture').setAttribute('src', `https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg`)
+            profilePic.setAttribute('src', `${user.profilePicture}`)
         }
-        document.querySelector('.followers-count-div').innerHTML = `${follower.length} followers  `
-        document.querySelector('.following-count-div').innerHTML = `  ${following.length} following`
+        document.querySelector(".followers-count-a").setAttribute('href', `${path}/followers`)
+        document.querySelector(".following-count-a").setAttribute('href', `${path}/following`)
+        document.querySelector(".followers-count-a").innerHTML = `${follower.length} followers  `
+        document.querySelector(".following-count-a").innerHTML = `  ${following.length} following`
 
+        let followButton = document.querySelector('.follow-button');
+        let userID = window.location.pathname;
+        userID = userID.split('/')
+        userID = parseInt(userID[userID.length - 2], 10);
+        if (userID === userId) {
+            followButton.setAttribute('hidden', 'true')
+        }
+        followButton.innerHTML = "follow"
+        for (let follow of follower) {
+            console.log("userID: ", follow.userID, ", followerUserID: ", follow.followerUserID)
+            if(follow.userID === userID && follow.followerUserID === userId) {
+                followButton.innerHTML = "unfollow"
+            }
+        }
+
+        followButton.addEventListener("click", async (e) => {
+            if (followButton.innerHTML === "unfollow") {
+                followButton.innerHTML = "follow"
+            } else {
+                followButton.innerHTML = "unfollow"
+            }
+            const body = {
+                followerUserID: userId,
+                userID: userID
+            }
+            try {
+                await fetch(`/api${path}/followers`, {
+                    method: "POST",
+                    body: JSON.stringify(body),
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                const res = await fetch(`/api${path}/followers`, {
+                    headers: {
+                        Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
+                    }
+                })
+                const follower = await res.json();
+                console.log(follower.length)
+                document.querySelector('.following-count-div').innerHTML = `  ${follower.length} following`
+            } catch (e) {
+                console.log(e)
+            }
+
+        })
 
         const profileContainer = document.querySelector('.main-container')
-        const followersContainer = document.querySelector('.follow-list-div')
-        followersContainer.setAttribute('id', "followers-list")
-        for (let follow of following) {
-            const id = follow.followerUserID
-            let followDiv = document.createElement('div');
-            followDiv.setAttribute('class', 'follow-div')
-            let followNameAnchor = document.createElement('a')
-            let followPicAnchor = document.createElement('a')
-            const name = `${follow.Followed.firstName} ${follow.Followed.lastName}`
-            let profilePic = document.createElement('img')
-            profilePic.setAttribute('class', "mini-profile-pic")
-            profilePic.setAttribute('src', follow.Followed.profilePicture)
-            followNameAnchor.setAttribute('href', `/users/${follow.followerUserID}`);
-            followNameAnchor.setAttribute('class', `name-anchor`);
-            followPicAnchor.setAttribute('href', `/users/${follow.followerUserID}`)
-            followNameAnchor.innerHTML = name
-            followDiv.append(profilePic)
-            followDiv.append(followNameAnchor)
-            followersContainer.append(followDiv)
-        }
-
 
         for (let i = 0; i < babbles.length; i++) {
             const date = new Date(Date.parse(babbles[i].updatedAt))
