@@ -38,15 +38,23 @@ searchbtn.addEventListener('click', async () => {
 })
 
 const insertComments = async (container, comment) => {
+  const dateComment = new Date(Date.parse(comment.updatedAt))
+  console.log(comment)
+
   let newComment = document.createElement('div')
   let user = document.createElement('div')
   let text = document.createElement('div')
+  let date = document.createElement('div')
+
   let commentClasses = [`comment-${comment.id}`, 'comment']
   newComment.classList.add(...commentClasses)
   user.classList.add('comment-username')
   text.classList.add('comment-text')
+  date.classList.add('comment-date')
   user.innerHTML = comment.User.userName;
   text.innerHTML = comment.comment;
+  date.innerHTML = `${dateComment.getMonth() + 1}/${dateComment.getDate()}/${dateComment.getFullYear()} ${dateComment.getHours()}:${dateComment.getMinutes()}`
+  user.append(date)
   newComment.appendChild(user);
   newComment.appendChild(text);
   container.prepend(newComment);
@@ -57,11 +65,13 @@ window.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch(`/api${window.location.pathname}`);
     const babble = await res.json()
+const date = new Date(Date.parse(babble.updatedAt))
+
     document.querySelector('#babble-header').innerHTML = babble.title;
     document.querySelector('#babble-subheader').innerHTML = babble.subHeader;
     document.querySelector('#babble-user-fullname').setAttribute('href', `/users/${babble.userID}/profile`);
     document.querySelector('#babble-user-fullname').innerHTML = `${babble.User.firstName} ${babble.User.lastName}`
-    document.querySelector('#babble-date').innerHTML = `insert date here!`;
+    document.querySelector('#babble-date').innerHTML = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} `;
     document.querySelector('#babble-read-time').innerHTML = `${babble.readTime} minute read`;
     document.querySelector('#babble-topic').innerHTML = `${babble.Topic.name}`;
     if (babble.userID == localStorage.getItem('babble_user_id')) {
