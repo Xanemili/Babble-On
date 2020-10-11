@@ -206,8 +206,6 @@ router.get('/:id(\\d+)/followers', asyncHandler(async (req, res, next) => {
     },
     order: [['updatedAt', 'DESC']]
   })
-  // console.log("following: ", followers)
-  // console.log("length: ", following.length)
 
   res.status(201).json(followers)
 
@@ -258,7 +256,6 @@ router.get('/:id(\\d+)/following', asyncHandler(async (req, res, next) => {
     },
     order: [['updatedAt', 'DESC']]
   })
-  console.log("following:  ", following )
   res.json(following)
 }))
 
