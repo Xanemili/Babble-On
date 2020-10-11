@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
 
     try {
-        const userId = localStorage.getItem('babble_user_id');
+        const userId = parseInt(localStorage.getItem('babble_user_id'), 10);
 
         const res1 = await fetch(`/api${window.location.pathname}`, {
             headers: {
@@ -45,9 +45,62 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         document.querySelector('.followers-count-div').innerHTML = `${follower.length} followers  `
         document.querySelector('.following-count-div').innerHTML = `  ${following.length} following`
 
+        let followButton = document.querySelector('.follow-button');
+        let userID = window.location.pathname;
+        userID = userID.split('/')
+        userID = parseInt(userID[userID.length - 2], 10);
+        console.log(userID);
+        console.log("userID: ", userID)
+        console.log("userId: ", userId)
+        if (userID === userId) {
+            followButton.setAttribute('hidden', 'true')
+        }
+        followButton.innerHTML = "follow"
+        for (let follow of follower) {
+            console.log("userID: ", follow.userID, ", followerUserID: ", follow.followerUserID)
+            if(follow.userID === userID && follow.followerUserID === userId) {
+                followButton.innerHTML = "unfollow"
+            }
+        }
+
+        followButton.addEventListener("click", async (e) => {
+            if (followButton.innerHTML === "unfollow") {
+                followButton.innerHTML = "follow"
+            } else {
+                followButton.innerHTML = "unfollow"
+            }
+            const body = {
+                followerUserID: userId,
+                userID: userID
+            }
+            try {
+                await fetch(`/api${path}/followers`, {
+                    method: "POST",
+                    body: JSON.stringify(body),
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                // const res4 = await fetch(`/api${path}/followers`, {
+                //     headers: {
+                //         Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
+                //     }
+                // })
+                // const follower = await res4.json();
+                // document.querySelector('.following-count-div').innerHTML = `  ${follower.length} following`
+            } catch (e) {
+                console.log(e)
+            }
+
+        })
+
+
+
+
+
+
         const profileContainer = document.querySelector('.main-container')
-
-
         for (let i = 0; i < 5; i++) {
             const date = new Date(Date(babbles.updatedAt))
             const babbleDiv = document.createElement('div');

@@ -213,10 +213,11 @@ router.get('/:id(\\d+)/followers', asyncHandler(async (req, res, next) => {
 
 router.post('/:id(\\d+)/followers', requireAuth, asyncHandler(async (req, res, next) => {
   const {
-    followerUserID
+    followerUserID,
+    userID
   } = req.body;
 
-  const userID = parseInt(req.params.id, 10);
+  // const userID = parseInt(req.params.id, 10);
 
   const follow = await Follower.findOne({
     where: {
