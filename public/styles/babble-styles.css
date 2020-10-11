@@ -115,6 +115,21 @@ button {
   margin: 10px;
 }
 
+.babble-reactions-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.babble_count {
+  padding: 4px;
+  color: lightgray;
+}
+
+.babble-reaction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
 .nav-container {
   /* padding-top: 500px; */
   background-color: rgba(65, 172, 131, .25);
