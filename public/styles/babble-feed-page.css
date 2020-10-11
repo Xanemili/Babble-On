@@ -408,3 +408,7 @@ html, body {
     text-decoration: none;
     color: black
 }
+
+.a-tag:hover {
+    color: gray;
+}
