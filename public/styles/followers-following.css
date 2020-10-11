@@ -1,0 +1,33 @@
+
+.follow-list-div {
+  box-sizing: border-box;
+  margin: 10px;
+  background-color: white;
+  position: fixed;
+  border: 2px solid gray;
+  border-radius: 10px;
+  margin: 5% auto;
+  left: 0;
+  right: 0;
+  height: 50%;
+  width: 22%;
+  z-index: 2;
+  /* flex-direction: column; */
+
+}
+
+.follow-title {
+  box-sizing: border-box;
+
+  text-align: center;
+  border-bottom: 2px solid gray;
+}
+
+.follow-div {
+  padding: 12px;
+  justify-items: flex-start;
+}
+
+.name-anchor {
+  /* padding-bottom: 10px; */
+}

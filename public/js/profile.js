@@ -11,27 +11,32 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             },
         });
 
+
+
         const res2 = await fetch(`/api${window.location.pathname}/babbles`, {
         });
 
-        const res3 = await fetch(`/api/users/${userId}/following`, {
+
+        let path = window.location.pathname
+        path = path.split('/')
+        path.pop();
+        path = path.join('/')
+
+        const res3 = await fetch(`/api${path}/following`, {
             headers: {
                 Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
             }
         })
-        const res4 = await fetch(`/api/users/${userId}/followers`, {
+        const res4 = await fetch(`/api${path}/followers`, {
             headers: {
                 Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
             }
         })
-        console.log('location', window.location.pathname)
+
         const { user } = await res1.json();
         const { babbles } = await res2.json();
         const following = await res3.json();
         const follower = await res4.json();
-
-        console.log("following", following)
-        console.log("follower", follower)
 
         document.querySelector('.username-div').innerHTML = user.userName
         document.querySelector('.user-name-div').innerHTML = `${user.firstName} ${user.lastName}`
@@ -40,43 +45,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         document.querySelector('.followers-count-div').innerHTML = `${follower.length} followers  `
         document.querySelector('.following-count-div').innerHTML = `  ${following.length} following`
 
-
         const profileContainer = document.querySelector('.main-container')
-        const followersContainer = document.querySelector('.follow-list-div')
-        followersContainer.setAttribute('id', "followers-list")
-        for (let follow of following) {
-            const id = follow.followerUserID
-
-            let followDiv = document.createElement('div');
-            followDiv.setAttribute('class', 'follow-div')
-            let followNameAnchor = document.createElement('a')
-            let followPicAnchor = document.createElement('a')
-            const name = `${follow.Followed.firstName} ${follow.Followed.lastName}`
-            let profilePic = document.createElement('img')
-            profilePic.setAttribute('class', "mini-profile-pic")
-            profilePic.setAttribute('src', follow.Followed.profilePicture)
-            followNameAnchor.setAttribute('href', `/users/${follow.followerUserID}`);
-            followNameAnchor.setAttribute('class', `name-anchor`);
-            followPicAnchor.setAttribute('href', `/users/${follow.followerUserID}`)
-            followNameAnchor.innerHTML = name
-            followDiv.append(profilePic)
-            followDiv.append(followNameAnchor)
-            followersContainer.append(followDiv)
-        }
-
-
-
-
-        babbleAnchor.classList.add('babble-anchor')
-        babbleDiv.classList.add('bottom-div-container');
-        babbleLeftDiv.classList.add('bottom-left-div-container');
-        babbleRightDiv.classList.add('bottom-right-div-container');
-        babbleTitleDiv.classList.add('babble-title-div');
-        babbleSubHeaderDiv.classList.add('sub-title-div');
-        babbleTimestampDiv.classList.add('timestamp-div');
-        readTimeDiv.classList.add('read-time-div')
-        babbleImgDiv.classList.add('babble-img-div');
-        babbleImgUrl.classList.add('babble-img');
 
 
         for (let i = 0; i < 5; i++) {

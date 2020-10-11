@@ -17,6 +17,14 @@ router.get('/users/:id(\\d+)/profile/edit', async(req, res) => {
   res.render('profile-edit')
 })
 
+router.get('/users/:id(\\d+)/followers', async(req, res) => {
+  res.render('followers')
+})
+
+router.get('/users/:id(\\d+)/following', async(req, res) => {
+  res.render('following')
+})
+
 router.get('/sign-up', (req, res) => {
   res.render('sign-up')
 })
