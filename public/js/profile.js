@@ -13,8 +13,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
 
 
-        const res2 = await fetch(`/api${window.location.pathname}/babbles`, {
-        });
+        const res2 = await fetch(`/api${window.location.pathname}/babbles`, {});
 
 
         let path = window.location.pathname
@@ -42,6 +41,14 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         document.querySelector('.user-name-div').innerHTML = `${user.firstName} ${user.lastName}`
         document.querySelector('.user-email-div').innerHTML = user.email
         document.querySelector('.bio-div').innerHTML = user.biography
+        console.log(user.profilePicture)
+            if (user.profilePicture) {
+                let profilePic = document.createElement('img');
+                profilePic.setAttribute('src', `${user.profilePicture}`)
+                document.querySelector('.profile-pic-div').appendChild(profilePic)
+            } else {
+                document.querySelector('#profile-picture').setAttribute('src', `https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg`)
+            }
         document.querySelector('.followers-count-div').innerHTML = `${follower.length} followers  `
         document.querySelector('.following-count-div').innerHTML = `  ${following.length} following`
 
@@ -49,9 +56,6 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         let userID = window.location.pathname;
         userID = userID.split('/')
         userID = parseInt(userID[userID.length - 2], 10);
-        console.log(userID);
-        console.log("userID: ", userID)
-        console.log("userId: ", userId)
         if (userID === userId) {
             followButton.setAttribute('hidden', 'true')
         }
@@ -101,8 +105,8 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
 
         const profileContainer = document.querySelector('.main-container')
-        for (let i = 0; i < 5; i++) {
-            const date = new Date(Date(babbles.updatedAt))
+        for (let i = 0; i < babbles.length; i++) {
+            const date = new Date(Date.parse(babbles[i].updatedAt))
             const babbleDiv = document.createElement('div');
             const babbleLeftDiv = document.createElement('div');
             const babbleRightDiv = document.createElement('div');
