@@ -2,6 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
+<<<<<<< HEAD
     return queryInterface.bulkInsert('Followers', [
       // {
       //   userID: 1,
@@ -16,6 +17,11 @@ module.exports = {
       //   followerUserID: 1
       // },
   ], {});
+=======
+    return queryInterface.changeColumn('Babbles', 'url', {
+      type: Sequelize.STRING(1000)
+    })
+>>>>>>> fixing main merge issues
     /*
       Add altering commands here.
       Return a promise to correctly handle asynchronicity.
