@@ -145,6 +145,9 @@ document.querySelector('#comment-cancel')
   })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> removing console logs from backend
 // document.querySelector('.babble-reactions-container')
 //   .addEventListener('click', async (event) => {
 
@@ -167,6 +170,7 @@ document.querySelector('#comment-cancel')
 //     }
 //     }
 //     })
+<<<<<<< HEAD
 =======
 document.querySelector('.babble-reactions-container')
   .addEventListener('click', async (event) => {
@@ -191,3 +195,5 @@ if (event.target.localName === 'button') {
     }
     })
 >>>>>>> making changes to reactions
+=======
+>>>>>>> removing console logs from backend
