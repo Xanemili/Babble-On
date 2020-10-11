@@ -53,7 +53,6 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         followersContainer.setAttribute('id', "followers-list")
         for (let follow of following) {
             const id = follow.followerUserID
-
             let followDiv = document.createElement('div');
             followDiv.setAttribute('class', 'follow-div')
             let followNameAnchor = document.createElement('a')
