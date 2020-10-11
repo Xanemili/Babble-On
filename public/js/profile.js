@@ -39,38 +39,33 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         document.querySelector('.bio-div').innerHTML = user.biography
         document.querySelector('.followers-count-div').innerHTML = `${follower.length} followers  `
         document.querySelector('.following-count-div').innerHTML = `  ${following.length} following`
-        const profileContainer = document.querySelector('.main-container')
-        const followersContainer = document.querySelector('.followers-list-div')
-        //Implement tennery
 
+
+        const profileContainer = document.querySelector('.main-container')
+        const followersContainer = document.querySelector('.follow-list-div')
+        followersContainer.setAttribute('id', "followers-list")
         for (let follow of following) {
             const id = follow.followerUserID
-            // console.log(follow)
 
-            let followerDiv = document.createElement('div');
-            followerDiv.setAttribute('class', 'follower-div')
-            let followerNameAnchor = document.createElement('a')
-            let followerPicAnchor = document.createElement('a')
-
-            const name = `${follow.User.firstName} ${follow.User.lastName}`
+            let followDiv = document.createElement('div');
+            followDiv.setAttribute('class', 'follow-div')
+            let followNameAnchor = document.createElement('a')
+            let followPicAnchor = document.createElement('a')
+            const name = `${follow.Followed.firstName} ${follow.Followed.lastName}`
             let profilePic = document.createElement('img')
             profilePic.setAttribute('class', "mini-profile-pic")
-            profilePic.setAttribute('src', "https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
-
-            followerNameAnchor.setAttribute('href', `/users/${follow.followerUserID}`);
-            followerNameAnchor.setAttribute('class', `name-anchor`);
-            followerPicAnchor.setAttribute('href', `/users/${follow.followerUserID}`)
-
-
-            followerNameAnchor.innerHTML = name
-
-
-            followerDiv.append(profilePic)
-            followerDiv.append(followerNameAnchor)
-
-            followersContainer.append(followerDiv)
-
+            profilePic.setAttribute('src', follow.Followed.profilePicture)
+            followNameAnchor.setAttribute('href', `/users/${follow.followerUserID}`);
+            followNameAnchor.setAttribute('class', `name-anchor`);
+            followPicAnchor.setAttribute('href', `/users/${follow.followerUserID}`)
+            followNameAnchor.innerHTML = name
+            followDiv.append(profilePic)
+            followDiv.append(followNameAnchor)
+            followersContainer.append(followDiv)
         }
+
+
+
 
         babbleAnchor.classList.add('babble-anchor')
         babbleDiv.classList.add('bottom-div-container');
@@ -83,38 +78,6 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         babbleImgDiv.classList.add('babble-img-div');
         babbleImgUrl.classList.add('babble-img');
 
-        // for(let follow of follower) {
-        //     const id = follow.followerUserID
-        //     console.log(follow)
-
-        //     let followerDiv = document.createElement('div');
-
-        //     let followerNameAnchor = document.createElement('a')
-        //     let followerPicAnchor = document.createElement('a')
-
-        //     const name = `${follow.User.firstName} ${follow.User.lastName}`
-        //     let profilePic = document.createElement('img')
-        //     profilePic.setAttribute('class', "mini-profile-pic")
-        //     profilePic.setAttribute('src', "https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
-
-        //     followerNameAnchor.setAttribute('href', `/users/${follow.followerUserID}`);
-        //     followerPicAnchor.setAttribute('href', `/users/${follow.followerUserID}`)
-
-        //     let followerNameSpan = document.createElement('span')
-        //     let followerPicSpan = document.createElement('span')
-
-        //     followerNameSpan.innerHTML = name
-        //     followerPicSpan.appendChild = profilePic
-
-        //     followerPicAnchor.append(followerPicSpan)
-        //     followerNameAnchor.append(followerNameSpan)
-
-        //     followerDiv.append(followerPicAnchor)
-        //     followerDiv.append(followerNameAnchor)
-
-        //     followersContainer.append(followerDiv)
-
-        // }
 
         for (let i = 0; i < 5; i++) {
             const date = new Date(Date(babbles.updatedAt))

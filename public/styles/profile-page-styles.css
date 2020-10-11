@@ -50,7 +50,8 @@ html, body {
     text-align: center;
 }
 
-.followers-list-div {
+.follow-list-div {
+    display: none;
     /* display: inline-block; */
     box-sizing: border-box;
     margin: 10px;
@@ -68,14 +69,14 @@ html, body {
 
 }
 
-.followers-title {
+.follow-title {
     box-sizing: border-box;
 
     text-align: center;
     border-bottom: 2px solid gray;
 }
 
-.follower-div {
+.follow-div {
     padding: 12px;
     justify-items: flex-start;
 }
