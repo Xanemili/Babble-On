@@ -6,7 +6,13 @@ module.exports = (sequelize, DataTypes) => {
     reaction: DataTypes.STRING
   }, {});
   Reaction.associate = function(models) {
-    // associations can be defined here
-  };
+    Reaction.belongsTo(models.User, {
+      foreignKey: 'UserID'
+    });
+
+    Reaction.belongsTo(models.Babble, {
+      foreignKey: 'BabbleID'
+    });
+    }
   return Reaction;
 };

@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
 
     try {
+<<<<<<< HEAD
         const userId = localStorage.getItem('babble_user_id');
 
         const res1 = await fetch(`/api${window.location.pathname}`, {
@@ -131,5 +132,36 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     } catch (err) {
         console.error(err)
     }
+=======
+    const userId = localStorage.getItem('babble_user_id');
+
+    const res1 = await fetch(`/api${window.location.pathname}`, {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
+        },
+    });
+
+    const res2 = await fetch(`/api${window.location.pathname}/babbles`, {
+    });
+
+
+    const { user } = await res1.json();
+    const { babbles } =  await res2.json();
+
+    document.querySelector('.username-div').innerHTML = user.userName
+    document.querySelector('.user-name-div').innerHTML = `${user.firstName} ${user.lastName}`
+    document.querySelector('.user-email-div').innerHTML = user.email
+    document.querySelector('.bio-div').innerHTML = user.biography
+    let profilePic = document.createElement('img');
+    if (user.profilePicture) {
+        profilePic.setAttribute('src', `${user.profilePicture}`)
+    } else {
+        profilePic.setAttribute('src', `https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg`)
+    }
+    document.querySelector('.profile-pic-div').appendChild(profilePic)
+    document.querySelector('.follow-list-div').innerHTML = "This will display user following list"
+    const profileContainer = document.querySelector('.main-container')
+//Implement tennery
+>>>>>>> more funct
 
 });

@@ -11,10 +11,16 @@ module.exports = {
       },
       userID: {
         type: Sequelize.INTEGER,
+          references: {
+            model: 'Users'
+          }
 
       },
       babbleID: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+          references: {
+            model: 'Babbles'
+          }
       },
       reaction: {
         type: Sequelize.STRING(255)
