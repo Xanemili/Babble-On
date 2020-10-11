@@ -25,6 +25,16 @@ module.exports = {
       })
     }
 
+    babbles.push({
+      userID: 1,
+      title: "Is Slip-Bop overrated",
+      subHeader: "The term slip-bop has become prevelant throughout this cohort.",
+      content: "",
+      readTime: 5,
+      topicID: 4,
+      url: imagesource,
+    })
+
     await queryInterface.bulkInsert('Babbles', babbles);
   },
 
