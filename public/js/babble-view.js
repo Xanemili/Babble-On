@@ -1,45 +1,7 @@
-const searchVal = document.querySelector('.search__bar')
-const searchbtn = document.querySelector('.nav__search');
-searchbtn.addEventListener('click', async () => {
-  try {
-    const searchObj = searchVal.value;
 
-    window.location.href = `/babbles/search/${searchObj}`
-  } catch (err) {
-    if (err.status >= 400 && err.status < 600) {
-      const errorJSON = await err.json();
-      const errorsContainer = document.querySelector('.errors-container');
-      logo.setAttribute("class", "logo-left")
-      instructions.innerHTML = 'There seems to be some issues, please refer to the instructions above'
-      let errorsHtml = [
-        `
-                <div class="error-alert">
-                    Something went wrong. Please try again.
-                </div>
-              `,
-      ];
-
-      const {
-        errors
-      } = errorJSON;
-      if (errors && Array.isArray(errors)) {
-        errorsHtml = errors.map(
-          (message) => `
-                    <div class "error-alert">
-                        ${message}
-                    </div> `
-        );
-      }
-      errorsContainer.innerHTML = errorsHtml.join("");
-    } else {
-      alert("Something went wrong. Please check your internet connection and try again!")
-    }
-  }
-})
 
 const insertComments = async (container, comment) => {
   const dateComment = new Date(Date.parse(comment.updatedAt))
-  console.log(comment)
 
   let newComment = document.createElement('div')
   let user = document.createElement('div')
@@ -106,33 +68,7 @@ const date = new Date(Date.parse(babble.updatedAt))
 
 
   } catch (err) {
-    if (err.status >= 400 && err.status < 600) {
-      const errorJSON = await err.json();
-      const errorsContainer = document.querySelector('.errors-container');
-      instructions.innerHTML = 'There seems to be some issues, please refer to the instructions above'
-      let errorsHtml = [
-        `
-                <div class="error-alert">
-                    Something went wrong. Please try again.
-                </div>
-              `,
-      ];
-
-      const {
-        errors
-      } = errorJSON;
-      if (errors && Array.isArray(errors)) {
-        errorsHtml = errors.map(
-          (message) => `
-                    <div class "error-alert">
-                        ${message}
-                    </div> `
-        );
-      }
-      errorsContainer.innerHTML = errorsHtml.join("");
-    } else {
-      alert("Something went wrong. Please check your internet connection and try again!")
-    }
+    handleErrors(err)
   }
 })
 
@@ -165,37 +101,7 @@ document.querySelector('.babble-new-comment')
       comment = await res.json()
       insertComments(document.querySelector('.babble-old-comments'), comment)
     } catch (err) {
-      if (err.status >= 400 && err.status < 600) {
-        const errorJSON = await err.json();
-        const errorsContainer = document.querySelector('.babble-comments-errors-container');
-        let errorsHtml = [
-          `
-        <div class="error-alert">
-            Something went wrong. Please try again.
-        </div>
-        `,
-        ];
-
-        if (err.status === 401) {
-          errorsContainer.innerHTML = 'You must log in to leave a comment'
-        } else {
-
-          const {
-            errors
-          } = errorJSON;
-          if (errors && Array.isArray(errors)) {
-            errorsHtml = errors.map(
-              (message) => `
-            <div class "error-alert">
-                ${message}
-            </div> `
-            );
-          }
-          errorsContainer.innerHTML = errorsHtml.join("");
-        }
-      } else {
-        alert("Something went wrong. Please check your internet connection and try again!")
-      }
+      handleErrors(err)
     }
   });
 
@@ -204,3 +110,25 @@ document.querySelector('#comment-cancel')
     document.querySelector('#new-comment__textarea').value = '';
     document.querySelector('.babble-new-comment-div').classList.add('hidden');
   })
+
+// document.querySelector('.babble-reactions')
+//   .addEventListener('click', async (event)=> {
+
+//     if (event.target.localName === 'button'){
+//       let react = event.target.innerHTML
+//       const reactionRes = await fetch(`/api${window.location.pathname}/reactions/${react}`,{
+//         method: 'POST', headers: {
+//           "Content-Type": "application/json",
+//           "Authorization": `Bearer ${localStorage.getItem('babble_access_token')}`
+//         }
+//       })
+//       let count = document.querySelector(`#babble-reaction__${react}-count`)
+//       if(count.innerHTML > 0){
+
+//         count.innerHTML = parseInt(count.innerHTML, 10) + 1
+//       } else {
+//         count.innerHTML = 1;
+//       }
+//       console.log(count)
+//     }
+//   })

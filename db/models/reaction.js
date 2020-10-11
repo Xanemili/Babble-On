@@ -7,11 +7,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Reaction.associate = function(models) {
     Reaction.belongsTo(models.User, {
-      foreignKey: 'UserID'
+      foreignKey: 'userID'
     });
 
     Reaction.belongsTo(models.Babble, {
-      foreignKey: 'BabbleID'
+      foreignKey: 'babbleID'
     });
     }
   return Reaction;

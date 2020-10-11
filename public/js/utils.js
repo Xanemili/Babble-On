@@ -1,4 +1,4 @@
-const genericErrorHandler = () => {
+export const handleErrors = (err) => {
 
   if (err.status >= 400 && err.status < 600) {
     const errorJSON = await err.json();
@@ -25,11 +25,7 @@ const genericErrorHandler = () => {
       );
     }
     errorsContainer.innerHTML = errorsHtml.join("");
+  } else {
+    alert("Something went wrong. Please check your internet connection and try again!")
   }
-}
-
-
-
-module.exports = {
-  genericErrorHandler
 }

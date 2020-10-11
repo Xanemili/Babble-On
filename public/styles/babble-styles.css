@@ -37,7 +37,8 @@ html, body {
 
 #babble-subheader {
   font-size: 25px;
-  padding: none;
+  padding-top:3px;
+  padding-bottom: 7px;
   margin: none;
 }
 
@@ -55,7 +56,6 @@ html, body {
 
 .babble-user {
   width: 150px;
-  /* position: absolute; */
   left: 90px;
   top: 330px;
   font-size: 10pt;
@@ -65,11 +65,16 @@ html, body {
 
 #babble-user-fullname {
   text-decoration: none;
+  font-size: 1.1em;
 }
 
 .babble-user div {
   width: 200px;
   font-size: 20px;
+}
+
+#babble-time-metrics {
+  font-size: 0.85em;
 }
 
 .babble-content {
