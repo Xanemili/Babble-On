@@ -55,5 +55,9 @@ router.get('/babbles/search/:search', async(req, res) => {
   res.render('search-topic')
 })
 
+router.get('/topics/search/:search', async (req, res) => {
+  res.render('search-topic')
+})
+
 
 module.exports = router;

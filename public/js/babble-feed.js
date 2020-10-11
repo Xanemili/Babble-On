@@ -163,15 +163,14 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         followUserDiv.append(followUserImgDiv)
         followUserDiv.append(followUserInfoDiv)
-11}
+        }
 
     }
 
     function trendingBabbleInfo() {
 
         for (let i = 7; i < 13; i++) {
-
-        const trendingBabble = document.querySelector(`.trending-babble-${i}`)
+          const trendingBabble = document.querySelector(`.trending-babble-${i}`)
 
         const trendingBabbleUserInfoDiv = document.createElement('div')
         trendingBabbleUserInfoDiv.classList.add('trending-babble-user-info-div')

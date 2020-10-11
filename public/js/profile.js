@@ -11,8 +11,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             },
         });
 
-        const res2 = await fetch(`/api${window.location.pathname}/babbles`, {
-        });
+        const res2 = await fetch(`/api${window.location.pathname}/babbles`, {});
 
         const res3 = await fetch(`/api/users/${userId}/following`, {
             headers: {
@@ -24,19 +23,26 @@ window.addEventListener('DOMContentLoaded', async (e) => {
                 Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
             }
         })
-        console.log('location', window.location.pathname)
-        const { user } = await res1.json();
-        const { babbles } = await res2.json();
+        const {
+            user
+        } = await res1.json();
+        const {
+            babbles
+        } = await res2.json();
         const following = await res3.json();
         const follower = await res4.json();
-
-        console.log("following", following)
-        console.log("follower", follower)
 
         document.querySelector('.username-div').innerHTML = user.userName
         document.querySelector('.user-name-div').innerHTML = `${user.firstName} ${user.lastName}`
         document.querySelector('.user-email-div').innerHTML = user.email
         document.querySelector('.bio-div').innerHTML = user.biography
+        if (user.profilePicture) {
+            let profilePic = document.createElement('img');
+            profilePic.setAttribute('src', `${user.profilePicture}`)
+            document.querySelector('.profile-pic-div').appendChild(profilePic)
+        } else {
+            document.querySelector('#profile-picture').setAttribute('src', `https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg`)
+        }
         document.querySelector('.followers-count-div').innerHTML = `${follower.length} followers  `
         document.querySelector('.following-count-div').innerHTML = `  ${following.length} following`
 
@@ -46,7 +52,6 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         followersContainer.setAttribute('id', "followers-list")
         for (let follow of following) {
             const id = follow.followerUserID
-
             let followDiv = document.createElement('div');
             followDiv.setAttribute('class', 'follow-div')
             let followNameAnchor = document.createElement('a')
@@ -65,22 +70,8 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         }
 
 
-
-
-        babbleAnchor.classList.add('babble-anchor')
-        babbleDiv.classList.add('bottom-div-container');
-        babbleLeftDiv.classList.add('bottom-left-div-container');
-        babbleRightDiv.classList.add('bottom-right-div-container');
-        babbleTitleDiv.classList.add('babble-title-div');
-        babbleSubHeaderDiv.classList.add('sub-title-div');
-        babbleTimestampDiv.classList.add('timestamp-div');
-        readTimeDiv.classList.add('read-time-div')
-        babbleImgDiv.classList.add('babble-img-div');
-        babbleImgUrl.classList.add('babble-img');
-
-
-        for (let i = 0; i < 5; i++) {
-            const date = new Date(Date(babbles.updatedAt))
+        for (let i = 0; i < babbles.length; i++) {
+            const date = new Date(Date.parse(babbles[i].updatedAt))
             const babbleDiv = document.createElement('div');
             const babbleLeftDiv = document.createElement('div');
             const babbleRightDiv = document.createElement('div');
@@ -139,4 +130,5 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     } catch (err) {
         console.error(err)
     }
+
 });

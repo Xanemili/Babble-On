@@ -1,52 +1,22 @@
-const searchVal = document.querySelector('.search__bar')
-const searchbtn = document.querySelector('.nav__search');
-searchbtn.addEventListener('click', async () => {
-  try {
-    const searchObj = searchVal.value;
 
-    window.location.href = `/babbles/search/${searchObj}`
-  } catch (err) {
-    if (err.status >= 400 && err.status < 600) {
-      const errorJSON = await err.json();
-      const errorsContainer = document.querySelector('.errors-container');
-      logo.setAttribute("class", "logo-left")
-      instructions.innerHTML = 'There seems to be some issues, please refer to the instructions above'
-      let errorsHtml = [
-        `
-                <div class="error-alert">
-                    Something went wrong. Please try again.
-                </div>
-              `,
-      ];
-
-      const {
-        errors
-      } = errorJSON;
-      if (errors && Array.isArray(errors)) {
-        errorsHtml = errors.map(
-          (message) => `
-                    <div class "error-alert">
-                        ${message}
-                    </div> `
-        );
-      }
-      errorsContainer.innerHTML = errorsHtml.join("");
-    } else {
-      alert("Something went wrong. Please check your internet connection and try again!")
-    }
-  }
-})
 
 const insertComments = async (container, comment) => {
+  const dateComment = new Date(Date.parse(comment.updatedAt))
+
   let newComment = document.createElement('div')
   let user = document.createElement('div')
   let text = document.createElement('div')
+  let date = document.createElement('div')
+
   let commentClasses = [`comment-${comment.id}`, 'comment']
   newComment.classList.add(...commentClasses)
   user.classList.add('comment-username')
   text.classList.add('comment-text')
+  date.classList.add('comment-date')
   user.innerHTML = comment.User.userName;
   text.innerHTML = comment.comment;
+  date.innerHTML = `${dateComment.getMonth() + 1}/${dateComment.getDate()}/${dateComment.getFullYear()} ${dateComment.getHours()}:${dateComment.getMinutes()}`
+  user.append(date)
   newComment.appendChild(user);
   newComment.appendChild(text);
   container.prepend(newComment);
@@ -57,11 +27,13 @@ window.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch(`/api${window.location.pathname}`);
     const babble = await res.json()
+const date = new Date(Date.parse(babble.updatedAt))
+
     document.querySelector('#babble-header').innerHTML = babble.title;
     document.querySelector('#babble-subheader').innerHTML = babble.subHeader;
     document.querySelector('#babble-user-fullname').setAttribute('href', `/users/${babble.userID}/profile`);
     document.querySelector('#babble-user-fullname').innerHTML = `${babble.User.firstName} ${babble.User.lastName}`
-    document.querySelector('#babble-date').innerHTML = `insert date here!`;
+    document.querySelector('#babble-date').innerHTML = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} `;
     document.querySelector('#babble-read-time').innerHTML = `${babble.readTime} minute read`;
     document.querySelector('#babble-topic').innerHTML = `${babble.Topic.name}`;
     if (babble.userID == localStorage.getItem('babble_user_id')) {
@@ -96,33 +68,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
   } catch (err) {
-    if (err.status >= 400 && err.status < 600) {
-      const errorJSON = await err.json();
-      const errorsContainer = document.querySelector('.errors-container');
-      instructions.innerHTML = 'There seems to be some issues, please refer to the instructions above'
-      let errorsHtml = [
-        `
-                <div class="error-alert">
-                    Something went wrong. Please try again.
-                </div>
-              `,
-      ];
-
-      const {
-        errors
-      } = errorJSON;
-      if (errors && Array.isArray(errors)) {
-        errorsHtml = errors.map(
-          (message) => `
-                    <div class "error-alert">
-                        ${message}
-                    </div> `
-        );
-      }
-      errorsContainer.innerHTML = errorsHtml.join("");
-    } else {
-      alert("Something went wrong. Please check your internet connection and try again!")
-    }
+    handleErrors(err)
   }
 })
 
@@ -155,37 +101,7 @@ document.querySelector('.babble-new-comment')
       comment = await res.json()
       insertComments(document.querySelector('.babble-old-comments'), comment)
     } catch (err) {
-      if (err.status >= 400 && err.status < 600) {
-        const errorJSON = await err.json();
-        const errorsContainer = document.querySelector('.babble-comments-errors-container');
-        let errorsHtml = [
-          `
-        <div class="error-alert">
-            Something went wrong. Please try again.
-        </div>
-        `,
-        ];
-
-        if (err.status === 401) {
-          errorsContainer.innerHTML = 'You must log in to leave a comment'
-        } else {
-
-          const {
-            errors
-          } = errorJSON;
-          if (errors && Array.isArray(errors)) {
-            errorsHtml = errors.map(
-              (message) => `
-            <div class "error-alert">
-                ${message}
-            </div> `
-            );
-          }
-          errorsContainer.innerHTML = errorsHtml.join("");
-        }
-      } else {
-        alert("Something went wrong. Please check your internet connection and try again!")
-      }
+      handleErrors(err)
     }
   });
 
@@ -194,3 +110,25 @@ document.querySelector('#comment-cancel')
     document.querySelector('#new-comment__textarea').value = '';
     document.querySelector('.babble-new-comment-div').classList.add('hidden');
   })
+
+// document.querySelector('.babble-reactions')
+//   .addEventListener('click', async (event)=> {
+
+//     if (event.target.localName === 'button'){
+//       let react = event.target.innerHTML
+//       const reactionRes = await fetch(`/api${window.location.pathname}/reactions/${react}`,{
+//         method: 'POST', headers: {
+//           "Content-Type": "application/json",
+//           "Authorization": `Bearer ${localStorage.getItem('babble_access_token')}`
+//         }
+//       })
+//       let count = document.querySelector(`#babble-reaction__${react}-count`)
+//       if(count.innerHTML > 0){
+
+//         count.innerHTML = parseInt(count.innerHTML, 10) + 1
+//       } else {
+//         count.innerHTML = 1;
+//       }
+//       console.log(count)
+//     }
+//   })
