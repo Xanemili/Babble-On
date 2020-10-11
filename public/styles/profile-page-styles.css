@@ -30,8 +30,8 @@ html, body {
     text-align: center;
 }
 
-.username-div {
-    font-size: 40px;
+.user-name-div {
+    font-size: 2em;
 }
 .profile-pic-div > img{
     width: 175px;
@@ -49,6 +49,42 @@ html, body {
     align-self: center;
     text-align: center;
 }
+
+.follow-list-div {
+    display: none;
+    /* display: inline-block; */
+    box-sizing: border-box;
+    margin: 10px;
+    background-color: white;
+    position: fixed;
+    border: 2px solid gray;
+    border-radius: 10px;
+    margin: 5% auto; /* Will not center vertically and won't work in IE6/7. */
+    left: 0;
+    right: 0;
+    height: 50%;
+    width: 22%;
+    z-index: 2;
+    /* flex-direction: column; */
+
+}
+
+.follow-title {
+    box-sizing: border-box;
+
+    text-align: center;
+    border-bottom: 2px solid gray;
+}
+
+.follow-div {
+    padding: 12px;
+    justify-items: flex-start;
+}
+
+.name-anchor {
+    /* padding-bottom: 10px; */
+}
+
 
 .bottom-div-container {
     display: flex;
@@ -68,7 +104,7 @@ html, body {
 }
 
 .bottom-left-div-container {
-    display: flex;
+    display: block;
     flex-direction: column;
     /* justify-content: space-around; */
     align-items: flex-start;
@@ -114,5 +150,10 @@ html, body {
 .babble-img {
     height: 375px;
     width: 425px;
-
+}
+.mini-profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* right: 10px; */
 }

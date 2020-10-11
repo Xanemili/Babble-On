@@ -9,20 +9,23 @@ html(lang="en")
   body
 
     include navbar-grey-logged.pug
+    div(class="follow-list-div")
+      div(class="follow-title" id="followers-list" ) following
 
     div(class="main-container")
       div(class="top-div-container")
         div(class="top-left-div-container")
-          div(class="username-div")
+          div(class="user-name-div")
           div(class="profile-pic-div")
             img(src="https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
           div(class="user-info-div")
-            div(class="user-name-div")
+            div(class="username-div")
             div(class="user-email-div")
         div(class="top-center-div-container")
           div(class="bio-div")
         div(class="top-right-div-container")
-          div(class="follow-list-div")
+          span(class="followers-count-div")
+          span(class="following-count-div")
 
 
 

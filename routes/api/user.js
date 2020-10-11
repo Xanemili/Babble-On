@@ -21,6 +21,7 @@ const {
   requireAuth
 } = require('../../auth');
 const follower = require('../../db/models/follower');
+const user = require('../../db/models/user');
 
 const router = express.Router();
 
@@ -188,12 +189,25 @@ router.get('/:id(\\d+)/profile/babbles', asyncHandler(async (req, res, next) => 
 
 router.get('/:id(\\d+)/followers', asyncHandler(async (req, res, next) => {
   const followers = await Follower.findAll({
+    include: [{
+      model: User,
+      as: "Following",
+      attributes: [
+        "userName",
+        "firstName",
+        "lastName",
+        "profilePicture"
+      ]
+    }],
     where: {
-      userID: req.params.id
+      userID: req.params.id,
     },
     order: [['updatedAt', 'DESC']]
   })
-  res.json(followers)
+  // console.log("following: ", followers)
+  // console.log("length: ", following.length)
+
+  res.status(201).json(followers)
 
 }))
 
@@ -204,23 +218,45 @@ router.post('/:id(\\d+)/followers', requireAuth, asyncHandler(async (req, res, n
 
   const userID = parseInt(req.params.id, 10);
 
+  const follow = await Follower.findOne({
+    where: {
+      userID,
+      followerUserID
+    }
+  })
 
-  const follow = await Follower.create({
-    userID: userID,
-    followerUserID: followerUserID
-  });
+  if (follow) {
+    await follow.destroy()
+    res.status(200).end()
 
-// res.redirect('/');
-
-}))
+  } else {
+    await Follower.create({
+      userID: userID,
+      followerUserID: followerUserID
+    })
+    res.status(201).end()
+  }
+}));
 
 router.get('/:id(\\d+)/following', asyncHandler(async (req, res, next) => {
   const following = await Follower.findAll({
+    include: [{
+      model: User,
+      as: "Followed",
+      attributes: [
+        "userName",
+        "firstName",
+        "lastName",
+        "profilePicture"
+      ]
+    }],
     where: {
-      followerUserID: req.params.id
+      followerUserID: req.params.id,
+
     },
     order: [['updatedAt', 'DESC']]
   })
+  console.log("following:  ", following )
   res.json(following)
 }))
 
