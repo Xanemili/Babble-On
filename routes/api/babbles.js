@@ -119,7 +119,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     userID
   } = req.body;
 
-  await Babble.create({
+  let babble = await Babble.create({
     title,
     subHeader,
     content,
@@ -128,9 +128,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     url,
     userID
   });
-  res.json({
-    message: 'Babble was created!'
-  });
+  res.json(babble);
 }));
 
 router.put('/:id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, res, next) => {
@@ -210,7 +208,8 @@ router.get('/:id(\\d+)/comments', asyncHandler(async (req, res, next) => {
     include: {
       model: User,
       attributes: ['userName']
-    }
+    },
+    order: [['updatedAt', 'ASC']]
   });
 
   res.json(comments);

@@ -129,6 +129,10 @@ document.querySelector('.babble-new-comment')
 
       comment = await res.json()
       insertComments(document.querySelector('.babble-old-comments'), comment)
+
+      document.querySelector('#new-comment__textarea').value = '';
+      document.querySelector('.babble-new-comment-div').classList.add('hidden')
+
     } catch (err) {
       handleErrors(err)
     }
