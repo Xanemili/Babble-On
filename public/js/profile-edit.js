@@ -16,23 +16,23 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     const lastNameLabel = document.querySelector('.lastName-label')
     const emailLabel = document.querySelector('.email-label')
     const bioLabel = document.querySelector('.bio-label')
+    const profilePic = document.querySelector('.profile-pic')
 
 
     bioInput.value = user.biography
     firstNameInput.setAttribute('value', user.firstName)
     lastNameInput.setAttribute('value', user.lastName)
     emailInput.setAttribute('value', user.email)
+    if (!user.profilePicture) {
+      profilePic.setAttribute('src', 'https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png')
+    } else {
+      profilePic.setAttribute('src', user.profilePicture)
+    }
 
     bioInput.setAttribute('name', 'biography')
     firstNameInput.setAttribute('name', "firstName")
     lastNameInput.setAttribute('name', "lastName")
     emailInput.setAttribute('name', "email")
-
-    bioLabel.innerHTML = "biography"
-    firstNameLabel.innerHTML = "first name"
-    lastNameLabel.innerHTML = "last name"
-    emailLabel.innerHTML = "e-mail"
-
 
   } catch (e) {
     console.log(e)
@@ -50,10 +50,8 @@ document.querySelector(".profile-edit-form").addEventListener('submit', async (e
   // const user = await User.findByPk(userId)
 
   const formData = new FormData(document.querySelector('.profile-edit-form'))
-  console.log(formData)
 
   const firstName = formData.get("firstName")
-  console.log("firstName: ", firstName)
   const lastName = formData.get("lastName");
   const email = formData.get("email");
   const biography = formData.get("biography");
@@ -68,7 +66,6 @@ document.querySelector(".profile-edit-form").addEventListener('submit', async (e
     // topics
   }
 
-  console.log(body)
   try {
     const res = await fetch(`/api/users/${userId}/edit`, {
       method: "PATCH",

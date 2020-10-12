@@ -3,15 +3,21 @@ include mix-in.pug
 
 html(lang="en")
   head
-      link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Cabin")
-      link(rel="stylesheet", href="/styles/babble-create-styles.css")
-      title Babble
+    link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Cabin")
+    link(rel="stylesheet", href="/styles/babble-create-styles.css")
+    title Create Babble
+
   body
 
+    include navbar-grey-logged.pug
 
     div.create-babble-form-div
       .errors-container
       form(class = "create-babble-form" action='/api/babbles' method="post")
+        .top-div
+          .form-title Create Babble
+          .profile-pic-div
+            img.profile-pic
         .create-babble-form__title
           +field( null, "title", 'text', null, "Title")
         .create-babble-form__subheader
