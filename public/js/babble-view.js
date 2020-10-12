@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     if (babble.userID == localStorage.getItem('babble_user_id')) {
       let editButton = document.createElement('button');
       editButton.classList.add('.edit-babble__button');
-      editButton.innerHTML = 'Edit Button'
+      editButton.innerHTML = 'Edit'
       document.querySelector('.babble-info').prepend(editButton)
 
       editButton.addEventListener('click', (event) => {

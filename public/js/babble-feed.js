@@ -286,8 +286,8 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         if (babbles[i].User.profilePicture){
           babbleProfilePic.setAttribute('src', `${babbles[i].User.profilePicture}`)
         }
-        const babbleTitle = document.createElement('a', 'a-tag')
-        babbleTitle.classList.add('babble-title')
+        const babbleTitle = document.createElement('a')
+        babbleTitle.classList.add('babble-title','a-tag')
         babbleTitle.innerHTML = babbles[i].title
         babbleTitle.setAttribute('href', `/babbles/${babbles[i].id}`)
 
