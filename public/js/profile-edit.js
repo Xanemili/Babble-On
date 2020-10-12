@@ -16,12 +16,18 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     const lastNameLabel = document.querySelector('.lastName-label')
     const emailLabel = document.querySelector('.email-label')
     const bioLabel = document.querySelector('.bio-label')
+    const profilePic = document.querySelector('.profile-pic')
 
 
     bioInput.value = user.biography
     firstNameInput.setAttribute('value', user.firstName)
     lastNameInput.setAttribute('value', user.lastName)
     emailInput.setAttribute('value', user.email)
+    if (!user.profilePicture) {
+      profilePic.setAttribute('src', 'https://hancroft.co.nz/wp-content/uploads/2019/05/profile-placeholder.png')
+    } else {
+      profilePic.setAttribute('src', user.profilePicture)
+    }
 
     bioInput.setAttribute('name', 'biography')
     firstNameInput.setAttribute('name', "firstName")

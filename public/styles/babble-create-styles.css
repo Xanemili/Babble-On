@@ -1,13 +1,15 @@
-html, body {
+/* html, body {
   margin: 0;
   height: 100%;
+} */
+
+* {
+  font-family: Cabin;
 }
 
-body {
-  background-color: rgba(65, 172, 131, .25) ;
-}
 
-input{
+
+.create-babble-form-div input{
   font-family: Cabin;
   margin: 0;
   height: 40px;
@@ -27,9 +29,22 @@ input{
 
 }
 
+.top-div {
+  font-size: 3em;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+/* .form-title {
+  font-size: 3em;
+  padding-top: 20px;
+  padding-bottom: 30px;
+} */
+
+
+
 .create-babble-form__title input{
   height: 70px;
-  font-size: 3em;
+  font-size: 2.5em;
   text-align: left;
 }
 .create-babble-form__subheader input{

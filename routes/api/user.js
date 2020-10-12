@@ -152,7 +152,7 @@ router.get('/:id(\\d+)/profile', asyncHandler(async (req, res, next) => {
 
 router.get('/:id(\\d+)/edit', asyncHandler(async(req, res, next) => {
   // const id = parseInt(req.params.id, 10)
-  const user = await User.findByPk(req.params.id, { attributes: [ "firstName", "email", "lastName", "biography"] });
+  const user = await User.findByPk(req.params.id, { attributes: [ "firstName", "email", "lastName", "biography", "profilePicture"] });
 
   res.json( {user} );
 }));

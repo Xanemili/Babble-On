@@ -9,27 +9,28 @@ html(lang="en")
   body
 
     include navbar-grey-logged.pug
-    div.sign-up-form-container
-      div.errors-container
+
     div(class="main-container")
-      div(class="profile-pic-div")
-        img(src="https://images.medicaldaily.com/sites/medicaldaily.com/files/2014/06/10/journal-writing.jpg")
-      div(class="form-container")
-        form(class="profile-edit-form")
-          div(class="firstName-div")
-            label(for="firstName-label" class="firstName-label first-Name-group")
-            input(id="firstName-input" class="firstName-input first-Name-group")
-          div(class="lastName-div")
-            label(for="lastName-label" class="lastName-label last-Name-group")
-            input(id="lastName-input" class="lastName-input last-Name-group")
-          div(class="email-div")
-            label(for="email-label" class="email-label email-group")
-            input(id="email-input" class="email-input email-group")
-          div(class="bio-div")
-            label(for="bio-label" class="bio-label bio-group")
-            textarea(id="bio-input" class="bio-input")
-          div.btn-container
-            button(class = "update-btn" type ="submit") update
+      div.errors-container
+      form(class="profile-edit-form")
+        .top-div
+          .profile-pic-div
+            img.profile-pic
+          .form-title Edit Profile
+        div(class="firstName-div")
+          label(for="firstName-label" class="firstName-label first-Name-group")
+          input(id="firstName-input" class="firstName-input first-Name-group")
+        div(class="lastName-div")
+          label(for="lastName-label" class="lastName-label last-Name-group")
+          input(id="lastName-input" class="lastName-input last-Name-group")
+        div(class="email-div")
+          label(for="email-label" class="email-label email-group")
+          input(id="email-input" class="email-input email-group")
+        div(class="bio-div")
+          label(for="bio-label" class="bio-label bio-group")
+          textarea(id="bio-input" class="bio-input")
+        div.btn-container
+          button(class = "update-btn" type ="submit") update
 
 
 script(src="/js/profile-edit.js")

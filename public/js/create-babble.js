@@ -4,10 +4,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   let path = pathName.join('/')
   if (editCheck === 'edit') {
   const deleteButton = document.querySelector('.delete-btn')
-
-    try {
-      const res = await fetch(`/api${path}`);
-      const babble = await res.json();
+  try {
+    const res = await fetch(`/api${path}`);
+    const babble = await res.json();
 
 
       document.querySelector('.form-control__title').value = babble.title
