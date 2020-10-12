@@ -18,6 +18,15 @@ input{
   border: none;
 }
 
+.alert {
+  border: 1px solid darkgray;
+  background-color: lightsalmon;
+  border-radius: 2px;
+  padding: 2px;
+  margin: 1px;
+
+}
+
 .create-babble-form__title input{
   height: 70px;
   font-size: 3em;
@@ -54,8 +63,6 @@ input{
 }
 
 .errors-container {
-  color: black;
-  background-color: lightcoral;
 }
 
 .create-babble-form-div {
@@ -69,7 +76,7 @@ input{
   /* border: 1px solid black; */
   background-color: white;
   border-radius: 10px;
-  height: 100%;
+  height: auto;
   width: 66%;
 }
 

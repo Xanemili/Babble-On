@@ -1,5 +1,4 @@
 
-
 const insertComments = async (container, comment) => {
   const dateComment = new Date(Date.parse(comment.updatedAt))
 
@@ -27,7 +26,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   try {
     const res = await fetch(`/api${window.location.pathname}`);
     const babble = await res.json()
-const date = new Date(Date.parse(babble.updatedAt))
+    const date = new Date(Date.parse(babble.updatedAt))
 
     document.querySelector('#babble-header').innerHTML = babble.title;
     document.querySelector('#babble-subheader').innerHTML = babble.subHeader;
@@ -61,6 +60,36 @@ const date = new Date(Date.parse(babble.updatedAt))
         }
 
     document.querySelector('.babble-content').innerHTML = babble.content;
+
+
+    const resReaction = await fetch(`/api${window.location.pathname}/reactions`)
+    const reactions =  await resReaction.json();
+    let reactionObj = {
+      clap: 0,
+      like: 0,
+      love: 0
+    }
+
+    for(let i=0; i<reactions.length; i++){
+      if(reactions[i].reaction === 'clap'){
+        reactionObj.clap++
+      } else if (reactions[i].reaction === 'like'){
+        reactionObj.like++
+      } else if (reactions[i].reaction === 'love'){
+        reactionObj.love++
+      }
+    }
+
+    if(reactionObj.clap){
+      document.querySelector('#babble-reaction__clap-count').innerHTML = reactionObj.clap
+    }
+     if (reactionObj.like) {
+    document.querySelector('#babble-reaction__like-count').innerHTML = reactionObj.like
+     }
+      if (reactionObj.love) {
+    document.querySelector('#babble-reaction__love-count').innerHTML = reactionObj.love
+      }
+
 
     document.querySelector('#comment-add').addEventListener('click', () => {
       document.querySelector('.babble-new-comment-div').classList.remove('hidden')
@@ -100,6 +129,10 @@ document.querySelector('.babble-new-comment')
 
       comment = await res.json()
       insertComments(document.querySelector('.babble-old-comments'), comment)
+
+      document.querySelector('#new-comment__textarea').value = '';
+      document.querySelector('.babble-new-comment-div').classList.add('hidden')
+
     } catch (err) {
       handleErrors(err)
     }
@@ -111,24 +144,25 @@ document.querySelector('#comment-cancel')
     document.querySelector('.babble-new-comment-div').classList.add('hidden');
   })
 
-// document.querySelector('.babble-reactions')
-//   .addEventListener('click', async (event)=> {
+// document.querySelector('.babble-reactions-container')
+//   .addEventListener('click', async (event) => {
 
-//     if (event.target.localName === 'button'){
-//       let react = event.target.innerHTML
-//       const reactionRes = await fetch(`/api${window.location.pathname}/reactions/${react}`,{
-//         method: 'POST', headers: {
-//           "Content-Type": "application/json",
-//           "Authorization": `Bearer ${localStorage.getItem('babble_access_token')}`
-//         }
-//       })
-//       let count = document.querySelector(`#babble-reaction__${react}-count`)
-//       if(count.innerHTML > 0){
-
-//         count.innerHTML = parseInt(count.innerHTML, 10) + 1
-//       } else {
-//         count.innerHTML = 1;
-//       }
-//       console.log(count)
+// if (event.target.localName === 'button') {
+//   let react = event.target.innerHTML
+//   const reactionRes = await fetch(`/api${window.location.pathname}/reactions/${react}`, {
+//     method: 'get',
+//     headers: {
+//       "Content-Type": "application/json",
+//       "Authorization": `Bearer ${localStorage.getItem('babble_access_token')}`
 //     }
 //   })
+//   let count = document.querySelector(`#babble-reaction__${react}-count`)
+//   if (count.innerHTML > 0) {
+
+//     count.innerHTML = parseInt(count.innerHTML, 10) + 1
+//     }
+//     else {
+//       count.innerHTML = 1;
+//     }
+//     }
+//     })

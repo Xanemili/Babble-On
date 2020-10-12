@@ -119,7 +119,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     userID
   } = req.body;
 
-  await Babble.create({
+  let babble = await Babble.create({
     title,
     subHeader,
     content,
@@ -128,9 +128,7 @@ router.post('/', requireAuth, validateBabble, handleValidationErrors, asyncHandl
     url,
     userID
   });
-  res.json({
-    message: 'Babble was created!'
-  });
+  res.json(babble);
 }));
 
 router.put('/:id(\\d+)', requireAuth, validateBabble, asyncHandler(async (req, res, next) => {
@@ -210,7 +208,8 @@ router.get('/:id(\\d+)/comments', asyncHandler(async (req, res, next) => {
     include: {
       model: User,
       attributes: ['userName']
-    }
+    },
+    order: [['updatedAt', 'ASC']]
   });
 
   res.json(comments);
@@ -306,47 +305,39 @@ router.get('/search/:searchVal', asyncHandler(async (req, res, next) => {
   }
 }));
 
-router.get('/:id(\\d+)/reactions/:reaction', asyncHandler(async (req, res, next) => {
-
-  const reaction = await Reaction.findOne({
-    where: {
-      babbleID: req.params.id
-    },
-    attributes: [`${req.params.reaction}`]
-  })
-
-  if (reaction) {
-    res.json(
-      reaction
-    );
-  } else {
-    const err = new Error();
-    err.title = 'No results were found for that reaction';
-    err.status = 404;
-    next(err)
+router.get('/:id(\\d+)/reactions/', asyncHandler(async (req, res, next) => {
+  try {
+    const reaction = await Reaction.findAll({
+      where: {babbleID: req.params.id},
+      attributes: ['reaction']
+    })
+    res.json(reaction)
+  } catch (e) {
+    console.log(e)
   }
-
 }));
 
-router.post('/:id(\\d+)/reactions/:reaction', requireAuth, asyncHandler(async (req, res, next) => {
+router.get('/:id(\\d+)/reactions/:reaction', requireAuth, asyncHandler(async (req, res, next) => {
 
   try {
-    let reaction = await Reaction.create({
-      reaction: `${req.params.reaction}`,
+  const reaction = await Reaction.findOne({
+    where: {
       babbleID: req.params.id,
       userID: req.user.id,
-    })
+      reaction: req.params.reaction
+    }
+  })
 
-    res.json(reaction);
+  if (!reaction) {
+    let newReaction = await Reaction.create({
+    reaction: `${req.params.reaction}`,
+    babbleID: req.params.id,
+    userID: req.user.id,
+  })
 
-  } catch (e) {
-    next(e)
+  res.json(newReaction);
   }
-}))
-
-router.delete('/:id(\\d+)/reactions/:reaction', requireAuth, asyncHandler(async (req, res, next) => {
-
-  try {
+  else {
     let reaction = await Reaction.destroy({
       where: {
         reaction: `${req.params.reaction}`,
@@ -354,12 +345,10 @@ router.delete('/:id(\\d+)/reactions/:reaction', requireAuth, asyncHandler(async 
         userID: req.user.id,
       }
     })
-
-    res.json(reaction);
-
-  } catch (e) {
-    next(e)
-  }
-}))
+    }
+    } catch (e) {
+      console.log(e)
+    }
+}));
 
 module.exports = router;
