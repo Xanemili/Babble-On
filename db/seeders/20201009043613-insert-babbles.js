@@ -37,7 +37,7 @@ module.exports = {
     let topics = await Topic.findAll();
 
     for (let i = 0; i < 20; i++) {
-      let rand = Math.floor(Math.random() * 14)
+      let rand = Math.floor(Math.random() * 8)
       babbles.push({
         userID: users[rand].dataValues.id,
         title: faker.lorem.sentence(),
