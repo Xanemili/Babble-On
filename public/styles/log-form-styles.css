@@ -101,7 +101,8 @@ label{
 .btn-container{
     display: flex;
     position: relative;
-    right: 120px;
+    bottom: 80px;
+    left: 40px;
 }
 
 .form-group{
@@ -130,5 +131,4 @@ label{
     display: flex;
     position: relative;
     bottom: 225px;
-    left: 185px;
 }
