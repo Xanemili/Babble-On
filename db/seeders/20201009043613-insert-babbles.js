@@ -56,7 +56,11 @@ module.exports = {
       content: "",
       readTime: 5,
       topicID: 4,
+<<<<<<< HEAD
       url: 'https://cdn.pixabay.com/photo/2020/09/22/18/15/passenger-5593947_960_720.jpg',
+=======
+      url: imagesource,
+>>>>>>> 983cb3233ea5b8f5aa903a190acba7890868f8ef
     })
 
     await queryInterface.bulkInsert('Babbles', babbles);
