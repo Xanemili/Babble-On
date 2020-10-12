@@ -3,7 +3,6 @@ window.addEventListener('DOMContentLoaded', async (e) => {
   try {
     const userId = localStorage.getItem('babble_user_id');
     const path = window.location.pathname
-    console.log(path)
     const res2 = await fetch(`/api${path}`, {
       headers: {
         Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
