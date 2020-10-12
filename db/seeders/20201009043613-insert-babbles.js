@@ -37,7 +37,7 @@ module.exports = {
     let topics = await Topic.findAll();
 
     for (let i = 0; i < 20; i++) {
-      let rand = Math.floor(Math.random() * 4)
+      let rand = Math.floor(Math.random() * 14)
       babbles.push({
         userID: users[rand].dataValues.id,
         title: faker.lorem.sentence(),
@@ -56,11 +56,13 @@ module.exports = {
       content: "",
       readTime: 5,
       topicID: 4,
-<<<<<<< HEAD
       url: 'https://cdn.pixabay.com/photo/2020/09/22/18/15/passenger-5593947_960_720.jpg',
+<<<<<<< HEAD
 =======
       url: imagesource,
 >>>>>>> making changes to reactions
+=======
+>>>>>>> fixing babble seeders
     })
 
     await queryInterface.bulkInsert('Babbles', babbles);

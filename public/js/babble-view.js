@@ -144,10 +144,6 @@ document.querySelector('#comment-cancel')
     document.querySelector('.babble-new-comment-div').classList.add('hidden');
   })
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> removing console logs from backend
 // document.querySelector('.babble-reactions-container')
 //   .addEventListener('click', async (event) => {
 
@@ -170,30 +166,3 @@ document.querySelector('#comment-cancel')
 //     }
 //     }
 //     })
-<<<<<<< HEAD
-=======
-document.querySelector('.babble-reactions-container')
-  .addEventListener('click', async (event) => {
-
-if (event.target.localName === 'button') {
-  let react = event.target.innerHTML
-  const reactionRes = await fetch(`/api${window.location.pathname}/reactions/${react}`, {
-    method: 'get',
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${localStorage.getItem('babble_access_token')}`
-    }
-  })
-  let count = document.querySelector(`#babble-reaction__${react}-count`)
-  if (count.innerHTML > 0) {
-
-    count.innerHTML = parseInt(count.innerHTML, 10) + 1
-    }
-    else {
-      count.innerHTML = 1;
-    }
-    }
-    })
->>>>>>> making changes to reactions
-=======
->>>>>>> removing console logs from backend

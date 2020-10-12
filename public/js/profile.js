@@ -60,12 +60,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         }
         followButton.innerHTML = "follow"
         for (let follow of follower) {
-<<<<<<< HEAD
-            console.log("userID: ", follow.userID, ", followerUserID: ", follow.followerUserID)
-            if (follow.userID === userID && follow.followerUserID === userId) {
-=======
             if(follow.userID === userID && follow.followerUserID === userId) {
->>>>>>> styling fixes
                 followButton.innerHTML = "unfollow"
             }
         }
