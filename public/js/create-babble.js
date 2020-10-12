@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', async () => {
           }
         });
 
-        console.log(deleteResponse)
+        window.location.href= `/users/${localStorage.getItem('babble_user_id')}/profile`
       })
     } catch (err) {
       throw err;
@@ -73,7 +73,7 @@ createBabbleForm.addEventListener('submit', async (e) => {
   let path = window.location.pathname.split('/')
   let editCheck = path.pop()
 
-  if (editCheck) {
+  if (editCheck === 'edit') {
     methodType = 'PUT'
     apiUrl = `/api${path.join('/')}`
   }
@@ -96,8 +96,10 @@ createBabbleForm.addEventListener('submit', async (e) => {
     if (!res.ok) {
       throw res;
     }
+    const createRes = await res.json()
 
-    window.location.href = `${path.join('/')}`;
+    console.log(createRes)
+    window.location.href = `/babbles/${createRes.id}`;
 
   } catch (err) {
     if (err.status >= 400 && err.status < 600) {
