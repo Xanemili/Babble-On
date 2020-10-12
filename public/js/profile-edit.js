@@ -34,12 +34,6 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     lastNameInput.setAttribute('name', "lastName")
     emailInput.setAttribute('name', "email")
 
-    bioLabel.innerHTML = "biography"
-    firstNameLabel.innerHTML = "first name"
-    lastNameLabel.innerHTML = "last name"
-    emailLabel.innerHTML = "e-mail"
-
-
   } catch (e) {
     console.log(e)
   }
@@ -56,10 +50,8 @@ document.querySelector(".profile-edit-form").addEventListener('submit', async (e
   // const user = await User.findByPk(userId)
 
   const formData = new FormData(document.querySelector('.profile-edit-form'))
-  console.log(formData)
 
   const firstName = formData.get("firstName")
-  console.log("firstName: ", firstName)
   const lastName = formData.get("lastName");
   const email = formData.get("email");
   const biography = formData.get("biography");
@@ -74,7 +66,6 @@ document.querySelector(".profile-edit-form").addEventListener('submit', async (e
     // topics
   }
 
-  console.log(body)
   try {
     const res = await fetch(`/api/users/${userId}/edit`, {
       method: "PATCH",

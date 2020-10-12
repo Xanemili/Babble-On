@@ -1,7 +1,7 @@
 * {
   font-family: Cabin;
-  border: 1px solid black;
-  font-size: 20px;
+  /* border: 1px solid black; */
+  /* font-size: 20px; */
 }
 
 
@@ -12,9 +12,13 @@
   /* justify-content: space-between; */
   /* background-color: grey; */
   height: 450px;
-  width: 40%;
+  width: 450px;
   padding-top: 5%;
   /* justify-self: center; */
+}
+
+.profile-edit-form {
+  width: 100%;
 }
 
 .profile-pic-div {
@@ -25,52 +29,34 @@
   padding-right: 5%;
 }
 
-.profile-pic-div > img{
-  padding: 2%;
-  width: 4em;
-  height: 4em;
-  border-radius: 50%;
+.form-title {
+  /* font-size: 2em;
+  padding-top: 20px;
+  padding-bottom: 30px; */
 }
 
-/* .firstName-label {
-  grid-area: left-a;
+.top-div {
+  font-size: 3em;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
-.lastName-label {
-  grid-area: left-b;
+
+.profile-pic-div > img{
+  padding: 2%;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
 }
-.email-label {
-  grid-area: left-c;
-}
-.bio-label {
-  grid-area: left-d;
-}
-.firstName-input {
-  grid-area: right-a
-}
-.lastName-input {
-  grid-area: right-b
-}
-.email-input {
-  grid-area: right-c
-}
-.bio-input {
-  grid-area: right-d
-} */
 
 .form-container {
   display:  flex;
   width: 70%;
   align-items: center;
   justify-content: top;
-  /* flex-direction: column; */
-
-  /* grid-template-columns: 30% 70%;
-  grid-template-rows: 20% 20% 20% 40%;
-  grid-template-areas:
-    "left-a right-a"
-    "left-b right-b"
-    "left-c right-c"
-    "left-d right-d"; */
 }
 
 .bio-label {
@@ -81,13 +67,38 @@
   font-size: 15px;
 }
 
-textarea:hover, input:hover {
-  border: 5px solid rgb(183, 183, 183, .75)
+textarea {
+  border: 5px solid white;
+  font-size: 1.5em;
+  resize: none;
+  width: 100%;
+  height: 150px;
 }
-/* bio-input:hover {
-  border: 5px solid rgb(183, 183, 183, .75)
-} */
+.main-container input {
+  border: 5px solid white;
+  font-size: 1.5em;
+  width: 100%;
+}
+
+textarea:hover,
+.main-container input:hover {
+  border: 5px solid rgb(183, 183, 183, .75);
+}
 
 label {
   width: 500px;
+}
+
+.update-btn {
+  justify-self: center;
+  position: relative;
+  background-color: rgba(65, 172, 131, .75);
+  color: white;
+  border-radius: 5px;
+  border: 1px solid rgba(0,0,0,.15);
+  height: 30px;
+  width: 80px;
+  font-family: Cabin;
+  margin: auto;
+  margin-bottom: 20px;
 }

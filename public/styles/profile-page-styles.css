@@ -1,3 +1,8 @@
+* {
+    text-decoration: none;
+    color: black
+}
+
 html, body {
     margin: 0;
     height: 100%;
@@ -31,7 +36,7 @@ html, body {
 }
 
 .user-name-div {
-    font-size: 2em;
+    font-size: 2.5em;
 }
 .profile-pic-div > img{
     width: 175px;
@@ -105,6 +110,28 @@ html, body {
     display: flex;
     align-items: center;
 
+}
+
+.followers-count-a {
+    font-size: 1.2em;
+}
+.following-count-a {
+    font-size: 1.2em;
+}
+
+.follow-button {
+    justify-self: center;
+    position: relative;
+    background-color: rgba(65, 172, 131, .75);
+    color: white;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,.15);
+    height: 30px;
+    width: 80px;
+    font-family: Cabin;
+    margin: auto;
+    margin-bottom: 20px;
+    top: 15px;
 }
 
 .sub-title-div {
