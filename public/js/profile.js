@@ -130,7 +130,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
             const babbleSubHeader = babbles[i].subHeader;
 
 
-            const babbleTimestamp = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+            const babbleTimestamp = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
             const babbleReadTime = babbles[i].readTime;
 
             babbleTitleDiv.innerHTML = babbleTitle;
