@@ -134,7 +134,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         const followUserImgDiv = document.createElement('a')
         followUserImgDiv.classList.add('follow-user-img-div', 'a-tag')
-        followUserImgDiv.setAttribute('href', `/babbles/${babbles[i].id}`)
+        followUserImgDiv.setAttribute('href', `/babbles/${users[i].id}`)
 
         const followUserImg = document.createElement('img');
         followUserImg.classList.add('follow-user-img')
@@ -149,7 +149,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const followUserName = document.createElement('a')
         followUserName.classList.add('follow-user-name', 'a-tag')
         followUserName.innerHTML = users[i].userName
-        followUserName.setAttribute('href', `/users/${babbles[i].userID}/profile`)
+        followUserName.setAttribute('href', `/users/${users[i].id}/profile`)
 
         const followUserFullName = document.createElement('div')
         followUserFullName.classList.add('follow-user-full-name');

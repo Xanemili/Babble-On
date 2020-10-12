@@ -59,7 +59,7 @@ logInForm.addEventListener('submit', async (e) => {
         localStorage.setItem('babble_access_token', token);
         localStorage.setItem('babble_user_id', id)
 
-        window.location.href = '/';
+        window.location.href = '/babbles';
     } catch (err) {
         if (err.status >= 400 && err.status < 600) {
             const errorJSON = await err.json();
