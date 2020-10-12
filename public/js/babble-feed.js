@@ -45,10 +45,11 @@ window.addEventListener('DOMContentLoaded', async (e) => {
   try {
     const res1 = await fetch('/api/babbles');
     const res2 = await fetch('/api/users');
+    const res3 = await fetch(`/api/users/${localStorage.getItem('babble_user_id')}/following`);
 
     const babbles = await res1.json();
     const users = await res2.json();
-
+    const following = await res3.json();
 
     //Don't forget to include the date!!
     function mainBableInfo() {
@@ -127,7 +128,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
       }
     }
 
-    function userFollowInfo() {
+    async function userFollowInfo() {
       for (i = 1; i < 6; i++) {
         const followUserDiv = document.querySelector(`.follow-user-${i}`)
 
@@ -145,7 +146,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const followUserName = document.createElement('a')
         followUserName.classList.add('follow-user-name', 'a-tag')
         followUserName.innerHTML = users[i].userName
-        followUserName.setAttribute('href',`/users/${babbles[i].userID}/profile`)
+        followUserName.setAttribute('href', `/users/${babbles[i].userID}/profile`)
 
         const followUserFullName = document.createElement('div')
         followUserFullName.classList.add('follow-user-full-name');
@@ -154,23 +155,60 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         const userFollowBtn = document.createElement('button');
         userFollowBtn.classList.add(`follow-user-btn-${i}`);
-        userFollowBtn.innerHTML = 'Follow'
 
+        userFollowBtn.innerHTML = "follow"
+        for (let follow of following) {
+          if (parseInt(follow.followerUserID, 10) === parseInt(localStorage.getItem('babble_user_id'), 10) && parseInt(follow.userID, 10) === parseInt(users[i].id, 10)) {
+            userFollowBtn.innerHTML = "unfollow"
+          }
+        }
         followUserImgDiv.append(followUserImg)
         followUserInfoDiv.append(followUserName)
         followUserInfoDiv.append(followUserFullName);
         followUserInfoDiv.append(userFollowBtn)
-
         followUserDiv.append(followUserImgDiv)
         followUserDiv.append(followUserInfoDiv)
-        }
+
+        followButtonListener(userFollowBtn, users[i].id)
+      }
 
     }
 
+    function followButtonListener(followButton, userId) {
+      followButton.addEventListener("click", async (e) => {
+        if (followButton.innerHTML === "unfollow") {
+          followButton.innerHTML = "follow"
+        } else {
+          followButton.innerHTML = "unfollow"
+        }
+        const body = {
+          followerUserID: localStorage.getItem('babble_user_id'),
+          userID: userId
+        }
+        // console.log(body)
+        try {
+          await fetch(`/api/users/${userId}/followers`, {
+            method: "POST",
+            body: JSON.stringify(body),
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('babble_access_token')}`,
+              'Content-Type': 'application/json'
+            }
+          })
+        } catch (e) {
+          console.log(e)
+        }
+      })
+
+    }
+
+
+
+
     function trendingBabbleInfo() {
 
-        for (let i = 7; i < 13; i++) {
-          const trendingBabble = document.querySelector(`.trending-babble-${i}`)
+      for (let i = 7; i < 13; i++) {
+        const trendingBabble = document.querySelector(`.trending-babble-${i}`)
 
         const trendingBabbleUserInfoDiv = document.createElement('div')
         trendingBabbleUserInfoDiv.classList.add('trending-babble-user-info-div')
@@ -178,11 +216,11 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         const trendingBabbleUserInfo = document.createElement('a')
         trendingBabbleUserInfo.classList.add('trending-babble-user-info', 'a-tag')
         trendingBabbleUserInfo.innerHTML = `${babbles[i].User.firstName} ${babbles[i].User.lastName}`
-        trendingBabbleUserInfo.setAttribute('href', `/users/${babbles[i].userID}/profile` )
+        trendingBabbleUserInfo.setAttribute('href', `/users/${babbles[i].userID}/profile`)
         const trendingBabbleUserImg = document.createElement('img')
-        if (babbles[i].User.profilePicture !== null)  {
-        trendingBabbleUserImg.classList.add('trending-babble-user-img');
-        trendingBabbleUserImg.setAttribute('src', `${babbles[i].User.profilePicture}`)
+        if (babbles[i].User.profilePicture !== null) {
+          trendingBabbleUserImg.classList.add('trending-babble-user-img');
+          trendingBabbleUserImg.setAttribute('src', `${babbles[i].User.profilePicture}`)
         }
 
         const trendingBabbleInfoDiv = document.createElement('div')
@@ -208,7 +246,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         trendingBabbleUserInfoDiv.append(trendingBabbleUserInfo);
 
         if (babbles[i].User.profilePicture !== null) {
-        trendingBabbleUserInfoDiv.append(trendingBabbleUserImg)
+          trendingBabbleUserInfoDiv.append(trendingBabbleUserImg)
         }
         trendingBabbleInfo.append(trendingBabbleTitle)
         trendingBabbleInfo.append(trendingBabbleSubHeader)
@@ -217,11 +255,11 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         trendingBabbleInfoDiv.append(trendingBabbleInfo)
         trendingBabble.append(trendingBabbleUserInfoDiv)
         trendingBabble.append(trendingBabbleInfoDiv)
-        }
+      }
     }
 
     function babbleInfo() {
-      for (let i = 13; i <  18; i++) {
+      for (let i = 13; i < 18; i++) {
         const babbleContainer = document.querySelector('.babbles-container')
 
         const babble = document.createElement('div');
@@ -254,7 +292,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         babbleInfoDiv.append(babbleUserName)
         babbleInfoDiv.append(babbleAuthor)
         if (babbles[i].User.profilePicture !== null) {
-        babbleInfoDiv.append(babbleProfilePic)
+          babbleInfoDiv.append(babbleProfilePic)
         }
         babbleInfoDiv.append(babbleTitle)
         babbleImgDiv.append(babbleImg)
@@ -267,11 +305,11 @@ window.addEventListener('DOMContentLoaded', async (e) => {
     }
 
 
-      await mainBableInfo();
-      await sideBabbleInfo();
-      await userFollowInfo();
-      await trendingBabbleInfo();
-      await babbleInfo();
+    await mainBableInfo();
+    await sideBabbleInfo();
+    await userFollowInfo();
+    await trendingBabbleInfo();
+    await babbleInfo();
 
 
 

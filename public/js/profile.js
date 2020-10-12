@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         followButton.innerHTML = "follow"
         for (let follow of follower) {
             console.log("userID: ", follow.userID, ", followerUserID: ", follow.followerUserID)
-            if(follow.userID === userID && follow.followerUserID === userId) {
+            if (follow.userID === userID && follow.followerUserID === userId) {
                 followButton.innerHTML = "unfollow"
             }
         }
@@ -85,14 +85,15 @@ window.addEventListener('DOMContentLoaded', async (e) => {
                         'Content-Type': 'application/json'
                     }
                 })
-                const res = await fetch(`/api${path}/followers`, {
+
+                const res4 = await fetch(`/api${path}/followers`, {
                     headers: {
                         Authorizations: `Bearer ${localStorage.getItem('babble_accerss_token')}`
                     }
                 })
-                const follower = await res.json();
-                console.log(follower.length)
-                document.querySelector('.following-count-div').innerHTML = `  ${follower.length} following`
+
+                const follower = await res4.json();
+                document.querySelector(".followers-count-a").innerHTML = `${follower.length} followers  `
             } catch (e) {
                 console.log(e)
             }

@@ -60,6 +60,7 @@ html, body {
     flex-direction: row;
     justify-content: space-around;
     border-radius: 10px;
+    border: 5px solid white;
     /* box-shadow: 1px 1px 3px */
 }
 
