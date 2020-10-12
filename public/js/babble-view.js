@@ -97,7 +97,34 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 
   } catch (err) {
-    handleErrors(err)
+       if (err.status >= 400 && err.status < 600) {
+         const errorJSON = await err.json();
+         const errorsContainer = document.querySelector('.errors-container');
+
+         let errorsHtml = [
+           `
+                <div class="error-alert">
+                    Something went wrong. Please try again.
+                </div>
+              `,
+         ];
+
+         const {
+           errors
+         } = errorJSON;
+         if (errors && Array.isArray(errors)) {
+           errorsHtml = errors.map(
+             (message) => `
+                    <div class "error-alert">
+                        ${message}
+                    </div> `
+           );
+         }
+         errorsContainer.innerHTML = errorsHtml.join("");
+       } else {
+         alert("Something went wrong. Please check your internet connection and try again!")
+       }
+
   }
 })
 
@@ -132,9 +159,36 @@ document.querySelector('.babble-new-comment')
 
       document.querySelector('#new-comment__textarea').value = '';
       document.querySelector('.babble-new-comment-div').classList.add('hidden')
+      document.querySelector('.babble-comments-errors-container').innerHTML = ""
 
     } catch (err) {
-      handleErrors(err)
+         if (err.status >= 400 && err.status < 600) {
+           const errorJSON = await err.json();
+           const errorsContainer = document.querySelector('.babble-comments-errors-container');
+           let errorsHtml = [
+             `
+                <div class="error-alert">
+                    Something went wrong. Please try again.
+                </div>
+              `,
+           ];
+
+           const {
+             errors
+           } = errorJSON;
+           if (errors && Array.isArray(errors)) {
+             errorsHtml = errors.map(
+               (message) => `
+                    <div class "error-alert">
+                        ${message}
+                    </div> `
+             );
+           }
+           errorsContainer.innerHTML = errorsHtml.join("");
+         } else {
+           alert("Something went wrong. Please check your internet connection and try again!")
+         }
+
     }
   });
 

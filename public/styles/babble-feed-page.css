@@ -209,6 +209,22 @@ html, body {
 .follow-user-btn-1:hover {
 }
 
+.follow-button {
+    justify-self: center;
+    position: relative;
+    background-color: rgba(65, 172, 131, .75);
+    color: white;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, .15);
+    height: 20px;
+    width: 80px;
+    font-family: Cabin;
+    margin: auto;
+    margin-bottom: 20px;
+
+}
+
+
  .main-center-container {
     display: flex;
     justify-content: center;

@@ -138,7 +138,10 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
         const followUserImg = document.createElement('img');
         followUserImg.classList.add('follow-user-img')
-        followUserImg.setAttribute('src', `${users[i].profilePicture}`)
+
+        if (users[i].profilePicture){
+          followUserImg.setAttribute('src', `${users[i].profilePicture}`)
+        }
 
         const followUserInfoDiv = document.createElement('div')
         followUserInfoDiv.classList.add('follow-user-info-div')
@@ -154,7 +157,7 @@ window.addEventListener('DOMContentLoaded', async (e) => {
 
 
         const userFollowBtn = document.createElement('button');
-        userFollowBtn.classList.add(`follow-user-btn-${i}`);
+        userFollowBtn.classList.add(...[`follow-user-btn-${i}`, `follow-button`]);
 
         userFollowBtn.innerHTML = "follow"
         for (let follow of following) {
@@ -279,7 +282,10 @@ window.addEventListener('DOMContentLoaded', async (e) => {
         babbleAuthor.innerHTML = `${babbles[i].User.firstName} ${babbles[i].User.lastName}`
         const babbleProfilePic = document.createElement('img')
         babbleProfilePic.classList.add('babble-profile-pic')
-        babbleProfilePic.setAttribute('src', `${babbles[i].User.profilePicture}`)
+
+        if (babbles[i].User.profilePicture){
+          babbleProfilePic.setAttribute('src', `${babbles[i].User.profilePicture}`)
+        }
         const babbleTitle = document.createElement('a', 'a-tag')
         babbleTitle.classList.add('babble-title')
         babbleTitle.innerHTML = babbles[i].title
