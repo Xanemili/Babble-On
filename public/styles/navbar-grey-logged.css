@@ -33,8 +33,7 @@ html, body {
   width:60px;
   display: flex;
   position: relative;
-  bottom: 25px;
-  right: 30px;
+  left: 55px;
 }
 
 .nav__search {
@@ -55,9 +54,13 @@ html, body {
 .dropdown{
   position: relative;
   display: inline-block;
+  width: 150px;
+  bottom: 25px;
+  right: 30px;
 }
 
 .dropdown-content {
+  height: fit-content;
   display: none;
   position: absolute;
   background-color: #f9f9f9;
