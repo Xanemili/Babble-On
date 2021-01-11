@@ -12,6 +12,7 @@ module.exports = {
       lastName: 'Smith',
       email: 'demo.user@email.com',
       hashedPassword: hashedPass,
+      profilePicture:  "https://randomuser.me/api/portraits/med/men/15.jpg",
     }], {});
   } catch (e){
     throw e;
